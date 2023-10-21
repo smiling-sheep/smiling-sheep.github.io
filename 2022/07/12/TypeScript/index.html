@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/smiling-sheep/img/fluid.png">
-  <link rel="icon" href="/smiling-sheep/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="1. 什么是TypeScript​	TypeScript入门教程： http:&#x2F;&#x2F;ts.xcatliu.com&#x2F;basics&#x2F;  TypeScript是一种添加了类型系统的 JavaScript，适用于任何规模的项目  TypeScript 是静态类型  动态类型是指在运行时才会进行类型检查 静态类型是指编译阶段就能确定每个变量的类型    2. 安装、编译 使用typescript编译   1n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript">
-<meta property="og:url" content="https://smiling-sheep.github.io/smiling-sheep/2022/07/12/TypeScript/index.html">
+<meta property="og:url" content="http://example.com/2022/07/12/TypeScript/index.html">
 <meta property="og:site_name" content="king-l6">
 <meta property="og:description" content="1. 什么是TypeScript​	TypeScript入门教程： http:&#x2F;&#x2F;ts.xcatliu.com&#x2F;basics&#x2F;  TypeScript是一种添加了类型系统的 JavaScript，适用于任何规模的项目  TypeScript 是静态类型  动态类型是指在运行时才会进行类型检查 静态类型是指编译阶段就能确定每个变量的类型    2. 安装、编译 使用typescript编译   1n">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/smiling-sheep/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/smiling-sheep/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/smiling-sheep/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,15 +68,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"smiling-sheep.github.io","root":"/smiling-sheep/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/smiling-sheep/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/smiling-sheep/js/utils.js" ></script>
-  <script  src="/smiling-sheep/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -94,7 +94,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/smiling-sheep/">
+    <a class="navbar-brand" href="/">
       <strong>lldblog</strong>
     </a>
 
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/smiling-sheep/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/smiling-sheep/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/smiling-sheep/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/smiling-sheep/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/smiling-sheep/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -191,7 +191,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/smiling-sheep/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -293,14 +293,14 @@
 <blockquote>
 <p>该文件一定保存在项目根目录，是编译ts文件的编译选项</p>
 </blockquote>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">tsc -h  <span class="hljs-regexp">//</span>查看帮助信息<br>tsc --init <span class="hljs-regexp">//</span>在根目录生成tsconfig.json<br></code></pre></td></tr></table></figure>
+  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp">tsc -h  <span class="hljs-comment">//查看帮助信息</span><br>tsc --<span class="hljs-keyword">init</span> <span class="hljs-comment">//在根目录生成tsconfig.json</span><br></code></pre></td></tr></table></figure>
 <p>  修改tsconfig.json</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-string">&quot;outDir&quot;</span>: <span class="hljs-string">&quot;./dist&quot;</span>,   <span class="hljs-regexp">//</span>第<span class="hljs-number">52</span>行，编译后的js存储在dist文件夹<br></code></pre></td></tr></table></figure>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;outDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./dist&quot;</span><span class="hljs-punctuation">,</span>   <span class="hljs-comment">//第52行，编译后的js存储在dist文件夹</span><br></code></pre></td></tr></table></figure>
 <p>  执行编译（即使编译出错也会生成js文件）</p>
 <blockquote>
 <p>！！！特别注意，后面不要指定文件</p>
 </blockquote>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">tsc     <span class="hljs-regexp">//</span>会编译所有ts文件为js文件 <br></code></pre></td></tr></table></figure>
+  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">tsc     <span class="hljs-comment">//会编译所有ts文件为js文件 </span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>使用ts-node直接编译并执行，</p>
   <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">npm i ts-<span class="hljs-keyword">node</span> <span class="hljs-title">-g</span><br>npm i @types/<span class="hljs-keyword">node</span> <span class="hljs-title">-g</span><br><br>//运行<br>ts-<span class="hljs-keyword">node</span> <span class="hljs-title">hello</span>.ts<br></code></pre></td></tr></table></figure></li>
@@ -402,7 +402,7 @@
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">type</span> <span class="hljs-type">Name </span>= string;<br><span class="hljs-keyword">type</span> <span class="hljs-type">NameResolver </span>= () =&gt; string;<br><span class="hljs-keyword">type</span> <span class="hljs-type">NameOrResolver </span>= Name | NameResolver;<br><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(n: NameOrResolver): Name &#123;<br>    if (typeof n === &#x27;string&#x27;) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-type">n</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> n();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="13-字符串字面量类型"><a href="#13-字符串字面量类型" class="headerlink" title="13. 字符串字面量类型"></a>13. 字符串字面量类型</h1><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">type EventNames = <span class="hljs-string">&#x27;click&#x27;</span> | <span class="hljs-string">&#x27;scroll&#x27;</span> | <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent(ele: Element, event: EventNames) &#123;<br>    <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br><br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>), <span class="hljs-string">&#x27;scroll&#x27;</span>);  <span class="hljs-regexp">//</span> 没问题<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>), <span class="hljs-string">&#x27;dblclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错，event 不能为 <span class="hljs-string">&#x27;dblclick&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">type <span class="hljs-title class_">EventNames</span> = <span class="hljs-string">&#x27;click&#x27;</span> | <span class="hljs-string">&#x27;scroll&#x27;</span> | <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">handleEvent</span>(<span class="hljs-params">ele: Element, event: EventNames</span>) &#123;<br>    <span class="hljs-comment">// do something</span><br>&#125;<br><br><span class="hljs-title function_">handleEvent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;hello&#x27;</span>), <span class="hljs-string">&#x27;scroll&#x27;</span>);  <span class="hljs-comment">// 没问题</span><br><span class="hljs-title function_">handleEvent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;world&#x27;</span>), <span class="hljs-string">&#x27;dblclick&#x27;</span>); <span class="hljs-comment">// 报错，event 不能为 &#x27;dblclick&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="14-元组"><a href="#14-元组" class="headerlink" title="14. 元组"></a>14. 元组</h1><p>数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">tom</span>: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;Tom&#x27;</span>, <span class="hljs-number">25</span>];<br></code></pre></td></tr></table></figure>
@@ -412,7 +412,7 @@
 <h1 id="16-类"><a href="#16-类" class="headerlink" title="16. 类"></a>16. 类</h1><h2 id="16-1-属性和方法"><a href="#16-1-属性和方法" class="headerlink" title="16.1 属性和方法"></a>16.1 属性和方法</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span> &#123;<br>    <span class="hljs-keyword">public</span> name：<span class="hljs-built_in">string</span>;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    &#125;<br>    <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`My name is <span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>`</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-title function_">sayHi</span>()); <span class="hljs-comment">// My name is Jack</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="16-2-静态方法"><a href="#16-2-静态方法" class="headerlink" title="16.2 静态方法"></a>16.2 静态方法</h2><p>使用 <code>static</code> 修饰符修饰的方法称为静态方法，它们不需要实例化，而是直接通过类来调用</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> Animal &#123;<br>  static is<span class="hljs-constructor">Animal(<span class="hljs-params">a</span>)</span> &#123;<br>    return a instanceof Animal;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Animal(&#x27;Jack&#x27;)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Animal</span>.</span></span>is<span class="hljs-constructor">Animal(<span class="hljs-params">a</span>)</span>; <span class="hljs-comment">// true</span><br>a.is<span class="hljs-constructor">Animal(<span class="hljs-params">a</span>)</span>; <span class="hljs-comment">// TypeError: a.isAnimal is not a function</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span> &#123;<br>  <span class="hljs-keyword">static</span> <span class="hljs-title function_">isAnimal</span>(<span class="hljs-params">a</span>) &#123;<br>    <span class="hljs-keyword">return</span> a <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Animal</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-title class_">Animal</span>.<span class="hljs-title function_">isAnimal</span>(a); <span class="hljs-comment">// true</span><br>a.<span class="hljs-title function_">isAnimal</span>(a); <span class="hljs-comment">// TypeError: a.isAnimal is not a function</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="16-2-public-private-和-protected"><a href="#16-2-public-private-和-protected" class="headerlink" title="16.2 public private 和 protected"></a>16.2 public private 和 protected</h2><ul>
 <li><p><code>public</code> 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 <code>public</code> 的</p>
@@ -429,11 +429,11 @@
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>&#123;<br>  <span class="hljs-keyword">protected</span> name;<br>  public constructor(name) &#123;<br>    <span class="hljs-keyword">this</span>.name = name;<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span> </span>&#123;<br>  constructor(name) &#123;<br>    <span class="hljs-keyword">super</span>(name);<br>    console.log(<span class="hljs-keyword">this</span>.name);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="17-类与接口"><a href="#17-类与接口" class="headerlink" title="17. 类与接口"></a>17. 类与接口</h1><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;SecurityDoor alert&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;Car alert&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="17-类与接口"><a href="#17-类与接口" class="headerlink" title="17. 类与接口"></a>17. 类与接口</h1><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-title class_"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><br><span class="hljs-title class_"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br>&#125;<br><br><span class="hljs-title class_"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;SecurityDoor alert&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-title class_"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;Car alert&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="18-泛型"><a href="#18-泛型" class="headerlink" title="18. 泛型"></a>18. 泛型</h1><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性</p>
 <p>这段代码编译不会报错，但是一个显而易见的缺陷是，它并没有准确的定义返回值的类型</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> create<span class="hljs-constructor">Array(<span class="hljs-params">length</span>: <span class="hljs-params">number</span>, <span class="hljs-params">value</span>: <span class="hljs-params">any</span>)</span>: Array&lt;any&gt; &#123;<br>    <span class="hljs-keyword">let</span> result = <span class="hljs-literal">[]</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>        result<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = value;<br>    &#125;<br>    return result;<br>&#125;<br><br>create<span class="hljs-constructor">Array(3, &#x27;<span class="hljs-params">x</span>&#x27;)</span>; <span class="hljs-comment">// [&#x27;x&#x27;, &#x27;x&#x27;, &#x27;x&#x27;]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createArray</span>(<span class="hljs-params">length: <span class="hljs-built_in">number</span>, value: <span class="hljs-built_in">any</span></span>): <span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">any</span>&gt; &#123;<br>    <span class="hljs-keyword">let</span> result = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>        result[i] = value;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-title function_">createArray</span>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;x&#x27;</span>); <span class="hljs-comment">// [&#x27;x&#x27;, &#x27;x&#x27;, &#x27;x&#x27;]</span><br></code></pre></td></tr></table></figure>
 
 <p>我们预期的是，数组中每一项都应该是输入的 <code>value</code> 的类型。</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">function</span> <span class="hljs-title">createArray&lt;T&gt;</span>(length: number, value: T): Array&lt;T&gt; &#123;<br>    let result: T[] = [];<br>    for (let i = 0; i &lt; length; i++) &#123;<br>        result[i] = value;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">result</span>;<br>&#125;<br><br>createArray&lt;string&gt;(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;x&#x27;</span>); // [<span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>]<br><br>createArray&lt;number&gt;(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;x&#x27;</span>); // [<span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>]<br></code></pre></td></tr></table></figure>
@@ -459,7 +459,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>TypeScript</div>
-      <div>https://smiling-sheep.github.io/smiling-sheep/2022/07/12/TypeScript/</div>
+      <div>http://example.com/2022/07/12/TypeScript/</div>
     </div>
     <div class="license-meta">
       
@@ -503,7 +503,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/smiling-sheep/2023/10/20/html/" title="html">
+                      <a href="/2023/10/20/html/" title="html">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">html</span>
                         <span class="visible-mobile">上一篇</span>
@@ -513,7 +513,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/smiling-sheep/2022/06/24/jq/" title="jQuery">
+                      <a href="/2022/06/24/jq/" title="jQuery">
                         <span class="hidden-mobile">jQuery</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -643,8 +643,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/smiling-sheep/js/events.js" ></script>
-<script  src="/smiling-sheep/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -666,7 +666,7 @@
 
 
   
-    <script  src="/smiling-sheep/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -765,7 +765,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/smiling-sheep/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -773,7 +773,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/smiling-sheep/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
