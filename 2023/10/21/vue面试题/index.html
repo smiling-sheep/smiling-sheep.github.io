@@ -1,0 +1,1030 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="smilinh-sheep">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="01-vue常用指令    v-html        v-text      v-bind:title     :title     v-if     v-else     v-show     v-cloak      v-model     v-on     v-for     v-once     v-slot  02-v-for和v-if为什么不能用在同一元素v-once指令:只渲染一次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue面试题">
+<meta property="og:url" content="http://example.com/2023/10/21/vue%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="lldBlog">
+<meta property="og:description" content="01-vue常用指令    v-html        v-text      v-bind:title     :title     v-if     v-else     v-show     v-cloak      v-model     v-on     v-for     v-once     v-slot  02-v-for和v-if为什么不能用在同一元素v-once指令:只渲染一次">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-21T13:46:59.596Z">
+<meta property="article:modified_time" content="2023-10-21T13:54:49.337Z">
+<meta property="article:author" content="smilinh-sheep">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>vue面试题 - lldBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    <meta name="referrer" content="no-referrer"/>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lldblog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="vue面试题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-21 21:46" pubdate>
+          2023年10月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          109 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue面试题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="01-vue常用指令"><a href="#01-vue常用指令" class="headerlink" title="01-vue常用指令"></a>01-vue常用指令</h1><pre><code class="hljs">    v-html   
+    v-text 
+    v-bind:title     :title
+    v-if
+    v-else
+    v-show
+    v-cloak 
+    v-model
+    v-on
+    v-for
+    v-once
+    v-slot
+</code></pre>
+<h1 id="02-v-for和v-if为什么不能用在同一元素"><a href="#02-v-for和v-if为什么不能用在同一元素" class="headerlink" title="02-v-for和v-if为什么不能用在同一元素"></a>02-v-for和v-if为什么不能用在同一元素</h1><p>v-once指令:只渲染一次，数据改变，视图更新，但v-once对应的元素不会再更新 </p>
+<!-- 
+        v-for比v-if优先，即每一次都需要遍历整个数组，影响速度。
+
+
+
+        <div
+            v-for="(fileMsg,index) in fileMsgList"
+            :key="fileMsg.id"
+            v-if="index < 2"
+            >
+            <sys-file-layout :fileMsg="fileMsg"></sys-file-layout>
+        </div>
+
+
+        以上代码，如果有100条数据，虽然显示两条，但需要遍历100次，因为v-for优先
+    
+        更好的解决方案： 是用computed先获取符合条件的数据，再进行遍历
+     -->
+
+<h1 id="03-实现数组更新检测的方法"><a href="#03-实现数组更新检测的方法" class="headerlink" title="03-实现数组更新检测的方法"></a>03-实现数组更新检测的方法</h1><p>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()</p>
+<p>&#x2F;&#x2F; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;数组更新检测</p>
+<pre><code class="hljs">// 三个参数： 数组，索引，新值
+Vue.set(this.list,3,5)  //可以触发视图更新
+this.$set(this.list,3,5)  //可以触发视图更新
+</code></pre>
+<p>&#x2F;&#x2F; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;对象的更新检测</p>
+<p>&#x2F;&#x2F; 三个参数：对象，属性，新值<br>Vue.set(this.person,”sex”,”男”)  &#x2F;&#x2F;可以触发视图更新<br>this.$set(this.list,3,5)  &#x2F;&#x2F;可以触发视图更新</p>
+<h1 id="04-key值的作用"><a href="#04-key值的作用" class="headerlink" title="04-key值的作用"></a>04-key值的作用</h1><p>key值的作用：</p>
+<pre><code class="hljs">需要使用key来给每个节点做一个唯一标识，Diff算法就可以正确的识别此节点，找到正确的位置区插入新的节点。
+所以一句话，**key的作用主要是为了高效的更新虚拟DOM**。
+
+另外vue中在使用相同标签名元素的过渡切换时，也会使用到key属性，其目的也是为了让vue可以区分它们，否则vue只会替换其内部属性而不会触发过渡效果。
+</code></pre>
+<h1 id="05-事件绑定中的事件修饰符"><a href="#05-事件绑定中的事件修饰符" class="headerlink" title="05-事件绑定中的事件修饰符"></a>05-事件绑定中的事件修饰符</h1><p>事件修饰符： @click.修饰符</p>
+<pre><code class="hljs">        1. @click.stop  阻止冒泡
+        2. @click.prevent  阻止浏览器默认行为
+        3. @click.once 只执行一次
+        4. @keyup.键名  (13，enter都是指回车键， 38： 上箭头)
+        5. @click.self   当事件发生在该元素本身而不是子元素的时候会触发；
+        6. @click.capture   在事件捕获阶段触发事件处理程序
+
+        .stop   
+        .prevent  
+        .once
+        .enter键名
+        .self
+        .capture 
+</code></pre>
+<h1 id="06-vue中的虚拟dom的理解"><a href="#06-vue中的虚拟dom的理解" class="headerlink" title="06-vue中的虚拟dom的理解"></a>06-vue中的虚拟dom的理解</h1><p>第一种： 更详细</p>
+<p>1、读取data数据<br>2、读取模板<br>3、数据 + 模板 生成虚拟DOM(虚拟DOM就是一个JS对象，用它来描述真实DOM)（损耗一点性能）<br>                  原本准备生成的真实dom:   <div id=“abc”><span> hello world </span></div><br>    虚拟DOM：[‘div’, {id: ‘abc‘}, [‘span’, ‘’, ‘hello world’]]<br>4、用虚拟DOM的结构生成真实的DOM -&gt; 视图显示 (用createElement可基于虚拟DOM生成真实DOM)<br>    真实DOM：<div id='abc'><span></span></div><br>5、当data发生了变化<br>6、数据 + 模板 生成新的虚拟DOM：<br>    [‘div’, {id: ‘abc’}, [‘span’, ‘’, ‘hi world’]]（极大提升性能）<br>7、比较原始虚拟DOM和新的虚拟DOM的区别，找到的区别是span中的内容发生了变化（极大提升了性能）<br>8、将变化的部分生成真实DOM       (用createElement可基于虚拟DOM生成真实DOM)<br>9、将不同部分渲染在页面（直接操作DOM，改变span中的内容）</p>
+<p>虚拟DOM优点：1、性能提升了      2、它使得跨端应用得以实现，比如：React Native</p>
+<p>第二种： 简洁版</p>
+<p>1.获取数据<br>2.根据数据创建VDOM （相当于给对象赋值）<br>3.根据VDOM渲染生成真实DOM ( 根据createElement(‘DIV’) )<br>4.当数据发生改变后，又会生成新的VDOM</p>
+<p>5.通过 diff 算法 比对 多次生成的 VDOM, 将不同的内容比对出来，然后再进行真实DOM渲染，<br>一样的内容是不会进行渲染的，这就是VDOM 的 ‘就地复用’ | ‘惰性原则’</p>
+<h1 id="07-methods和computed和watch的区别"><a href="#07-methods和computed和watch的区别" class="headerlink" title="07-methods和computed和watch的区别"></a>07-methods和computed和watch的区别</h1><p>计算属性computed和方法methods的区别</p>
+<pre><code class="hljs">    1. 计算属性和方法都是函数，计算属性一定有返回值，它通过对数据进行处理，返回一个结果 
+
+    2. 在模板中调用时，计算属性不加(),而methods必须需要加()
+    
+    3. 计算属性和方法最主要的区别是计算属性有缓存功能。
+
+        方法被调用时每次都要重复执行函数
+
+        计算属性初次调用时执行函数，然后会缓存结果。当再次被调用时，如果依赖的响应式数据没有发生改变，则直接返回之前缓存的结果 。
+
+        如果依赖发生了改变，则会再次执行函数并缓存结果 
+
+    4. 不支持异步，当computed内有异步操作时无效，无法监听数据的变化
+</code></pre>
+<p>watch: </p>
+<pre><code class="hljs">1. 侦听响应式数据的变化，数据变化时，执行相应的业务逻辑，可以有返回值，也可以没有
+
+2. 侦听器默认在页面初始化时不执行，只有侦听数据发生变化才会执行。
+
+3. 添加上immediate可初始化时就执行
+</code></pre>
+<ol start="4">
+<li><p>支持异步操作</p>
+<pre><code class="hljs">   watch: &#123;
+          // 侦听响应式数据num2的更新，只要num2数据更新，就触发该侦听器(函数)
+          num2: &#123;
+              handler(val,oldVal) &#123;
+                  console.log(&#39;侦听num2一次&#39;);
+                  this.getTotal = this.price * this.num2
+              &#125;,
+              // //初始化时即自动执行一次
+              immediate: true
+          &#125;
+          
+  &#125;
+</code></pre>
+</li>
+</ol>
+<p>computed的应用场景：  过滤后台数据，只显示男生信息<br>watch的应用场景 ： 楼层导航，切换楼层时，监听楼层索引的变化，调整滚动条位置</p>
+<h1 id="08-vue中的组件传值"><a href="#08-vue中的组件传值" class="headerlink" title="08-vue中的组件传值"></a>08-vue中的组件传值</h1><p>1、父传子：父组件中通过v-bind绑定一个属性，子组件中通过props接收父组件中的绑定的属性</p>
+<p>2、子传父：子组件通过广播的方式$emit发送自定义事件，将值传递给父组件，父组件监听事件，触发一个函数去接收子组件中传递过来的值</p>
+<p>3、兄弟间传值： </p>
+<pre><code class="hljs">(1)通过父组件中转来传值，即A和B是兄弟组件，可以A传给父组件，由父组件再传给B
+
+(2) new一个Bus实例，通过$emit传递数据，通过$on监听获取数据
+
+(3) vuex
+</code></pre>
+<p>4、使用vuex状态管理，可以实现数据的随意存储和获取</p>
+<pre><code class="hljs">如果应用比较简单，就不需要使用Vuex，直接使用父子组件传值及其它传值方式即可，使用Vuex就要额外的引入vuex的框架，可能是繁琐冗余的
+
+如果需要构建一个中大型单页应用，就可以使用vuex更好地在组件外部管理状态
+</code></pre>
+<h1 id="09-vue中如何获取原生dom"><a href="#09-vue中如何获取原生dom" class="headerlink" title="09-vue中如何获取原生dom"></a>09-vue中如何获取原生dom</h1><ol>
+<li>在元素标签上添加ref属性   </li>
+<li>通过this.$refs.属性名来获取dom</li>
+<li>应用场景： 楼层导航中，要获取每个楼层距离页面顶端的偏移值</li>
+</ol>
+<ul ref="ulEl">
+    <li v-for="(item,index) in list" ref="liEl">{ {item}}</li>
+</ul>
+<p ref="pEl">这是一个段落</p>
+
+<h1 id="10-vue中this-nextTick-的用法"><a href="#10-vue中this-nextTick-的用法" class="headerlink" title="10-vue中this.$nextTick()的用法"></a>10-vue中this.$nextTick()的用法</h1><p>一般在请求数据后，需要获取dom的时候使用。</p>
+<p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</p>
+<h1 id="11-生命周期钩子"><a href="#11-生命周期钩子" class="headerlink" title="11-生命周期钩子"></a>11-生命周期钩子</h1><p>&#x2F;&#x2F; 创建之前，在beforeCreate生命周期执行的时候，data和methods中的数据都还没有初始化，不能访问data数据<br>    1. beforeCreate(){<br>        console.log(‘beforeCreate’,this.msg);<br>        },<br>        &#x2F;&#x2F;创建之后，data和methods中的数据已经初始化，此时可以访问data数据<br>        &#x2F;&#x2F; 一般在这个函数中发起ajax请求</p>
+<pre><code class="hljs">1. created()&#123;
+    console.log(&#39;created&#39;,this.msg);
+    &#125;,
+    // 挂载之前，表示模板已经在内存中编译完成，但尚未把模板渲染到页面中。
+    // 此时还没有渲染用数据生成的新dom
+
+1. beforeMount()&#123;
+    console.log(&#39;beforeMount&#39;,this.$el);
+    &#125;,
+    // 挂载完毕 ，表示内存中的模板，已经真实的挂载到了页面中，用户已经可以看到渲染好的页面了
+    // 此时可以访问dom
+
+1. mounted()&#123;
+    console.log(&#39;mounted&#39;,this.$el);
+    &#125;,
+    // 更新之前，当且仅当data被修改时才触发这个生命周期函数，但此时仅仅是数据被修改，页面还未更新。
+
+1. beforeUpdate()&#123;
+    console.log(&#39;beforeUpdate&#39;,this.msg);
+console.log(&#39;beforeUpdate&#39;,this.$el.innerHTML);
+    &#125;,
+    // 更新之后， 会根据新数据生成最新的内存DOM树，重新渲染到真实的页面中去，
+    // 此时的data数据和页面已完成同步
+    
+1. updated()&#123;
+    console.log(&#39;updated&#39;,this.$el.innerHTML);
+    &#125;,
+    // 销毁之前，当执行beforeDestory钩子函数的时候，Vue实例就已经从运行阶段，进入到了销毁阶段。
+    // 当执行beforeDestory的时候，实例身上所有的data和所有的methods，以及过滤器、指令...都处于可用状态，此时还没有真正执行销毁过程。
+
+1. beforeDestroy()&#123;
+    console.log(&#39;beforeDestroy&#39;);
+    &#125;,
+    // 销毁之后，当执行到destoryed函数的时候，组件已经被全部销毁了，data与methods均不可用。
+    // 更改data数据，页面不会更新
+    //应用： 清除定时器
+    
+1. destroyed()&#123;
+    console.log(&#39;destroyed&#39;);
+    &#125;                                                                                                                                                                                                     当使用了&lt;keep-alive&gt;缓存组件时，会增加两个生命周期钩子
+
+1. 当缓存组件被激活时
+    
+activated()&#123;
+console.log(&#39;a-当缓存组件被激活时&#39;);
+&#125;,
+当缓存组件失活时
+</code></pre>
+<ol start="10">
+<li>deactivated(){<br>console.log(‘a-当缓存组件失活时’);</li>
+</ol>
+<p>}</p>
+<h1 id="12-vue中如何自定义组件"><a href="#12-vue中如何自定义组件" class="headerlink" title="12-vue中如何自定义组件"></a>12-vue中如何自定义组件</h1><p>一、普通组件</p>
+<ol>
+<li>新建一个单个文件组件 *.vue , 内部： <template> <script>  <style>, 导出</li>
+<li>在父组件中引入组件</li>
+<li>在components配置项中进行注册</li>
+<li>在模板直接使用</li>
+</ol>
+<p>二、路由组件</p>
+<ol>
+<li>新建一个单个文件组件 *.vue , 内部： <template> <script>  <style>, 导出</li>
+<li>在路由文件中引入组件</li>
+<li>在路由配置中，设置path和对应的component选项，来配置路由</li>
+<li>在路由切换时，如果匹配到当前组件所对应的路由，则会在<router-view>中渲染该组件</li>
+</ol>
+<h1 id="13-Vue中keep-alive组件"><a href="#13-Vue中keep-alive组件" class="headerlink" title="13-Vue中keep-alive组件"></a>13-Vue中keep-alive组件</h1><p>​        最重要的是前两条</p>
+<p>一、keep-alive组件：  缓存组件</p>
+<p>​    作用：可以让组件保留状态，避免重新渲染，提升页面性能</p>
+<p>二、举例：  在tab切换中，切换三个组件，不用keep-alive,每个组件在重新显示时，都会再执行created,并重复发起请求<br>            如果在外面包裹keep-alive, 则初次创建后会缓存组件，再次显示，不会再执行created,而是直接显示缓存的内容，不会再重复发起请求</p>
+<p>三、使用keep-alive后，缓存组件会多两个生命周期钩子：</p>
+<p>​        当缓存组件被激活时<br>​        activated(){<br>​            console.log('a-当缓存组件被激活时');<br>​        },<br>​        当缓存组件失活时<br>​        deactivated(){<br>​            console.log('a-当缓存组件失活时');<br>​        }</p>
+<p>四、keep-alive有两个属性:  include exclude</p>
+<p>​        <keep-alive include="a1">    只有a1被缓存，a1是组件的name属性的值<br>​        <keep-alive exclude="a1">    只有a1没有被缓存</p>
+<p>五、实例： 参考vue资料：  app各阶段项目代码-----51-1210-动态组件）</p>
+<p>六、**** 在动态路由的出口 <router-view>上使用keep-alive的技巧</p>
+<p>​        如果不用keep-alive,会重复发起请求(请求写到created,不会重复请求，但写到watch中，监听$route的变化，就会重复请求)</p>
+<p>​        使用的步骤：</p>
+<p>​        (1) 在动态路由组件内部的created中发起ajax请求<br>​        (2)  设置key值<br>​            <keep-alive><br>​                <router-view :key="$route.fullPath"></router-view><br>​            </keep-alive></p>
+<h1 id="14-组件中的data为什么是一个有返回值的函数"><a href="#14-组件中的data为什么是一个有返回值的函数" class="headerlink" title="14-组件中的data为什么是一个有返回值的函数"></a>14-组件中的data为什么是一个有返回值的函数</h1><p>组件中的data为什么是一个有返回值的函数</p>
+<p>组件中的data写成一个函数，数据以函数返回值形式定义，这样每复用一次组件，就会返回一份新的data，类似于给每个组件实例创建一个私有的数据空间，让各个组件实例维护各自的数据。而单纯的写成对象形式，就使得所有组件实例共用了一份data，就会造成一个变了全都会变的结果。</p>
+<h1 id="15-什么是SPA-单页面应用"><a href="#15-什么是SPA-单页面应用" class="headerlink" title="15-什么是SPA(单页面应用)"></a>15-什么是SPA(单页面应用)</h1><p>​    单页Web应用（single page web application，SPA）： SPA 是一种特殊的 Web 应用，是加载单个 HTML 页面并在用户与应用程序交互时动态更新该页面的。它将所有的活动局限于一个 Web 页面中，仅在该 Web 页面初始化时加载相应的 HTML 、 JavaScript 、 CSS 。一旦页面加载完成， SPA 不会因为用户的操作而进行页面的重新加载或跳转，而是利用 JavaScript 动态的变换 HTML（采用的是 div 切换显示和隐藏），从而实现UI与用户的交互。在 SPA 应用中，应用加载之后就不会再有整页刷新。相反，展示逻辑预先加载，并有赖于内容Region（区域）中的视图切换来展示内容。</p>
+<h1 id="16-vue的全家桶"><a href="#16-vue的全家桶" class="headerlink" title="16-vue的全家桶"></a>16-vue的全家桶</h1><pre><code class="hljs">        vue.js   
+        vue-router.js  
+        vue-cli (脚手架，快速搭建vue项目)
+        axios  
+        vuex.js
+</code></pre>
+<h1 id="17-动态路由如何定义-如何传参-如何接收参数"><a href="#17-动态路由如何定义-如何传参-如何接收参数" class="headerlink" title="17-动态路由如何定义-如何传参-如何接收参数"></a>17-动态路由如何定义-如何传参-如何接收参数</h1><p>什么是动态路由？</p>
+<p>允许传递参数的路由，即为动态路由。</p>
+<p>应用场景 ： 样式相同的组件复用，详情页</p>
+<p>具体实现：</p>
+<ol>
+<li><p>在路由配置中，设置path选项为"/url/:属性名"<br> path: "/detail/:id"</p>
+</li>
+<li><p>传递参数： 在url后加/加参数</p>
+<p> <router-link to="/detail/3"></router-link></p>
+</li>
+<li><p>在组件中接收参数的方式：<br> this.$route.params.属性名</p>
+</li>
+</ol>
+<p>​       </p>
+<p>   如果在切换动态路由组件时，每次路由组件都会销毁，则在created中接收参数，<br>   比如： 列表进详情</p>
+<p>   如果在切换动态路由组件时，每次路由组件被复用，则用watch监听路由的变化，来获取参数<br>   比如： 美团--> 发现--->三个版块的切换： 推荐 ， 丽人， 旅行， 版块切换时，组件复用，只是传参不同</p>
+<h1 id="18-route和-router的区别"><a href="#18-route和-router的区别" class="headerlink" title="18-$route和$router的区别"></a>18-$route和$router的区别</h1><p>this.$route 和 this.$router的区别</p>
+<p>​    在一个vue组件中，都可以访问到这两个对象，它俩的区别<br>​    this.$route是路由记录对象，只读，存储了与路由相关的信息</p>
+<p>​    this.$router是路由对象，用来进行路由跳转</p>
+<h1 id="19-声明式导航和编程式导航的区别"><a href="#19-声明式导航和编程式导航的区别" class="headerlink" title="19-声明式导航和编程式导航的区别"></a>19-声明式导航和编程式导航的区别</h1><p>​        声明式导航： 通过<router-link>的to属性来声明要跳转的路由</p>
+<p>​        编程式导航： 通过this.$router的相应方法来实现跳转  push  replace go()</p>
+<h1 id="20-Token的工作流程"><a href="#20-Token的工作流程" class="headerlink" title="20-Token的工作流程"></a>20-Token的工作流程</h1><p>​    1.用户填写登录信息，发起请求，服务端收到请求，去验证用户名与密码<br>​    2.验证成功后，服务端会签发一个 Token，再把这个 Token 发送给客户端<br>​    3.客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>​    4.客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>​    5.服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请</p>
+<h1 id="21-登录鉴权中的前端验证部分"><a href="#21-登录鉴权中的前端验证部分" class="headerlink" title="21-登录鉴权中的前端验证部分"></a>21-登录鉴权中的前端验证部分</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- </span><br><span class="hljs-comment">        Token验证的基本流程</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">        1.用户填写登录信息，发起请求，服务端收到请求，去验证用户名与密码</span><br><span class="hljs-comment">        2.验证成功后，服务端会签发一个 Token，再把这个 Token 发送给客户端</span><br><span class="hljs-comment">        3.客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里</span><br><span class="hljs-comment">        4.客户端每次向服务端请求资源的时候需要带着服务端签发的 Token</span><br><span class="hljs-comment">        5.服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">        Vue中的登录鉴权---前端验证</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">           一 前端部分： 路由验证</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                    应用场景 ：例如首页，分类是没有登录的用户也可直接进入</span><br><span class="hljs-comment">                              购物车、个人中心等版块需要登录才能进入</span><br><span class="hljs-comment">                    </span><br><span class="hljs-comment">                    实现步骤： </span><br><span class="hljs-comment">                        (1)  在路由配置中，需要给登录进入的路由添加meta元信息</span><br><span class="hljs-comment">                            &#123;</span><br><span class="hljs-comment">                                path: &#x27;/cart&#x27;,</span><br><span class="hljs-comment">                                component: cart,</span><br><span class="hljs-comment">                                meta: &#123;</span><br><span class="hljs-comment">                                    title: &#x27;购物车&#x27;,</span><br><span class="hljs-comment">                                    Auth: true   //购物车需要授权</span><br><span class="hljs-comment">                                &#125;</span><br><span class="hljs-comment">                            &#125;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                        (2) 在全局前置导航守卫中实现授权验证</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                            to: 即将进入的路由 ($route路由记录)</span><br><span class="hljs-comment">                            from: 来自哪个路由</span><br><span class="hljs-comment">                            next: 是一个函数，可以控制路由是否跳转</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                            router.beforeEach((to,from,next)=&gt;&#123;</span><br><span class="hljs-comment">                                let token = localStorage.getItem(&quot;token&quot;)</span><br><span class="hljs-comment">                                if (to.matched.some(record=&gt;record.meta.Auth))&#123;</span><br><span class="hljs-comment">                                    if (token)&#123;</span><br><span class="hljs-comment">                                        next()</span><br><span class="hljs-comment">                                    &#125;else&#123;</span><br><span class="hljs-comment">                                        next(&quot;/login&quot;)</span><br><span class="hljs-comment">                                    &#125;</span><br><span class="hljs-comment">                                &#125;else&#123;</span><br><span class="hljs-comment">                                    next()</span><br><span class="hljs-comment">                                &#125;</span><br><span class="hljs-comment">                            &#125;)</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">        二 前端部分： 调用后端接口携带token</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                //添加请求拦截器，会在发起请求之前执行相应的需求</span><br><span class="hljs-comment">                axios1.interceptors.request.use(function (config) &#123;</span><br><span class="hljs-comment">                    let token = localStorage.getItem(&quot;token&quot;)</span><br><span class="hljs-comment">                    if (token)&#123;</span><br><span class="hljs-comment">                        config.headers.common[&#x27;Authorization&#x27;] = &#x27;Bearer &#x27; + localStorage.getItem(&quot;token&quot;);</span><br><span class="hljs-comment">                    &#125;</span><br><span class="hljs-comment">                    return config;</span><br><span class="hljs-comment">                &#125;, function (error) &#123;</span><br><span class="hljs-comment">                    return Promise.reject(error);</span><br><span class="hljs-comment">                &#125;);</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                //添加响应拦截器，会在返回数据后先执行相应的需求</span><br><span class="hljs-comment">                axios1.interceptors.response.use(function (response) &#123;</span><br><span class="hljs-comment">                    return response;</span><br><span class="hljs-comment">                &#125;, function (error) &#123;</span><br><span class="hljs-comment">                    return Promise.reject(error);</span><br><span class="hljs-comment">                &#125;);</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">                </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">     --&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="22-vue-router的两种路由模式hash-history"><a href="#22-vue-router的两种路由模式hash-history" class="headerlink" title="22-vue-router的两种路由模式hash-history"></a>22-vue-router的两种路由模式hash-history</h1><p>vue-router的hash和history的区别 </p>
+<p>​    hash: 地址栏中有#<br>​    history： 地址栏没有#,更好看一些</p>
+<p>​    改变模式,添加mode选项，默认是hash</p>
+<p>​    const router = new VueRouter({<br>​        routes,<br>​        mode: 'history'<br>​    })</p>
+<p>​    hash: 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。</p>
+<p>​    history: 如果不想要很丑的 hash，我们可以用路由的 history 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。</p>
+<h1 id="23-vue中如何实现嵌套路由"><a href="#23-vue中如何实现嵌套路由" class="headerlink" title="23-vue中如何实现嵌套路由"></a>23-vue中如何实现嵌套路由</h1><p>一、在路由配置中，一级路由中添加children选项，来配置嵌套路由</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">const routes = [<br>    &#123;<br>        path: <span class="hljs-string">&#x27;/home&#x27;</span>,<br>        component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(路由组件的地址),<br>        children: [<br>            &#123;<br>                path: <span class="hljs-string">&#x27;star&#x27;</span>,<br>                component: Star<br>            &#125;<br>        ]<br><br>&#125;<br><br>]<br></code></pre></td></tr></table></figure>
+
+<p>二、在父组件中，通过<router-link to="/home/star">跳转到该嵌套路由</p>
+<p>三、该嵌套路由对应的出口 <router-view>是在它的父级路由组件中定义的</p>
+<h1 id="24-列举所有的导航守卫"><a href="#24-列举所有的导航守卫" class="headerlink" title="24-列举所有的导航守卫"></a>24-列举所有的导航守卫</h1><p> 一、 全局前置守卫<br>            router.beforeEach((to,from,next)=>{</p>
+<p>​        })</p>
+<p>二、 全局解析守卫</p>
+<p>​        和 router.beforeEach 类似，区别是在导航被确认之前，同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用。<br>​<br>​        router.beforeResolve((to,from,next)=>{</p>
+<p>​        })</p>
+<p>三、 全局后置钩子</p>
+<p>​        和守卫不同的是，这些钩子不会接受 next 函数也不会改变导航本身：</p>
+<p>​        router.afterEach((to,from)=>{</p>
+<p>​        })</p>
+<p>四、 路由独享的守卫</p>
+<p>​        在路由配置上直接定义 beforeEnter 守卫</p>
+<p>​        {<br>​            path: '/foo',<br>​            component: Foo,<br>​            beforeEnter: (to, from, next) => {<br>​                // ...<br>​            }<br>​        }</p>
+<p>五、 组件内的守卫</p>
+<pre><code class="hljs">    const Foo = &#123;
+        template: `...`,
+        beforeRouteEnter(to, from, next) &#123;
+            // 在渲染该组件的对应路由被 confirm 前调用
+            // 不！能！获取组件实例 `this`
+            // 因为当守卫执行前，组件实例还没被创建
+        &#125;,
+        beforeRouteUpdate(to, from, next) &#123;
+            // 在当前路由改变，但是该组件被复用时调用
+            // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+            // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+            // 可以访问组件实例 `this`
+        &#125;,
+        beforeRouteLeave(to, from, next) &#123;
+            // 导航离开该组件的对应路由时调用
+            // 可以访问组件实例 `this`
+        &#125;
+    &#125;
+</code></pre>
+<h1 id="25-完整的导航守卫解析流程"><a href="#25-完整的导航守卫解析流程" class="headerlink" title="25-完整的导航守卫解析流程"></a>25-完整的导航守卫解析流程</h1><p> 完整的导航解析流程</p>
+<pre><code class="hljs">   1. 导航被触发。
+   2. 在失活的组件里调用 beforeRouteLeave 守卫。
+   3. 调用全局的 beforeEach 守卫。
+   4. 在重用的组件里调用 beforeRouteUpdate 守卫 (2.2+)。
+   5. 在路由配置里调用 beforeEnter。
+   6. 解析异步路由组件。
+   7. 在被激活的组件里调用 beforeRouteEnter。
+   8. 调用全局的 beforeResolve 守卫 (2.5+)。
+   9. 导航被确认。
+   10. 调用全局的 afterEach 钩子。
+   11. 触发 DOM 更新。
+   12. 调用 beforeRouteEnter 守卫中传给 next 的回调函数，创建好的组件实例会作为回调函数的参数传入。
+</code></pre>
+<h1 id="26-路由中的滚动行为设置"><a href="#26-路由中的滚动行为设置" class="headerlink" title="26-路由中的滚动行为设置"></a>26-路由中的滚动行为设置</h1><p>应用场景 ：  在一个路由组件中滚动页面，切换到另一个组件中时，滚动条自动恢复到页面顶端的位置</p>
+<p>​    下面的代码要加在router对象的配置中</p>
+<p>​    //创建路由对象<br>​    const router = new VueRouter({<br>​        routes,<br>​        scrollBehavior(to, from) {<br>​            return { x: 0, y: 0 }<br>​        }<br>​    })</p>
+<h1 id="27-Vuex的相关面试题"><a href="#27-Vuex的相关面试题" class="headerlink" title="27-Vuex的相关面试题"></a>27-Vuex的相关面试题</h1><p> 一、什么时候使用Vuex</p>
+<p>​        如果应用比较简单，就不需要使用Vuex，直接使用父子组件传值及它传值方式即可，使用Vuex就要额外的引入vuex的框架，可能是繁琐冗余的</p>
+<p>​        如果需要构建一个中大型单页应用，就可以使用vuex更好地在组件外部管理状态</p>
+<p>​    二、 Vuex 是什么？</p>
+<p>​        Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。<br>​<br>​        它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+<p>​    三、Vuex的五个核心概念</p>
+<pre><code class="hljs">    1. state:  存储公共数据
+
+            2. mutations:  不能包含异步操作
+            
+        更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
+        mutation的方法中有两个参数，第一个是state,第二个是参数
+
+        mutations: &#123;
+            方法名(state,参数)&#123;
+                state.属性 = 参数
+            &#125;
+        &#125;
+
+        在组件中提交mutations的方法：  this.$store.commit(&quot;方法名&quot;,参数)
+
+        ***** state中的数据是响应式的，数据改变，相关视图会重新渲染
+
+            3. actions:
+
+        Action 类似于 mutation，不同在于：
+
+        Action 提交的是 mutation，而不是直接变更状态。(action不能直接更改state数据)
+
+        Action 可以包含任意异步操作。
+</code></pre>
+<p>​            *****总结一下：<br>​                mutation不能有异步操作，而action可以有异步操作<br>​                mutation可以直接更改数据，而action只能通过提交mutation,通过mutation的方法来改变数据<br>​                实际通过组件改变数据时，如果没有异步操作，可以直接提交(commit)mutation,如果有异步操作，必须派发(dispatch)action,通过action提交(commit)mutation来更改数据</p>
+<p>​<br>        4. getters: 就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算</p>
+<pre><code class="hljs">            5. modules: 模块
+</code></pre>
+<h1 id="28-Vuex的辅助函数"><a href="#28-Vuex的辅助函数" class="headerlink" title="28-Vuex的辅助函数"></a>28-Vuex的辅助函数</h1><p>mapState</p>
+<p>mapGetters</p>
+<p>mapActions</p>
+<p>mapMutations</p>
+<h1 id="29-Vuex的工作流程"><a href="#29-Vuex的工作流程" class="headerlink" title="29-Vuex的工作流程"></a>29-Vuex的工作流程</h1><p>一、在项目创建store文件夹，及index.js<br>    定义相关的vuex的state, getters actions mutations</p>
+<p>二、在入口文件main.js中引入store,并在根实例注册</p>
+<p>三、在任一组件中，通过this.$store.state就可以访问到共享数据</p>
+<p>四、当通过组件要修改store中的数据时，</p>
+<ol>
+<li><p>如果该操作是同步的，可以用this.$store.commit()来触发mutations, 只有mutations才可以直接更改state共享数据</p>
+</li>
+<li><p>mutations中只能有同步操作，不能有异步操作</p>
+</li>
+<li><p>如果修改数据的操作是异步的，通过this.$store.dispatch()触发actions, actions中可以发起异步请求，获取数据后，再调用 commit触发mutations,通过mutations修改共享数据</p>
+</li>
+</ol>
+<h1 id="30-Vue中插槽的类型"><a href="#30-Vue中插槽的类型" class="headerlink" title="30-Vue中插槽的类型"></a>30-Vue中插槽的类型</h1><ol>
+<li>匿名插槽</li>
+<li>具名插槽</li>
+<li>作用域插槽</li>
+</ol>
+<h1 id="31-vue中如何实现服务器代理"><a href="#31-vue中如何实现服务器代理" class="headerlink" title="31-vue中如何实现服务器代理"></a>31-vue中如何实现服务器代理</h1><p>在vue.config.js中通过proxy代理，实现跨域</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk">module.exports = &#123;<br>    ......<br>    devServer: &#123;<br>        <span class="hljs-regexp">//</span> 代理<br>        proxy: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                target: <span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>,  <br>                changeOrigin: true,<br>                <span class="hljs-regexp">//</span>根据具体需求可选择把url中的/api部分替换为空<br>                <span class="hljs-regexp">//</span>pathRewrite: &#123;<br>                <span class="hljs-regexp">//</span>    <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span><br>                <span class="hljs-regexp">//</span>&#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p> 2.上线后，用Nginx实现服务器代理</p>
+<h1 id="32-style中scoped的作用"><a href="#32-style中scoped的作用" class="headerlink" title="32-style中scoped的作用"></a>32-style中scoped的作用</h1><p>基本要求： 记住第一条</p>
+<p>一、 scoped的作用： 使当前组件的样式不会和其它组件冲突，因为它会给每个组件相关的选择器添加不会重复的属性 </p>
+<p>​        h1 {</p>
+<p>​        }</p>
+<p>​        h1[data-e543434] {<br>​<br>​        }</p>
+<p>  二、注意事件：<br>            1、使用 scoped 后，父组件的样式将不会渗透到子组件中。<br>            2、不过一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。<br>            3、这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式</p>
+<pre><code class="hljs">            &lt;style scoped&gt;
+</code></pre>
+<p>​                </style></p>
+<p>三、在swiper轮播图中，如果要修改分页器的样式，要进行样式穿透（穿透之后，父组件定义的样式可以作用于子组件中的子元素）</p>
+<p>​                （因为有scoped,所以默认情况下，父组件的样式不能作用于子组件的子元素）</p>
+<p>​                    </p>
+<p>​                下面这句话放在所有选择器的上面</p>
+<pre><code class="hljs">            1.  scss的样式穿透的写法： 加上/deep/
+
+                .swiper-container /deep/ .swiper-pagination-bullet &#123;
+                    background-color: #f00;
+                    opacity: 1;
+                &#125;
+
+                            2. stylus的样式穿透的写法: 加上::v-deep
+</code></pre>
+<p>​                .wrapper ::v-deep .swiper-pagination-bullet<br>​                    opacity 1<br>​                    background-color #fff</p>
+<p>​          </p>
+<h1 id="33-自定义过滤器"><a href="#33-自定义过滤器" class="headerlink" title="33-自定义过滤器"></a>33-自定义过滤器</h1><p>一、应用场景 ：  </p>
+<ol>
+<li>展示商品价格时，添加人民币符号</li>
+<li>展示时间时，把时间戳转换为规范的时间</li>
+</ol>
+<p>二、 定义<br>    全局定义<br>   Vue.filter(”过滤器名称", (要处理的数据)=>{<br>        return 处理后的结果<br>    })</p>
+<p>局部定义</p>
+<p>new Vue({<br>    filters: {<br>        过滤器名称： (){</p>
+<p>​        }<br>​    }<br>})</p>
+<p>三、使用时</p>
+<div>{ {price | 过滤器名称}}</div>
+
+<h1 id="34-自定义指令"><a href="#34-自定义指令" class="headerlink" title="34-自定义指令"></a>34-自定义指令</h1><p>一、应用场景 ：   初始化时，文本框获取焦点</p>
+<p>二、 定义<br>    全局定义<br>   Vue.directive(”focus", (要处理的数据)=>{<br>        return 处理后的结果<br>    })</p>
+<p>局部定义</p>
+<p>new Vue({<br>    directives: {<br>        focus： (){</p>
+<p>​        }<br>​    }<br>})</p>
+<p>三、使用时</p>
+<input type="text" v-focus>
+
+<h1 id="35-MVC和MVVM的区别"><a href="#35-MVC和MVVM的区别" class="headerlink" title="35-MVC和MVVM的区别"></a>35-MVC和MVVM的区别</h1><p>MVC和MVVM都是程序开发的架构模式</p>
+<p>​    MVC:  M,即model,指数据层  V,指view, 即视图层  C, controller,控制器<br>​<br>​          View层发起数据请求，Controller层接到请求后，接收参数，把命令传向Model层，Model层处理数据后，把数据传回controller,而controller把数据传回客户端，也就是view层</p>
+<p>​          典型代表： nodejs的Egg框架，  php的ThinkPHP框架都是使用的MVC模式</p>
+<p>​    MVVM:   M: model,数据层   V: view，视图层，即UI  ,  VM （ViewModel）是视图层和数据层的中间层<br>​<br>​            典型代表：  Vue框架</p>
+<p>​            Vue的双向数据绑定就得益于MVVM框架， 视图层改变，底层封装好的VM层会更新数据，而数据改变，VM层会更新视图</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>vue面试题</div>
+      <div>http://example.com/2023/10/21/vue面试题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>smilinh-sheep</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/24/react/" title="react">
+                        <span class="hidden-mobile">react</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
