@@ -24,7 +24,7 @@
 <meta property="og:description" content="01-vue常用指令    v-html        v-text      v-bind:title     :title     v-if     v-else     v-show     v-cloak      v-model     v-on     v-for     v-once     v-slot  02-v-for和v-if为什么不能用在同一元素v-once指令:只渲染一次">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-24T03:14:18.000Z">
-<meta property="article:modified_time" content="2023-10-22T13:39:12.009Z">
+<meta property="article:modified_time" content="2023-10-22T13:43:14.891Z">
 <meta property="article:author" content="smilinh-sheep">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -649,8 +649,9 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <p>​        }</p>
 <p>​        h1[data-e543434] {<br>​<br>​        }</p>
 <p>  二、注意事件：<br>            1、使用 scoped 后，父组件的样式将不会渗透到子组件中。<br>            2、不过一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。<br>            3、这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式</p>
-<pre><code class="hljs">            &lt;style scoped&gt;&lt;/style&gt;
+<pre><code class="hljs">            &lt;style scoped&gt;
 </code></pre>
+<p>​                </style></p>
 <p>三、在swiper轮播图中，如果要修改分页器的样式，要进行样式穿透（穿透之后，父组件定义的样式可以作用于子组件中的子元素）</p>
 <p>​                （因为有scoped,所以默认情况下，父组件的样式不能作用于子组件的子元素）</p>
 <p>​                    </p>
@@ -684,7 +685,8 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <p>new Vue({<br>    directives: {<br>        focus： (){</p>
 <p>​        }<br>​    }<br>})</p>
 <p>三、使用时</p>
-<p><input type="text" v-focus></input></p>
+<input type="text" v-focus>
+
 <h1 id="35-MVC和MVVM的区别"><a href="#35-MVC和MVVM的区别" class="headerlink" title="35-MVC和MVVM的区别"></a>35-MVC和MVVM的区别</h1><p>MVC和MVVM都是程序开发的架构模式</p>
 <p>​    MVC:  M,即model,指数据层  V,指view, 即视图层  C, controller,控制器<br>​<br>​          View层发起数据请求，Controller层接到请求后，接收参数，把命令传向Model层，Model层处理数据后，把数据传回controller,而controller把数据传回客户端，也就是view层</p>
 <p>​          典型代表： nodejs的Egg框架，  php的ThinkPHP框架都是使用的MVC模式</p>
