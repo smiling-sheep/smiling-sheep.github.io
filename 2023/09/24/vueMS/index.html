@@ -24,7 +24,7 @@
 <meta property="og:description" content="01-vue常用指令    v-html        v-text      v-bind:title     :title     v-if     v-else     v-show     v-cloak      v-model     v-on     v-for     v-once     v-slot  02-v-for和v-if为什么不能用在同一元素v-once指令:只渲染一次">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-24T03:14:18.000Z">
-<meta property="article:modified_time" content="2023-10-21T14:08:45.380Z">
+<meta property="article:modified_time" content="2023-10-22T13:39:12.009Z">
 <meta property="article:author" content="smilinh-sheep">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -231,7 +231,7 @@
         
         
         
-          109 分钟
+          110 分钟
         
       </span>
     
@@ -463,27 +463,27 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <p>}</p>
 <h1 id="12-vue中如何自定义组件"><a href="#12-vue中如何自定义组件" class="headerlink" title="12-vue中如何自定义组件"></a>12-vue中如何自定义组件</h1><p>一、普通组件</p>
 <ol>
-<li>新建一个单个文件组件 *.vue , 内部： <template> <script>  <style>, 导出</li>
+<li>新建一个单个文件组件 *.vue , 内部： templatescript  style, 导出</li>
 <li>在父组件中引入组件</li>
 <li>在components配置项中进行注册</li>
 <li>在模板直接使用</li>
 </ol>
 <p>二、路由组件</p>
 <ol>
-<li>新建一个单个文件组件 *.vue , 内部： <template> <script>  <style>, 导出</li>
+<li>新建一个单个文件组件 *.vue , 内部： template script  style, 导出</li>
 <li>在路由文件中引入组件</li>
 <li>在路由配置中，设置path和对应的component选项，来配置路由</li>
-<li>在路由切换时，如果匹配到当前组件所对应的路由，则会在<router-view>中渲染该组件</li>
+<li>在路由切换时，如果匹配到当前组件所对应的路由，则会在router-view中渲染该组件</li>
 </ol>
 <h1 id="13-Vue中keep-alive组件"><a href="#13-Vue中keep-alive组件" class="headerlink" title="13-Vue中keep-alive组件"></a>13-Vue中keep-alive组件</h1><p>​        最重要的是前两条</p>
 <p>一、keep-alive组件：  缓存组件</p>
 <p>​    作用：可以让组件保留状态，避免重新渲染，提升页面性能</p>
 <p>二、举例：  在tab切换中，切换三个组件，不用keep-alive,每个组件在重新显示时，都会再执行created,并重复发起请求<br>            如果在外面包裹keep-alive, 则初次创建后会缓存组件，再次显示，不会再执行created,而是直接显示缓存的内容，不会再重复发起请求</p>
 <p>三、使用keep-alive后，缓存组件会多两个生命周期钩子：</p>
-<p>​        当缓存组件被激活时<br>​        activated(){<br>​            console.log('a-当缓存组件被激活时');<br>​        },<br>​        当缓存组件失活时<br>​        deactivated(){<br>​            console.log('a-当缓存组件失活时');<br>​        }</p>
+<p>​        当缓存组件被激活时<br>​        activated(){<br>​            console.log(‘a-当缓存组件被激活时’);<br>​        },<br>​        当缓存组件失活时<br>​        deactivated(){<br>​            console.log(‘a-当缓存组件失活时’);<br>​        }</p>
 <p>四、keep-alive有两个属性:  include exclude</p>
 <p>​        <keep-alive include="a1">    只有a1被缓存，a1是组件的name属性的值<br>​        <keep-alive exclude="a1">    只有a1没有被缓存</p>
-<p>五、实例： 参考vue资料：  app各阶段项目代码-----51-1210-动态组件）</p>
+<p>五、实例： 参考vue资料：  app各阶段项目代码—–51-1210-动态组件）</p>
 <p>六、**** 在动态路由的出口 <router-view>上使用keep-alive的技巧</p>
 <p>​        如果不用keep-alive,会重复发起请求(请求写到created,不会重复请求，但写到watch中，监听$route的变化，就会重复请求)</p>
 <p>​        使用的步骤：</p>
@@ -502,9 +502,9 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <p>应用场景 ： 样式相同的组件复用，详情页</p>
 <p>具体实现：</p>
 <ol>
-<li><p>在路由配置中，设置path选项为"/url/:属性名"<br> path: "/detail/:id"</p>
+<li><p>在路由配置中，设置path选项为”&#x2F;url&#x2F;:属性名”<br> path: “&#x2F;detail&#x2F;:id”</p>
 </li>
-<li><p>传递参数： 在url后加/加参数</p>
+<li><p>传递参数： 在url后加&#x2F;加参数</p>
 <p> <router-link to="/detail/3"></router-link></p>
 </li>
 <li><p>在组件中接收参数的方式：<br> this.$route.params.属性名</p>
@@ -512,7 +512,7 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 </ol>
 <p>​       </p>
 <p>   如果在切换动态路由组件时，每次路由组件都会销毁，则在created中接收参数，<br>   比如： 列表进详情</p>
-<p>   如果在切换动态路由组件时，每次路由组件被复用，则用watch监听路由的变化，来获取参数<br>   比如： 美团--> 发现--->三个版块的切换： 推荐 ， 丽人， 旅行， 版块切换时，组件复用，只是传参不同</p>
+<p>   如果在切换动态路由组件时，每次路由组件被复用，则用watch监听路由的变化，来获取参数<br>   比如： 美团–&gt; 发现—&gt;三个版块的切换： 推荐 ， 丽人， 旅行， 版块切换时，组件复用，只是传参不同</p>
 <h1 id="18-route和-router的区别"><a href="#18-route和-router的区别" class="headerlink" title="18-$route和$router的区别"></a>18-$route和$router的区别</h1><p>this.$route 和 this.$router的区别</p>
 <p>​    在一个vue组件中，都可以访问到这两个对象，它俩的区别<br>​    this.$route是路由记录对象，只读，存储了与路由相关的信息</p>
 <p>​    this.$router是路由对象，用来进行路由跳转</p>
@@ -524,7 +524,7 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <h1 id="22-vue-router的两种路由模式hash-history"><a href="#22-vue-router的两种路由模式hash-history" class="headerlink" title="22-vue-router的两种路由模式hash-history"></a>22-vue-router的两种路由模式hash-history</h1><p>vue-router的hash和history的区别 </p>
 <p>​    hash: 地址栏中有#<br>​    history： 地址栏没有#,更好看一些</p>
 <p>​    改变模式,添加mode选项，默认是hash</p>
-<p>​    const router = new VueRouter({<br>​        routes,<br>​        mode: 'history'<br>​    })</p>
+<p>​    const router &#x3D; new VueRouter({<br>​        routes,<br>​        mode: ‘history’<br>​    })</p>
 <p>​    hash: 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。</p>
 <p>​    history: 如果不想要很丑的 hash，我们可以用路由的 history 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。</p>
 <h1 id="23-vue中如何实现嵌套路由"><a href="#23-vue中如何实现嵌套路由" class="headerlink" title="23-vue中如何实现嵌套路由"></a>23-vue中如何实现嵌套路由</h1><p>一、在路由配置中，一级路由中添加children选项，来配置嵌套路由</p>
@@ -532,18 +532,18 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 
 <p>二、在父组件中，通过<router-link to="/home/star">跳转到该嵌套路由</p>
 <p>三、该嵌套路由对应的出口 <router-view>是在它的父级路由组件中定义的</p>
-<h1 id="24-列举所有的导航守卫"><a href="#24-列举所有的导航守卫" class="headerlink" title="24-列举所有的导航守卫"></a>24-列举所有的导航守卫</h1><p> 一、 全局前置守卫<br>            router.beforeEach((to,from,next)=>{</p>
+<h1 id="24-列举所有的导航守卫"><a href="#24-列举所有的导航守卫" class="headerlink" title="24-列举所有的导航守卫"></a>24-列举所有的导航守卫</h1><p> 一、 全局前置守卫<br>            router.beforeEach((to,from,next)&#x3D;&gt;{</p>
 <p>​        })</p>
 <p>二、 全局解析守卫</p>
-<p>​        和 router.beforeEach 类似，区别是在导航被确认之前，同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用。<br>​<br>​        router.beforeResolve((to,from,next)=>{</p>
+<p>​        和 router.beforeEach 类似，区别是在导航被确认之前，同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用。<br>​<br>​        router.beforeResolve((to,from,next)&#x3D;&gt;{</p>
 <p>​        })</p>
 <p>三、 全局后置钩子</p>
 <p>​        和守卫不同的是，这些钩子不会接受 next 函数也不会改变导航本身：</p>
-<p>​        router.afterEach((to,from)=>{</p>
+<p>​        router.afterEach((to,from)&#x3D;&gt;{</p>
 <p>​        })</p>
 <p>四、 路由独享的守卫</p>
 <p>​        在路由配置上直接定义 beforeEnter 守卫</p>
-<p>​        {<br>​            path: '/foo',<br>​            component: Foo,<br>​            beforeEnter: (to, from, next) => {<br>​                // ...<br>​            }<br>​        }</p>
+<p>​        {<br>​            path: ‘&#x2F;foo’,<br>​            component: Foo,<br>​            beforeEnter: (to, from, next) &#x3D;&gt; {<br>​                &#x2F;&#x2F; …<br>​            }<br>​        }</p>
 <p>五、 组件内的守卫</p>
 <pre><code class="hljs">    const Foo = &#123;
         template: `...`,
@@ -580,7 +580,7 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 </code></pre>
 <h1 id="26-路由中的滚动行为设置"><a href="#26-路由中的滚动行为设置" class="headerlink" title="26-路由中的滚动行为设置"></a>26-路由中的滚动行为设置</h1><p>应用场景 ：  在一个路由组件中滚动页面，切换到另一个组件中时，滚动条自动恢复到页面顶端的位置</p>
 <p>​    下面的代码要加在router对象的配置中</p>
-<p>​    //创建路由对象<br>​    const router = new VueRouter({<br>​        routes,<br>​        scrollBehavior(to, from) {<br>​            return { x: 0, y: 0 }<br>​        }<br>​    })</p>
+<p>​    &#x2F;&#x2F;创建路由对象<br>​    const router &#x3D; new VueRouter({<br>​        routes,<br>​        scrollBehavior(to, from) {<br>​            return { x: 0, y: 0 }<br>​        }<br>​    })</p>
 <h1 id="27-Vuex的相关面试题"><a href="#27-Vuex的相关面试题" class="headerlink" title="27-Vuex的相关面试题"></a>27-Vuex的相关面试题</h1><p> 一、什么时候使用Vuex</p>
 <p>​        如果应用比较简单，就不需要使用Vuex，直接使用父子组件传值及它传值方式即可，使用Vuex就要额外的引入vuex的框架，可能是繁琐冗余的</p>
 <p>​        如果需要构建一个中大型单页应用，就可以使用vuex更好地在组件外部管理状态</p>
@@ -649,9 +649,8 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <p>​        }</p>
 <p>​        h1[data-e543434] {<br>​<br>​        }</p>
 <p>  二、注意事件：<br>            1、使用 scoped 后，父组件的样式将不会渗透到子组件中。<br>            2、不过一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。<br>            3、这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式</p>
-<pre><code class="hljs">            &lt;style scoped&gt;
+<pre><code class="hljs">            &lt;style scoped&gt;&lt;/style&gt;
 </code></pre>
-<p>​                </style></p>
 <p>三、在swiper轮播图中，如果要修改分页器的样式，要进行样式穿透（穿透之后，父组件定义的样式可以作用于子组件中的子元素）</p>
 <p>​                （因为有scoped,所以默认情况下，父组件的样式不能作用于子组件的子元素）</p>
 <p>​                    </p>
@@ -672,7 +671,7 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <li>展示商品价格时，添加人民币符号</li>
 <li>展示时间时，把时间戳转换为规范的时间</li>
 </ol>
-<p>二、 定义<br>    全局定义<br>   Vue.filter(”过滤器名称", (要处理的数据)=>{<br>        return 处理后的结果<br>    })</p>
+<p>二、 定义<br>    全局定义<br>   Vue.filter(”过滤器名称”, (要处理的数据)&#x3D;&gt;{<br>        return 处理后的结果<br>    })</p>
 <p>局部定义</p>
 <p>new Vue({<br>    filters: {<br>        过滤器名称： (){</p>
 <p>​        }<br>​    }<br>})</p>
@@ -680,13 +679,12 @@ console.log(&#39;a-当缓存组件被激活时&#39;);
 <div>{ {price | 过滤器名称}}</div>
 
 <h1 id="34-自定义指令"><a href="#34-自定义指令" class="headerlink" title="34-自定义指令"></a>34-自定义指令</h1><p>一、应用场景 ：   初始化时，文本框获取焦点</p>
-<p>二、 定义<br>    全局定义<br>   Vue.directive(”focus", (要处理的数据)=>{<br>        return 处理后的结果<br>    })</p>
+<p>二、 定义<br>    全局定义<br>   Vue.directive(”focus”, (要处理的数据)&#x3D;&gt;{<br>        return 处理后的结果<br>    })</p>
 <p>局部定义</p>
 <p>new Vue({<br>    directives: {<br>        focus： (){</p>
 <p>​        }<br>​    }<br>})</p>
 <p>三、使用时</p>
-<input type="text" v-focus>
-
+<p><input type="text" v-focus></input></p>
 <h1 id="35-MVC和MVVM的区别"><a href="#35-MVC和MVVM的区别" class="headerlink" title="35-MVC和MVVM的区别"></a>35-MVC和MVVM的区别</h1><p>MVC和MVVM都是程序开发的架构模式</p>
 <p>​    MVC:  M,即model,指数据层  V,指view, 即视图层  C, controller,控制器<br>​<br>​          View层发起数据请求，Controller层接到请求后，接收参数，把命令传向Model层，Model层处理数据后，把数据传回controller,而controller把数据传回客户端，也就是view层</p>
 <p>​          典型代表： nodejs的Egg框架，  php的ThinkPHP框架都是使用的MVC模式</p>
