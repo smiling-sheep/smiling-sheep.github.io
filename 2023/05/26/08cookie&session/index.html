@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="smilinh-sheep">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="cookie是浏览器端的本地存储空间，和localstorage和sessionstorage一样都是浏览器端本地存储的一部分 cookie主要提供服务器端存储的数据 作用：用来存储一些数据 cookie存储的特点：  1:cookie是按照域名来存储的，这点很傻，不智能，在哪一个域名下存储的cookie就在只能在当前域名下访问，换一个域名就不能访问 比如本地：localhost和127.0.0.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie&amp;session">
+<meta property="og:url" content="http://example.com/2023/05/26/08cookie&session/index.html">
+<meta property="og:site_name" content="lldBlog">
+<meta property="og:description" content="cookie是浏览器端的本地存储空间，和localstorage和sessionstorage一样都是浏览器端本地存储的一部分 cookie主要提供服务器端存储的数据 作用：用来存储一些数据 cookie存储的特点：  1:cookie是按照域名来存储的，这点很傻，不智能，在哪一个域名下存储的cookie就在只能在当前域名下访问，换一个域名就不能访问 比如本地：localhost和127.0.0.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-26T04:12:57.000Z">
+<meta property="article:modified_time" content="2023-11-03T02:54:14.772Z">
+<meta property="article:author" content="smilinh-sheep">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>cookie&amp;session - lldBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    <meta name="referrer" content="no-referrer"/>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lldblog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="cookie&amp;session"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-26 12:12" pubdate>
+          2023年5月26日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          101 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cookie&amp;session</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>cookie是浏览器端的本地存储空间，和localstorage和sessionstorage一样都是浏览器端本地存储的一部分</p>
+<p>cookie主要提供服务器端存储的数据</p>
+<p>作用：用来存储一些数据</p>
+<p>cookie存储的特点：</p>
+<ul>
+<li><p>1:cookie是按照域名来存储的，这点很傻，不智能，在哪一个域名下存储的cookie就在只能在当前域名下访问，换一个域名就不能访问</p>
+<p>比如本地：localhost和127.0.0.1 虽然是同一个网站但是是俩名，cookie存的时候是按名存的，他不管你打开的是不是一个网站，只要是俩名，他就访问不了</p>
+</li>
+<li><p>cookie按照文件路径存储</p>
+<p>你在a文件夹存储的数据，只能在a文件夹及子文件夹访问，在a文件夹的上一级目录则不能访问</p>
+<p>（可以直接在控制台里的cookie列表里的path设置存储数据）</p>
+</li>
+<li><p>cookie的存储是按照字符串的形式存储</p>
+<p>真实的存储形态是：’key&#x3D;value; key2&#x3D;value2; key3&#x3D;value3’</p>
+<p>在控制台显示的是浏览器帮我们格式化后的展现形式为了看着方便</p>
+</li>
+<li><p>存储大小</p>
+<p>4kb左右</p>
+<p>50条左右 经测试，目前的谷歌浏览器在150条左右，但是官方发布的规则还是50条左右</p>
+</li>
+<li><p>实效性 ：cookie中的数据是有过期时间的，超过过期时间数据会被浏览器自动删除</p>
+<p>默认是会话级别的时效（关闭浏览器就没有了）</p>
+<p>我们可以手动设置cookie的时效（关闭浏览器以后依旧保存，比如7天免登录，就是将一些信息存储在cookie里了，不管是否关闭浏览器，在7天内都可以自动登录，但是存的信息不是用户名和密码，我们在浏览器的设置里可以清除cookie，清除以后我们一些免登录信息就没有了）</p>
+<p>如果不给cookie设置过期时间，那么cookie在关闭的时候cookie就会被删除</p>
+</li>
+<li><p>操作权限</p>
+<p>前端可以操作，后端也可以操作，cookie是前端本地的一些东西，但是前端可以用后端也可以用</p>
+<p>localstorage和sessionstorage只能前端操作，后端操作不了</p>
+</li>
+<li><p>请求自动携带 ：cookie中的数据会随着请求自动发送到服务器端</p>
+<p>只要cookie空间里面有数据，那么你在发送任何一个请求的时候，自动携带，就是我们不需要操作，浏览器在组装请求报文的时候会自动把cookie里的东西给带到服务器</p>
+<p>以前有一个攻击叫xss跨站脚本攻击，是攻击别人网站的，就是使用cookie注入即在cookie里写入一些东西然后只要向服务器发送请求，就带到服务端了</p>
+</li>
+</ul>
+<p>前端操作cookie</p>
+<p>前提：想要使用或者操作cookie，页面必须在服务器上打开，因本地打开没有域名，cookie是按照域名存储的，没有域名就存不上cookie</p>
+<ul>
+<li>前端操作cookie的api只有：document.cookie</li>
+</ul>
+<p>document.cookie是一个读写的属性</p>
+<p>​		- 读：document.cookie </p>
+<p>​     		会把cookie空间里面所有数据以字符串的形式一次性全部拿出来</p>
+<p>​		- 写：document.cookie &#x3D;’key&#x3D;value’ </p>
+<p>​		写入一条cookie ，一次只能写入一条cookie</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=<span class="hljs-string">&#x27;b=234; c=678;&#x27;</span><br><span class="hljs-comment">//---如果这样同时设置两条cookie，也只能成功写入前面的那一条</span><br></code></pre></td></tr></table></figure>
+
+<p>cookie是不能删的，到达过期时间自动就没有了</p>
+<p>设置cookie（重点）</p>
+<ul>
+<li><p>一次只能设置一条cookie</p>
+</li>
+<li><p>在设置的时候，每一条的分号后面可以书写对本条cookie的描述</p>
+<ul>
+<li><p>expires 过期时间</p>
+<p>如果不进行特殊设置，默认是会话级别的时效性 session</p>
+</li>
+</ul>
+<p>如果想要修改：就需要在写入cookie的时候，在键值对后面写上expires描述。  </p>
+<p>expires&#x3D;时间对象</p>
+<p>或者</p>
+<p>expires&#x3D;时间对象的字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=<span class="hljs-string">&#x27;haha=1234;expires=&#x27;</span>+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br></code></pre></td></tr></table></figure>
+
+
+
+<p>案例：设置一个有时效性的cookie</p>
+<p>分析：我们获取的时间对象是终端的时间（客户端），不是服务器的时间，服务器的时间是世界标准时间</p>
+<p>中国标准时间北京时间比世界标准时间快（早）8个小时</p>
+<p>但是我们设置cookie的时候，不管我们给他什么时间节点，他都当做世界标准时间使用</p>
+<p>需求：我们要设置一个30s以后过期的cookie</p>
+<p>步骤：获取当前时间对象，先向前调整8个小时，准换为世界标准时间，再向后调整30s。 然后将调整后的时间设置给cookie，这样cookie会将他当做世界标准时间来使用，这条cookie真正的过期时间是中国标准时间的30s后过期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//--设置一个30s以后过期的cookie</span><br><span class="hljs-keyword">let</span> time=+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<span class="hljs-comment">//当前时间对象的时间戳  中国标准时间北京时间比世界标准时间快（早）8个小时</span><br><span class="hljs-keyword">let</span> sjtime=time-<span class="hljs-number">8</span>*<span class="hljs-number">60</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>; <span class="hljs-comment">//当前时间所对应的世界标准时间的时间戳</span><br><span class="hljs-keyword">let</span> realTime=sjtime+<span class="hljs-number">30</span>*<span class="hljs-number">1000</span>;<span class="hljs-comment">//世界时间 30s后的时间戳</span><br><span class="hljs-keyword">let</span> resTime=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(realTime);<span class="hljs-comment">//将最后计算的时间戳专为时间对象</span><br><span class="hljs-comment">//设置coolkie，并指定过期时间为，30s后期</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=<span class="hljs-string">&#x27;bubu=6666;expires=&#x27;</span>+resTime;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>path 存储路径</p>
+<p>如果你不进行path的特殊设置，会默认按照当前的目录结构进行存储，也就是说我在当前文件设置cookie只能在当前的文件夹下访问，在上一级文件夹不能访问</p>
+<p>如果想要修改 ，就需要在写入cookie的时候，在键值对后面 设置上你要存储的地址</p>
+<p>document.cookie&#x3D;’key&#x3D;value;path&#x3D;你要存储的路径’</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=<span class="hljs-string">&#x27;c=678;path=/&#x27;</span>;<br><span class="hljs-comment">// ----   /为根目录 ./为当前路径 ../上级文件路径</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在设置的时候不管存储的是什么数据类型，都会自动转换成字符串的格式存储</p>
+<p>所以cookie一般都是存储一些简单数据，帮我们做一些简单记录信息用的</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=<span class="hljs-string">&#x27;arr=&#x27;</span>+&#123;<span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;user&#x27;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在设置的时候，如果设置同名的cookie就是修改</p>
+<p>注意：一定是要是相同的路径下同名个cookie才是修改</p>
+</li>
+<li><p>在设置的时候，如果设置一个cookie的过期时间在当前时间的以前，就是删除这条cookie</p>
+<p>因为在到达过期时间的那一瞬间，这一条cookie已经从浏览器移除了</p>
+<p>所以删除cookie就是这样操作的</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//---封装一个设置cookie的方法 setCookie</span><br><br><span class="hljs-comment">/* </span><br><span class="hljs-comment">    setCookie 设置cookie的方法</span><br><span class="hljs-comment">    @param &#123;STRING&#125; key cookie的key</span><br><span class="hljs-comment">    @param &#123;STRING&#125; value cookie的value</span><br><span class="hljs-comment">    @param &#123;NUMBER&#125; expires cookie多少秒后过期</span><br><span class="hljs-comment">    @param &#123;STRING&#125; key cookie的存储路径</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">setCookie</span>(<span class="hljs-params">key,value,expires,path</span>)&#123;<br>  <span class="hljs-comment">//expires参数是多少秒之后过去</span><br>  <span class="hljs-comment">//准备一个标准的cookie内容</span><br>  <span class="hljs-keyword">var</span> str=<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;value&#125;</span> ;`</span><br><br>  <span class="hljs-keyword">if</span>(expires)&#123;<br>    <span class="hljs-comment">//expires参数是多少秒之后过去</span><br>    <span class="hljs-comment">//处理一下时间,如果有传入过期时间就拼接在设者cookie的字符串后</span><br>    <span class="hljs-keyword">let</span> time=+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<span class="hljs-comment">//当前时间对象的时间戳  中国标准时间北京时间比世界标准时间快（早）8个小时</span><br>    <span class="hljs-keyword">let</span> sjtime=time-<span class="hljs-number">8</span>*<span class="hljs-number">60</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>; <span class="hljs-comment">//当前时间所对应的世界标准时间的时间戳</span><br>    <span class="hljs-keyword">let</span> realTime=sjtime+expires*<span class="hljs-number">1000</span>;<span class="hljs-comment">//世界时间 30s后的时间戳</span><br>    <span class="hljs-keyword">let</span> resTime=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(realTime);<span class="hljs-comment">//将最后计算的时间戳专为时间对象</span><br>    <span class="hljs-comment">//</span><br>    <span class="hljs-comment">// let resTime=new Date.setTime(+new Date()-8*60*60*1000+expires*1000)</span><br>    str+=<span class="hljs-string">`expires=<span class="hljs-subst">$&#123;resTime&#125;</span> ;`</span><br>  &#125;<br>  <span class="hljs-keyword">if</span>(path)&#123;<br>    <span class="hljs-comment">//处理一下路径,如果有传入路径就拼接在舌者cookie的字符串后</span><br>    str+=<span class="hljs-string">`path=<span class="hljs-subst">$&#123;path&#125;</span>`</span><br><br>  &#125;<br>  <span class="hljs-comment">//设置cookie</span><br>  <span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>=str;<br><br>&#125;<br><br><span class="hljs-title function_">setCookie</span>(<span class="hljs-string">&#x27;jj&#x27;</span>,<span class="hljs-number">77</span>,<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;/&#x27;</span>);<span class="hljs-comment">//调用方法</span><br><br><span class="hljs-comment">//---删除cookie</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">delCookie</span>(<span class="hljs-params">key</span>)&#123;<br>  	<span class="hljs-title function_">setCookie</span>(key,<span class="hljs-string">&#x27;666&#x27;</span>,-<span class="hljs-number">1</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//---获取cookie</span><br><br><span class="hljs-keyword">let</span> arr=<span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;; &#x27;</span>)<br><br><span class="hljs-keyword">var</span> obj=&#123;&#125;<br><span class="hljs-comment">//遍历数组，将每一项放进对象里，注意如果路径不同的相同名字的cookie放到对象里面时新值会覆盖之前的值，这样会缺少一个cookie，所以设置的时候不要设置多路径重名cookie，这是操作规范</span><br>arr.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item</span>)=&gt;</span>&#123;<br>  <span class="hljs-keyword">var</span> cell=item.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;=&#x27;</span>);<br>  obj[cell[<span class="hljs-number">0</span>]]=cell[<span class="hljs-number">1</span>];<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>cookie只是帮我存储一些简单的信息，不做其他很复杂的操作</p>
+<h1 id="node中怎么使用session"><a href="#node中怎么使用session" class="headerlink" title="node中怎么使用session"></a>node中怎么使用session</h1><h2 id="cookie的问题"><a href="#cookie的问题" class="headerlink" title="cookie的问题"></a>cookie的问题</h2><p>cookie 虽然很方便，但是使用 cookie 有一个很大的弊端，cookie 中的所有数据在客户端就可以被修改，数据非常容易被伪造，那么一些重要的数据就不能存放在 cookie 中了，而且如果 cookie 中数据字段太多会影响传输效率。为了解决这些问题，就产生了 session，session 中的数据是保留在服务器端的。</p>
+<h2 id="session原理"><a href="#session原理" class="headerlink" title="session原理"></a>session原理</h2><p>sessionStorage，localstrory，cookie都是客户端的存储空间，</p>
+<p>session:</p>
+<p>session实际上就是一个对象，存储在服务器端的内存中，在session对象中也可以存储多条数据，每一条数据都有一个sessionid作为唯一的标识</p>
+<p>cookie和session都是用来存储数据的，cookie在客户端，session在服务器端</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">当浏览器访问服务器并发送第一次请求时，服务器端会创建一个<span class="hljs-keyword">session</span>对象，生成一个类似于key,<span class="hljs-keyword">value</span>的键值对，<br><br> 然后将key放入(cookie)返回到浏览器(客户)端，浏览器下次再访问时，携带key(在cookie中)，找到对应的<span class="hljs-keyword">session</span>数据(<span class="hljs-keyword">value</span>)。<br><br> 客户的信息都保存在<span class="hljs-keyword">session</span>中。<br> <br> <span class="hljs-comment">--</span><br> 当客户端向服务发送请求，并将邮箱地址和密码作为请求参数发送给服务端，服务端接收到请求参数并对请求参数做验证后，证明地址和密码是正确的，证明用户是可以登录成功的服务器使用<span class="hljs-keyword">session</span>为当前登录的用户生成一个sessionid，并切可以在<span class="hljs-keyword">session</span>对象中存储当前登录的用户的信息，然后服务器将sessionid写入客户端的cookie中发送给客户端，当客户端下一次访问服务器端的时候cookie会被自动发送给服务器端，服务器端拿到cookie中存储的sessionid，然后在服务器端的<span class="hljs-keyword">session</span>中查找sessionid，如果可以找到说明用户是登录过的，如果没有找到说明用户是没有登录过的状态，只有用户是登录过的状态我们才可以向客户端去响应那些只有登录过之后才能获取的东西，如股客户不是登录状态，返回一个错误提示<br></code></pre></td></tr></table></figure>
+
+
+
+<p>一个存在于服务器端的存储空间，当打开session空间的的那一个瞬间，就会生成一个密码，这个密码会自动存储到cookie里，等到返回前端的时候，会自动将cookie带回去</p>
+<h2 id="express中使用session"><a href="#express中使用session" class="headerlink" title="express中使用session"></a>express中使用session</h2><p>在node.js中需要借助express官方提供的express-session模块实现session功能，他也是express框架的中间件函数</p>
+<h4 id="1-安装包"><a href="#1-安装包" class="headerlink" title="1.安装包"></a>1.安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install express-session<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-引入包"><a href="#2-引入包" class="headerlink" title="2.引入包"></a>2.引入包</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//引用session</span><br><span class="hljs-keyword">var</span> session=<span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express-session&quot;</span>);  <span class="hljs-comment">//返回值是一个方法，调用这个方法就可以在服务器端创建session对象了</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-开启cookie并且配置session的内容"><a href="#3-开启cookie并且配置session的内容" class="headerlink" title="3.开启cookie并且配置session的内容"></a>3.开启cookie并且配置session的内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// express中是把session信息存储在内存中</span><br><br><span class="hljs-comment">//使用app.use中间件拦截所有请求，并将请求交给session方法处理，session会在请求对象下面添加一个session属性，session属性的属性值是一个对象，这个对象可以在用户登录成功后保存用户信息，方法内部会在我们向session对象存储数据时生成sessionid，这个sessionid是当前存储的数据的唯一标识，然后将sessionid存储在客户端的cookie中，当客户端再次访问服务器端的时候，方法会拿到客户端传递过来的cookie，并在cookie中提取sessionid，根据sessionid在session对象中找到用户信息，此时服务端就知道了此时访问的客户端是谁，也就建立了客户端和服务器度端的联系，也就真正实现的登录</span><br><span class="hljs-comment">//在调用session方法时，为session方法传递了一个对象参数，参数中的成员名字叫做secret，作用是存储一个密钥，这个密钥是可以自定义的，这个密钥是用来加密cookie信息的，当我们向客户端存储数据时，需要对数据进行加密，服务器接收到cookie时需要使用这个密钥进行揭秘，这样做的好处，客户端是不知道这个密钥的，也就是说客户端可以查看到cookie的信息，但是查看到就是一堆加密的字符串，客户端并不知道这一堆加密的字符串是什么，因为它没有那个密钥，所以它不能对这个字符串进行解密，这样可以提高数据的安全性</span><br><br><span class="hljs-comment">// 配置session</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">session</span>(&#123;<br>    <span class="hljs-attr">secret</span>:<span class="hljs-string">&quot;dsafsafsf&quot;</span>, <span class="hljs-comment">//设置签名秘钥 内容可以任意填写</span><br>&#125;))<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-设置session里面的内容"><a href="#4-设置session里面的内容" class="headerlink" title="4.设置session里面的内容"></a>4.设置session里面的内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/add&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>  <span class="hljs-comment">//往session里存储数据</span><br>  <span class="hljs-comment">//通过请求对象下的session对象存储数据，这个session对象以前是没有的，是express-session这个模块为我们添加的</span><br>  <span class="hljs-comment">//这样的向session对象中存储一些数据，session方法会自动在内部生成一个sessionid，并把sessionid存储在客户端的cookie当中，现在我们客户端所请求到的页面的cookie中看到一个connect.sid,这是一个默认字。它的值是一个加密字符串，这个加密字符串里保存了服务端为客户端生成的一个唯一的sessionid，这样我们客户端再向服务器端发送请求的时候这个cookie就可以自动携带了，这样服务器接收到cookie中并提取处里面的sessionid，就可以在session对象中根据seesionid去查找用户信息，如果查找到了就说明用户的登录是成功的</span><br>  <br>  <br>    req.<span class="hljs-property">session</span>.<span class="hljs-property">name</span>=<span class="hljs-string">&#x27;jack&#x27;</span>; <span class="hljs-comment">//loginok:可以是任意内容，可以为true或false</span><br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;添加成功&quot;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-读取session里面的内容"><a href="#5-读取session里面的内容" class="headerlink" title="5.读取session里面的内容"></a>5.读取session里面的内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//读取session</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/select&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    <span class="hljs-comment">//查看session</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">session</span>)<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;查询成功&quot;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-删除session"><a href="#6-删除session" class="headerlink" title="6.删除session"></a>6.删除session</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/del&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    req.<span class="hljs-property">session</span>.<span class="hljs-title function_">destroy</span>();<br>  <br>    <span class="hljs-comment">//express框架给我们提供了重定向方法 res.redirect(&#x27;你要跳转的地址&#x27;)</span><br>    res.<span class="hljs-title function_">redirect</span>(<span class="hljs-string">&quot;http://www.baidu.com&quot;</span>); <span class="hljs-comment">//删除成功后转到百度页面</span><br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;删除成功&quot;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><ul>
+<li>ajax请求的限制</li>
+</ul>
+<p>目前我们学习的是客户端发送请求，实际是同一个网站的客户端向同一个网站的服务器端发送请求。</p>
+<p>但是工作中我们会遇到，自己需要的数据在别人家的服务器上，我们需要别人家服务器端提供的请求地址获取我们需要的数据，比如获取天气信息，我们就需要通过国家气象局提供的请求地址来获取，但是ajax只能向自己的服务器端发送请求，请求别家的服务器是不被允许的</p>
+<p>Ajax只能向自己的服务器发送请求，比如现在有一个A网站，一个b网站，a网站的html文件只能向a网站服务器中发送ajax请求，b网站的html文件只能向b网站的中发送ajax请求</p>
+<p>这就是ajax请求的限制，这是因为浏览器有同源政策的限制，这是浏览器给ajax的限制。它不允许ajax向自己以外的其他服务器发送请求</p>
+<ul>
+<li>同源</li>
+</ul>
+<p>如果两个页面拥有相同的协议，域名和端口，那么这两个页面就属于同一个源，即这两个页面来自同一个服务器。三个相同中，只要一个不相同，就不是同源</p>
+<p>跨域：只要协议，域名，端口有一个和服务器不相等，ajax请求就会报CORS错误  cors（跨域资源共享错误）</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>www.baidu.com<span class="hljs-regexp">/a/i</span>ndex.html  端口默认是<span class="hljs-number">80</span><br><br>http:<span class="hljs-regexp">//</span>www.baidu.com<span class="hljs-regexp">/b/i</span>ndex.html   同源<br><br>http:<span class="hljs-regexp">//</span>baidu.com<span class="hljs-regexp">/a/i</span>ndex.html        不同源，域名不同<br><br>http:<span class="hljs-regexp">//</span>www.baidu.com:<span class="hljs-number">81</span><span class="hljs-regexp">/other/i</span>ndex2.html  不同源，端口不同<br><br>https:<span class="hljs-regexp">//</span>www.baidu.com<span class="hljs-regexp">/a/i</span>ndex.html   不同源，协议不同<br><br></code></pre></td></tr></table></figure>
+
+<p>解决跨域问题</p>
+<p>在服务器所有路由的前面设置 一个中间件（跨域中间件）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req,res,next</span>)=&gt;</span>&#123;<br>    res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>,<span class="hljs-string">&quot;*&quot;</span>)<br>    <span class="hljs-title function_">next</span>()  <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JS">app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cros</span>())<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id=""><a href="#" class="headerlink" title="- "></a>- </h2><ul>
+<li>同源政策存在的目的</li>
+</ul>
+<p>同源政策是为了保证用户信息的安全，防止恶意的网站窃取数据，最初的同源政策是指a网站在客户端设置的cookie在b网站不能访问（如果没有同源策略：cookie 是用来保存用户的登录状态的，如果用户刚登录过某银行的网站且没有退出登录就去浏览其他的网站，其他网站就可以拿到银行网站的用户的cookie，冒充用户为所欲为）</p>
+<p>随着互联网额发展，同源政策也越来越严格，在不同源的情况下，其中有一项就是无法向非同源地址发送ajax请求，如果请求，浏览器就会报错，其实请求是可以发送过去的，只不过浏览器拒绝接收服务器返回的结果，最终请求还是失败</p>
+<p>案例展示：代码验证ajax技术不能向非同源服务器发送请求</p>
+<p>准备两个不同源的服务器端，即可以开两个终端页面，启动两个服务器，监听两端不同的端口 3000 8080</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//nodemon 运行ajax2文件，监听3000端口</span><br><span class="hljs-keyword">const</span> express=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> app=<span class="hljs-title function_">express</span>(); <span class="hljs-comment">//创建服务</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/ajax2&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;8888&#x27;</span>)<br><br>&#125;)<br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>)<br></code></pre></td></tr></table></figure>
+
+<p>使用ajax向非同源服务器发送请求时报错；</p>
+<p>express</p>
+<h4 id="解决同源限制的问题"><a href="#解决同源限制的问题" class="headerlink" title="解决同源限制的问题"></a>解决同源限制的问题</h4><p>（绕过浏览器的同源政策）</p>
+<h5 id="使用jsonp解决同源限制问题"><a href="#使用jsonp解决同源限制问题" class="headerlink" title="- 使用jsonp解决同源限制问题"></a>- 使用jsonp解决同源限制问题</h5><p>jsonp是json with padding 的缩写，他不属于ajax请求，但他可以模拟ajax请求</p>
+<p>这需要前后端人员配合完成 ，步骤：</p>
+<ul>
+<li><p>1:将不同的服务器请求写在script标签的src属性</p>
+<p>script 标签的src属性可以发送请求且不受同源政策的影响，所有可以写非同源的请求地址</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//--客户端</span><br>&lt;script src=<span class="hljs-string">&quot;http://localhost:3000/ajax2&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>script标签主要是用来加载外部js文件的，请求地址以.js结尾；但是其实script标签的请求地址可以是任意形式的，不是必须以js结尾，但是请求地址不论什么样子，但是它必须返回合法的js代码，因为script标签在加载了请求地址中的内容以后，要将内容作为js代码来执行</p>
+<ul>
+<li><p>2:服务器响应数据必须是一个函数的调用，真正要发送给客户端的数据需要做为函数调用的参数</p>
+<p>当浏览器通过script标签将响应内容加载完成以后，会自动将响应内容作为js代码，即响应内容加载完以后会立即调用这个函数，因为加载过来的内容就是函数调用的代码</p>
+<p>在服务器端响应内容必须是字符串，在字符串中包裹函数调用的代码，因为如果不是字符串就是真正的函数调用，那么这个函数就会在服务器端执行，但我们的目的是让函数在客户端执行</p>
+<p>在服务器端返回函数调用的代码的同时还需要将客户端真正需要的数据写在函数掉用实参的地址，因为函数在客户端被执行的时候，客户端就可以通过形参来接收这个实参数据了，也就是说，客户端可以通过函数的形参拿到服务器端返回的真正的数据了，但是有一点需要注意，函数是在客户端被调用的，所以在调用函数之前要先准备好这个函数的定义，即有函数才可以调用起来</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> app=<span class="hljs-title function_">express</span>(); <span class="hljs-comment">//创建服务</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/ajax2&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br><br>    <span class="hljs-keyword">const</span> data=<span class="hljs-string">&#x27;fn(&#123;name:&quot;布布&quot;,age:&quot;2&quot;&#125;)&#x27;</span><br>    res.<span class="hljs-title function_">send</span>(data)<br><br>&#125;)<br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3:在客户端准备好函数的定义</p>
+<p>注意：定义这个函数要在全局作用域写，且在script标签的上面，这样在调用函数的时候才可以找到这个函数</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//客户端</span><br>&lt;script&gt;<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">data</span>)&#123;<br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<span class="hljs-comment">//客户端形参接收到服务器端传入的具体数据，就可以进步处理服务器返回的数据了</span><br>	&#125;<br>&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://localhost:3000/ajax2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>注意：其实就是将函数定义在客户端，在服务器端返回函数调用的代码，虽然服务器返回的是一个字符串类型的函数调用，但是由于这个代码被写在了script标签中，所以这个字符串类型的代码在客户端会被当做真实的js代码执行</p>
+<p>jsop本质含义就是，将json数据作为填充内容，即在服务器端将json数据作为函数的参数，将json数据填充到函数中</p>
+<h5 id="访问非同源数据-服务器端解决方案"><a href="#访问非同源数据-服务器端解决方案" class="headerlink" title="- 访问非同源数据 服务器端解决方案"></a>- 访问非同源数据 服务器端解决方案</h5><p>同源政策是浏览器给予ajax技术的限制，服务器端是不存在同源政策限制的，服务器端开发语言可以直接访问非同源网站的数据，所以客户度当想要访问非同源网站的数据的时候可以先让自己的网站的服务器端去获取非同源网站中的数据，然后再将获取到的数据响应到自己网站的客户端，这样就绕过了浏览器的同源政策限制</p>
+<p>如何在服务端请求其他服务器的数据，需要使用以第三方模块名字为： request   （查看npm request 文档有使用方法）</p>
+<p>要先 npm i request 下载这个第三方模块</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs html">//---在一号服务器上的页面 请求地址 http://localhost:8080/html/index.html<br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>我是index。html页面<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">btn.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    <span class="hljs-comment">//---ajax</span></span><br><span class="language-javascript">    <span class="hljs-comment">//创建ajax对象，创建一个可以帮助浏览器发送请求的代理</span></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> xhr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();</span><br><span class="language-javascript">    <span class="hljs-comment">//这个请求实际是服务器给客户端的</span></span><br><span class="language-javascript">    <span class="hljs-comment">//请求对象的设置 告诉ajax对象，要向那里发送请求，以什么方式发送请求</span></span><br><span class="language-javascript">    xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;get&#x27;</span>,<span class="hljs-string">&#x27;http://localhost:8080/first&#x27;</span>)</span><br><span class="language-javascript">    xhr.<span class="hljs-title function_">setRequestHeader</span>(<span class="hljs-string">&#x27;Content-type&#x27;</span>,<span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-comment">//调用xhr对象下的send方法 发送请求</span></span><br><span class="language-javascript">    xhr.<span class="hljs-title function_">send</span>();</span><br><span class="language-javascript">    <span class="hljs-comment">//获取服务端对客户端的响应数据</span></span><br><span class="language-javascript">    <span class="hljs-comment">// xhr对象的onload事件在服务器对客户端做出响应后就会触发</span></span><br><span class="language-javascript">    xhr.<span class="hljs-property">onload</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-comment">//xhr对象里的responseText属性就存储着响应数据</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;响应&#x27;</span>,xhr.<span class="hljs-property">responseText</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//---一号服务器</span><br><span class="hljs-keyword">let</span> express=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> app=<span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">const</span> path=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><br><span class="hljs-comment">//在服务器端向其他服务器发送请求，引入向其他服务器请求数据的第三方模块 request </span><br><span class="hljs-keyword">const</span> request=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>);<span class="hljs-comment">//返回一个方法,调用这个方法就可以向其他服务器发请求了</span><br><br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(path.<span class="hljs-title function_">join</span>(__dirname,<span class="hljs-string">&#x27;returnPage&#x27;</span>)))<br><br><span class="hljs-comment">//在服务器端设置ajax请求所对应的路由</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/first&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    <span class="hljs-comment">//返回对客户端请求的响应</span><br>    <span class="hljs-comment">//获取请求参数，将其响应给客户端</span><br>  <br>    <span class="hljs-comment">//两个参数 第一个参数是其他服务器的请求地址</span><br>    <span class="hljs-comment">//第二个参数为回调函数，当请求返回数据的时候，这个回调函数就会被调用</span><br>    <span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;http://localhost:3000/ajax2&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">error,response,body</span>)&#123;<br>        <span class="hljs-comment">/* </span><br><span class="hljs-comment">            error 错误对象 没有错误时为null</span><br><span class="hljs-comment">            response 服务器端的响应信息</span><br><span class="hljs-comment">            body 响应的主体内容 body是为们需要返回给客户端的</span><br><span class="hljs-comment">        */</span><br>        <span class="hljs-comment">// console.log(&#x27;2号服务器的返回信息&#x27;,error,response,body)</span><br>        res.<span class="hljs-title function_">send</span>(body)<br><br>    &#125;)<br>   <br><br>&#125;)<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//----2号服务器</span><br><span class="hljs-keyword">const</span> express=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> app=<span class="hljs-title function_">express</span>(); <span class="hljs-comment">//创建服务</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/ajax2&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;我2号服务返回的响应数据-----ok&#x27;</span>)<br><br>&#125;)<br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/node/" class="category-chain-item">node</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>cookie&amp;session</div>
+      <div>http://example.com/2023/05/26/08cookie&amp;session/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>smilinh-sheep</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/26/06ajax-new/" title="ajax">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ajax</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/26/09websocket(1)/" title="websocket2">
+                        <span class="hidden-mobile">websocket2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="smilinh-sheep">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="什么是数据库：  数据库即存储数据的仓库，可以将数据进行有序的分门别类的存储，它是独立于软件之外的软件，可以通过API去操作它 数据库软件开放了一些api可以在网站程序中通过api去操作数据库中的数据  为什么使用数据库 动态网站的数据都是存储在数据库中 数据库可以用来持久存储客户端通过表单收集的用户信息 数据库软件本身可以对数据进行高效的管理  常见的数据库软件：mongoDB  mySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql">
+<meta property="og:url" content="http://example.com/2022/05/26/04mysql%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="lldBlog">
+<meta property="og:description" content="什么是数据库：  数据库即存储数据的仓库，可以将数据进行有序的分门别类的存储，它是独立于软件之外的软件，可以通过API去操作它 数据库软件开放了一些api可以在网站程序中通过api去操作数据库中的数据  为什么使用数据库 动态网站的数据都是存储在数据库中 数据库可以用来持久存储客户端通过表单收集的用户信息 数据库软件本身可以对数据进行高效的管理  常见的数据库软件：mongoDB  mySQL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhangguihao/md_img/raw/master/image-20211210162649804.png">
+<meta property="article:published_time" content="2022-05-26T04:12:57.000Z">
+<meta property="article:modified_time" content="2023-11-03T02:51:45.004Z">
+<meta property="article:author" content="smilinh-sheep">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhangguihao/md_img/raw/master/image-20211210162649804.png">
+  
+  
+  
+  <title>mysql - lldBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    <meta name="referrer" content="no-referrer"/>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lldblog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="mysql"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-26 12:12" pubdate>
+          2022年5月26日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          132 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">mysql</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>什么是数据库：</li>
+</ul>
+<p>数据库即存储数据的仓库，可以将数据进行有序的分门别类的存储，它是独立于软件之外的软件，可以通过API去操作它</p>
+<p>数据库软件开放了一些api可以在网站程序中通过api去操作数据库中的数据</p>
+<ul>
+<li><p>为什么使用数据库</p>
+<p>动态网站的数据都是存储在数据库中</p>
+<p>数据库可以用来持久存储客户端通过表单收集的用户信息</p>
+<p>数据库软件本身可以对数据进行高效的管理</p>
+</li>
+<li><p>常见的数据库软件：mongoDB  mySQL oracle</p>
+</li>
+</ul>
+<p>mysql 下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>mysql端口：3306  http协议：8080  https：443</p>
+<p>数据库中类型使用：varchar表示字符串 int整数 bigint 大整数 double双精度浮点数 float单精度浮点数</p>
+<ul>
+<li><p>mysql数据库，</p>
+<p>mysql数据库，关系型数据库，存储数据的‘仓库’（像一个磁盘：D盘，E盘；但不是磁盘）</p>
+<p>mysql仓库是由很多database（库），理解为 文件夹，一个网站的内容放在一个库里面，</p>
+<p>每一个库，由多个表组成，理解为文件，其实就是一个execl表格，将一类数据存储在一个表上</p>
+<p>比如：user表 存储用户，goods表 存储商品</p>
+<p>每一个表 由 表头和表体组成，我们叫做 字段 和 数据</p>
+</li>
+<li><p>sql 语句：</p>
+<ul>
+<li><p>创建库 <code> CREATE DATABASE 库名</code></p>
+</li>
+<li><p>切换库 <code> USE 库名</code></p>
+</li>
+<li><p>创建表 <code> CREATE TABLE 表名（字段1，字段2...）</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">CREATE</span> <span class="hljs-variable constant_">TABLE</span> 表名（<br><span class="hljs-comment">//--字段 类型 修饰 主键primary key 自增 auto_increment</span><br>u_id <span class="hljs-variable constant_">INT</span> <span class="hljs-variable constant_">NOT</span> <span class="hljs-variable constant_">NULL</span> <span class="hljs-variable constant_">PRIMARY</span> <span class="hljs-variable constant_">KEY</span> <span class="hljs-variable constant_">AUTO_INCREMENT</span> <span class="hljs-variable constant_">COMMENT</span> <span class="hljs-string">&#x27;描述信息&#x27;</span>,<br>u_name <span class="hljs-title function_">VARCHAR</span>(<span class="hljs-number">30</span>) <span class="hljs-variable constant_">NOT</span> <span class="hljs-variable constant_">NULL</span> <span class="hljs-variable constant_">UNIQUE</span> <span class="hljs-variable constant_">KEY</span>,<br>u_sex <span class="hljs-title function_">VARCHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-variable constant_">NOT</span> <span class="hljs-variable constant_">NULL</span> <span class="hljs-variable constant_">DEFAULT</span> <span class="hljs-string">&#x27;默认值&#x27;</span>,<br>u_createdate <span class="hljs-variable constant_">DATETIME</span><br>）<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>插入 <code> INSERT INTO &#39;表名&#39; (&#39;字段1&#39;，&#39;字段2&#39;...)VALUES (值1，值2...)</code></p>
+</li>
+<li><p>查看 <code>SELECT * FROM &#39;表名&#39;</code></p>
+<p>​	<code>SELECT * FROM &#39;表名&#39; WHERE 条件 </code></p>
+<p>案例：登陆时要查找符合条件的用户名及密码</p>
+<p><code> SELECT * FROM 表名 WHERE user_name=&#39;XX&#39; AND &#39;user_password&#39;=&#39;XX&#39;</code></p>
+<p>sql 语句中的and等价于js中的&amp;&amp;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">#只查询某些字段<br><span class="hljs-keyword">select</span> id,name,price <span class="hljs-keyword">from</span> book;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据</p>
+<p><code>UPDATE &#39;表名&#39; SET 字段1=值 WHERE 条件</code></p>
+<figure class="highlight plaintext"><figcaption><span>'表名' SET user_name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs UPDATE">  <br>```sql<br>#修改记录  如果没有where子句，会修改表中所有对应数据<br>update book set price = 239; #将所有书的价格修改为239元。<br>#修改指定条件的记录<br>update book set price = 29 where id = 1;#将id为1的书籍的价格修改为29元。<br>#一次修改多个字段的值。<br>update book set name = &quot;三体（系列）&quot;,category = &quot;科幻&quot; where id = 4; #将id等于4的书籍的名字修改为三体（系列），同时将分类修改为 科幻。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>删除数据  物理删除 及真正的将用户数据删除一般不会这样做</p>
+<p><code> DELETE FROM 表名 WHERE 条件</code>	</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">#删除一条记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> book <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">4</span> #删除id为<span class="hljs-number">4</span>的书籍<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> book; #删除所有书籍<br></code></pre></td></tr></table></figure>
+
+<p>​	</p>
+</li>
+<li><p>软删除 修改用户状态为禁用状态 设置的有一个字段是控制用户是否可用1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">UPDATE</span> <span class="hljs-string">&#x27;表名&#x27;</span> <span class="hljs-variable constant_">SET</span> user_status=<span class="hljs-number">0</span> <span class="hljs-variable constant_">WHERE</span> 条件<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>多表操作</p>
+<p>​	数据表有三种关联关系，多对一、多对多、一对一</p>
+<p>​	以学生表，老师表，班级表为例，学生与班级的关系就是多对一。 学生请了家教，一个学生对应一个老师，就是一对一。老师与班级之间是多对多的关系，一个班级有多个任课老师，每个任课老师带多个班级。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE IF EXISTS `classroom`;<br>CREATE TABLE `classroom` (<br>  `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;id&#x27;,<br>  `name` varchar(255) DEFAULT NULL COMMENT &#x27;教室名&#x27;,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>-- ----------------------------<br>-- Records of classroom<br>-- ----------------------------<br>INSERT INTO `classroom` VALUES (&#x27;1&#x27;, &#x27;鄱阳湖&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;2&#x27;, &#x27;淀山湖&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;3&#x27;, &#x27;老君山&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;4&#x27;, &#x27;桐柏山&#x27;);<br><br>-- ----------------------------<br>-- Table structure for student<br>-- ----------------------------<br>DROP TABLE IF EXISTS `student`;<br>CREATE TABLE `student` (<br>  `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;学生id&#x27;,<br>  `name` varchar(255) DEFAULT NULL COMMENT &#x27;学生姓名&#x27;,<br>  `gender` varchar(255) DEFAULT NULL COMMENT &#x27;性别&#x27;,<br>  `age` int DEFAULT NULL COMMENT &#x27;年龄&#x27;,<br>  `score` int DEFAULT NULL COMMENT &#x27;成绩&#x27;,<br>  `c_id` int DEFAULT NULL COMMENT &#x27;教室id&#x27;,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>-- ----------------------------<br>-- Records of student<br>-- ----------------------------<br>INSERT INTO `student` VALUES (&#x27;1&#x27;, &#x27;吴用&#x27;, &#x27;男&#x27;, &#x27;20&#x27;, &#x27;4&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;2&#x27;, &#x27;李逵&#x27;, &#x27;男&#x27;, &#x27;23&#x27;, &#x27;22&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;3&#x27;, &#x27;孙二娘&#x27;, &#x27;女&#x27;, &#x27;26&#x27;, &#x27;103&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;4&#x27;, &#x27;扈三娘&#x27;, &#x27;女&#x27;, &#x27;18&#x27;, &#x27;59&#x27;, &#x27;2&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在多的那一端添加一个字段，存储 一 那一端的id。</p>
+<p>在上面的例子中，学生是多的一端，在student表添加一个字段，c_id 存储 教室 classroom表的id。</p>
+<h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询鄱阳湖的同学的信息。<br>SELECT<br>	s.id 学生编号,<br>	s. NAME 学生姓名,<br>	c. NAME AS 教室<br>FROM<br>#我们可以为表添加别名。<br>	student s<br>INNER JOIN classroom c ON c_id = c.id     #on后面跟两种表关联的条件。<br>WHERE<br>	c. NAME = &#x27;鄱阳湖&#x27;;<br>	<br>#该功能也可以使用where语句实现<br>SELECT<br>	s.id,<br>	s. NAME,<br>	c.`name` AS classname<br>FROM<br>	student s,<br>	classroom c<br>WHERE<br>	s.c_id = c.id<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
+<li><p>联合查询</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">SELECT</span> * <span class="hljs-variable constant_">FROM</span> 表名称 <span class="hljs-variable constant_">AS</span> 别名a <span class="hljs-variable constant_">LEFT</span> <span class="hljs-variable constant_">JOIN</span> 表名称 <span class="hljs-variable constant_">AS</span> 别名b <span class="hljs-variable constant_">ON</span> 别名a.字段=别名b.字段<br><span class="hljs-comment">//---这两个字段必须要有逻辑关系</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">SELECT</span> * <span class="hljs-variable constant_">FROM</span> <span class="hljs-string">`class`</span> <span class="hljs-keyword">as</span> a left <span class="hljs-variable constant_">JOIN</span> <span class="hljs-string">`students`</span> <span class="hljs-keyword">as</span> b <span class="hljs-variable constant_">ON</span> a.<span class="hljs-property">class_id</span>=b.<span class="hljs-property">stu_class</span><br><span class="hljs-variable constant_">SELECT</span> stu_id,stu_name <span class="hljs-variable constant_">FROM</span> <span class="hljs-string">`class`</span> <span class="hljs-keyword">as</span> a left <span class="hljs-variable constant_">JOIN</span> <span class="hljs-string">`students`</span> <span class="hljs-keyword">as</span> b <span class="hljs-variable constant_">ON</span> a.<span class="hljs-property">class_id</span>=b.<span class="hljs-property">stu_class</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>删除表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> 表名<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>删除库</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">DATABASE</span> 库名<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查询某表中的第2条到第4条记录</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">LIMIT</span> 开始索引,条数<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;student&#x27;</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span>,<span class="hljs-number">3</span>      (索引从<span class="hljs-number">0</span>开始的)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增字段</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> 表名 <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> 字段 <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;默认值&#x27;</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&#x27;备注信息&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>创建 create 库database 表 table 非空 not null 主键 primary key 自增长 auto_increment 默认 default</p>
+<p>切换 use 插入 </p>
+<p>总结：node.js中 列名也就是字段，不要引号，sql语句里的字符串引号只能使用单引号，或双引号</p>
+<h1 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h1><p>引入mysql（npm官网搜索mysql）</p>
+<p>npm i mysql –save–dev</p>
+<p>node.js的第三方包的mysql</p>
+<ul>
+<li>作用：node和mysql数据库链接，进行增删改查的操作</li>
+</ul>
+<p>使用： </p>
+<ul>
+<li><p>1 ：链接数据库</p>
+<ul>
+<li><p>前提：保证数据库服务器的开启</p>
+</li>
+<li><p>链接方式：</p>
+<ul>
+<li><p>mysql.createConnect({配置信息})</p>
+<p>偏向于单次使用的语义</p>
+<p>每一次都 链接 操作 关闭</p>
+</li>
+<li><p>mysql.createPool({配置信息})</p>
+<p>偏向于链池的语义</p>
+<p>链接 操作 操作 操作 操作 … 不关闭一直开着</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2: 执行sql语句</p>
+<p>使用链接信息 去调用执行sql语句的方法</p>
+<p>一个方法 执行不同的sql语句</p>
+<p>语法：</p>
+<ul>
+<li><p>链接配置.query(sql语句,回调函数)  是异步回调</p>
+</li>
+<li><p>链接配置.query(sql语句,数组,回调函数)</p>
+<p>sql语句里面以 问号 的形式留下一些 坑</p>
+<p>数组里面的每一项去填补前面留下的坑</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>首先在nodejs中安装mysql，并显示在依赖中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">cnpm install mysql --save;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 1 引入</span><br><span class="hljs-keyword">const</span> mysql = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql&#x27;</span>);<br><span class="hljs-comment">// 2 创建链接配置 </span><br><span class="hljs-keyword">const</span> conn = mysql.<span class="hljs-title function_">createConnection</span>(&#123;<br>    <span class="hljs-attr">host</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,   <span class="hljs-comment">// 主机名 （服务器地址） 或者127.0.0.1</span><br>  	<span class="hljs-attr">port</span>:<span class="hljs-number">3306</span>; <span class="hljs-comment">//数据库端口</span><br>    <span class="hljs-attr">user</span>:<span class="hljs-string">&#x27;root&#x27;</span>,    <span class="hljs-comment">//用户名</span><br>    <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;123457&#x27;</span>,    <span class="hljs-comment">// 密码</span><br>    <span class="hljs-attr">database</span>:<span class="hljs-string">&#x27;数据库名字&#x27;</span>,  <span class="hljs-comment">// 你操做的是数据库中的哪一个库</span><br>&#125;)<br><span class="hljs-comment">// 3 建立链接</span><br>conn.<span class="hljs-title function_">connect</span>()<br><span class="hljs-comment">// 4 生成sql语句 增删改查操作</span><br><br><span class="hljs-keyword">let</span> sql = <span class="hljs-string">&#x27;.....&#x27;</span>;<br><br><span class="hljs-comment">//5  执行sql语句 </span><br><span class="hljs-comment">//sql语句不分大小写，字段不需要加引号，如果非要加可以使用反引号``</span><br><span class="hljs-comment">//--let sql=&#x27;SELECT * FROM otherUser WHERE user_id=1 AND user_name=8&#x27;</span><br><span class="hljs-comment">//--插入  INSERT INTO 表名(字段1，字段2...)VALUES (值1，值2...)</span><br><span class="hljs-comment">// 3 建立链接</span><br>conn.<span class="hljs-title function_">connect</span>()<br><span class="hljs-comment">//7.结束连接！！！不能一直连着！！</span><br>conn.<span class="hljs-title function_">end</span>(); <br></code></pre></td></tr></table></figure>
+
+<h2 id="结果result"><a href="#结果result" class="headerlink" title="结果result"></a>结果result</h2><ol>
+<li>针对select语句， result 是一个数据集合， 是一个数组，数组中的每个值是一个对象，代表一条记录</li>
+<li>针对 inert ， update, delete 语句， result是一个操作的结果， 通过对其中的字段进行判断，可以知道操作是否成功</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">OkPacket <span class="hljs-punctuation">&#123;</span><br>    fieldCount<span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span><br>    affectedRows<span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>  <span class="hljs-comment">// 受影响的行数  通过该字段可以判断操作是否成功</span><br>    insertId<span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//插入后返回自增的主键ID</span><br>    serverStatus<span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>    warningCount<span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span><br>    message<span class="hljs-punctuation">:</span> &#x27;&#x27;<span class="hljs-punctuation">,</span><br>    protocol41<span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    changedRows<span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>  <span class="hljs-comment">// 改变的函数  执行update 语句时</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="node-mysql-数据库连接池"><a href="#node-mysql-数据库连接池" class="headerlink" title="node+mysql 数据库连接池"></a>node+mysql 数据库连接池</h1><h2 id="1-什么是数据库连接池？"><a href="#1-什么是数据库连接池？" class="headerlink" title="1. 什么是数据库连接池？"></a>1. 什么是数据库连接池？</h2><p>数据库连接池是程序启动时建立足够的数据库连接，并将这些连接组成一个池，由程序动态地对池中的连接进行申请，使用和释放。</p>
+<h2 id="2-使用数据库连接池原理及优点是什么？"><a href="#2-使用数据库连接池原理及优点是什么？" class="headerlink" title="2. 使用数据库连接池原理及优点是什么？"></a>2. 使用数据库连接池原理及优点是什么？</h2><p>数据库连接池在初始化时将会创建一定数量的数据库连接放到连接池中，连接池都将一直保证至少拥有这么多的连接数量，当有数据库需要被连接的时候，它会向数据库连接池申请资源和使用，使用完成后会释放到数据库连接池中。当然数据库连接池中拥有最小连接数量和最大连接数量，当数据库的连接超过连接池中最大的数量的时候，这些请求将被加入到等待队列中。</p>
+<p>其实他们的原理就好比我们公司的招聘前端开发一样，当有A项目的时候，我们公司需要招聘一个前端开发去做项目，但是当公司有B、C、D、等项目的时候，或者很多项目的时候需要不断的招聘前端开发，那么这样会给公司带来很多人力成本的。因此我们需要一个前端主管来管理这些前端资源。前端主管手下假如有5个前端开发，那么当A、B、C、D、E、项目来的时候，前端主管会依次把这些项目分配给对应的开发人员去跟进。但是当还有F等项目的时候，因为F项目已经超过前端人员的时候，没有人再去支持这些个项目，因此这些项目需要排期，等A、B、C、D、E 其中任何一个开发完成后，上线了，然后这些开发人员就和数据库一样释放资源，返回到前端组来，然后前端主管再把F项目分配到对应的开发人员。这个比方就好比可以理解为一个数据库连接池了。而不是有n个项目需要招聘n个前端开发来做项目，那这样的缺点是公司的人力成本会大大的增加。所以数据库的链接池也是这个意思，当网站某一天有很大的流量的时候，数据库服务器需要为每次链接创建一次数据库链接。这样就很浪费数据库的资源，并且频繁的创建和关闭数据库的链接，很容易导致服务器内存溢出等情况发生。</p>
+<p><strong>连接池的作用是：数据库的连接池负责分配，管理和释放数据库链接的。它允许应用程序重复使用一个现有的数据库的链接。而不是重新创建一个。</strong></p>
+<h2 id="3-node-mysql-实现数据库连接池"><a href="#3-node-mysql-实现数据库连接池" class="headerlink" title="3. node + mysql 实现数据库连接池"></a>3. node + mysql 实现数据库连接池</h2><h4 id="3-1-安装引入MySQL模块"><a href="#3-1-安装引入MySQL模块" class="headerlink" title="3.1 安装引入MySQL模块"></a>3.1 安装引入MySQL模块</h4><p>在命令行安装MySQL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cnpm i mysql -S<br></code></pre></td></tr></table></figure>
+
+<p>在app.js中引入mysql模块</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">const</span> <span class="hljs-variable">mysql</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&quot;mysql&quot;</span>)</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-调用MySQL模块的createPool方法"><a href="#3-2-调用MySQL模块的createPool方法" class="headerlink" title="3.2 调用MySQL模块的createPool方法"></a>3.2 调用MySQL模块的createPool方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//创建连接池</span><br><span class="hljs-keyword">const</span> pool = mysql.<span class="hljs-title function_">createPool</span>(&#123;  <br>    host : <span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-comment">//连接主机</span><br>    port : <span class="hljs-number">3306</span>,   <span class="hljs-comment">//端口号</span><br>    database : <span class="hljs-string">&#x27;test&#x27;</span>,  <span class="hljs-comment">//连接的是哪一个库</span><br>    user : <span class="hljs-string">&#x27;root&#x27;</span>,   <span class="hljs-comment">//用户名</span><br>    password : <span class="hljs-string">&#x27;&#x27;</span>,    <span class="hljs-comment">//密码</span><br>    connectionLimit : <span class="hljs-number">50</span>, <span class="hljs-comment">//用于指定连接池中最大的链接数，默认属性值为10. </span><br>    <span class="hljs-attr">queueLimit</span>:<span class="hljs-number">3</span> <span class="hljs-comment">//用于指定允许挂起的最大连接数，如果挂起的连接数超过该数值，就会立即抛出一个错误，默认属性值为0.代表不允许被挂起的最大连接数。</span><br>&#125;)  <br></code></pre></td></tr></table></figure>
+
+<p>在建立了连接池之后，可以直接使用连接池对象的getConnection方法从连接池中获取一个连接，如果连接池中没有可用连接，将隐式的建立一个数据库连接。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//err： 该参数是指操作失败时的错误对象。</span><br><span class="hljs-comment">//connection: 该值为一个对象，代表获取到的连接对象。当连接失败时，该值为undefined。</span><br>pool.<span class="hljs-title function_">getConnection</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">err,connection</span>)&#123;  <br>    <span class="hljs-keyword">if</span>(err)&#123;  <br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;与mysql数据库建立连接失败&#x27;</span>);  <br>        pool.<span class="hljs-title function_">releaseConnection</span>();<span class="hljs-comment">//释放链接</span><br>    &#125;<span class="hljs-keyword">else</span>&#123;  <br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;与mysql数据库建立连接成功&#x27;</span>);  <br>        connection.<span class="hljs-title function_">query</span>(<span class="hljs-string">&#x27;select * from admin&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err,rows</span>)&#123;  <br>            <span class="hljs-keyword">if</span>(err)&#123;  <br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;执行sql语句失败，查询数据失败&#x27;</span>);<br>                connection.<span class="hljs-title function_">release</span>();<span class="hljs-comment">//释放链接</span><br>            &#125;<span class="hljs-keyword">else</span>&#123;  <br>              <span class="hljs-comment">//rows为结果</span><br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(rows);<br>                <span class="hljs-comment">//关闭连接池</span><br>               <span class="hljs-comment">// pool.end();  </span><br>              connection.<span class="hljs-title function_">release</span>();<span class="hljs-comment">//释放链接</span><br>            &#125;  <br>        &#125;)  <br>    &#125;  <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>connection.release() 当一个连接不需要使用时，使用该方法将其归还到连接池中    release 释放</p>
+<p>connection.destroy() 当一个连接不需要使用且需要从连接池中移除时，可以使用该方法    destory销毁</p>
+<p>pool.end() 当一个连接池不需要使用时，可以使用该方法关闭连接池</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ----奉封装一个用于sql查询的模块</span><br><span class="hljs-comment">// console.log(module)</span><br><span class="hljs-keyword">const</span> mysql=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql&#x27;</span>);<br><span class="hljs-keyword">const</span> pool=mysql.<span class="hljs-title function_">createPool</span>(&#123;<br>    <span class="hljs-attr">host</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>    <span class="hljs-attr">port</span>:<span class="hljs-number">3306</span>,<br>    <span class="hljs-attr">user</span>:<span class="hljs-string">&#x27;root&#x27;</span>,<br>    <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;123457&#x27;</span>,<br>    <span class="hljs-attr">database</span>:<span class="hljs-string">&#x27;newTable&#x27;</span>,<br>&#125;);<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>.<span class="hljs-property">query</span>=<span class="hljs-function">(<span class="hljs-params">sql,values,callback</span>)=&gt;</span>&#123;<br>    pool.<span class="hljs-title function_">getConnection</span>(<span class="hljs-function">(<span class="hljs-params">err,connection</span>)=&gt;</span>&#123;<br>        <span class="hljs-comment">//---与链接池创建的链接失败</span><br>        <span class="hljs-keyword">if</span>(err)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;创建链接失败&#x27;</span>)<br>            pool.<span class="hljs-title function_">releaseConnection</span>();<span class="hljs-comment">//释放链接</span><br>            <span class="hljs-title function_">callback</span>(err,<span class="hljs-literal">null</span>);<span class="hljs-comment">//执行回调</span><br>        &#125;<br>        <span class="hljs-comment">//-- 与链接池创建的链接成功时返回connetion 链接对象</span><br>        <span class="hljs-comment">//-- 链接对象执行sql语句</span><br>        connection.<span class="hljs-title function_">query</span>(sql,values,<span class="hljs-function">(<span class="hljs-params">err,res</span>)=&gt;</span>&#123;<br>            <span class="hljs-keyword">if</span>(err)&#123;<br>                <span class="hljs-comment">//---sql语句执行失败 没有找到指定的结果</span><br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;sql语句执行失败 没有找到指定的结果&#x27;</span>)<br>                connection.<span class="hljs-title function_">release</span>(); <span class="hljs-comment">//释放链接</span><br>                <span class="hljs-title function_">callback</span>(err,<span class="hljs-literal">null</span>);<span class="hljs-comment">//执行回调</span><br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">//---sql语句执行成功</span><br>                connection.<span class="hljs-title function_">release</span>(); <span class="hljs-comment">//释放链接</span><br>                <span class="hljs-title function_">callback</span>(<span class="hljs-literal">null</span>,res);<span class="hljs-comment">//执行回调</span><br>            &#125;<br><br>        &#125;)<br>    &#125;)<br>&#125;<br><br><br>----引入模块 调用<br>--<br><span class="hljs-keyword">const</span> query=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./db&#x27;</span>).<span class="hljs-property">query</span>;<br>--调用<span class="hljs-number">1</span><br><span class="hljs-keyword">let</span> sql=<span class="hljs-string">&#x27;SELECT * FROM class WHERE class_id=? AND class_name=?&#x27;</span> <br><span class="hljs-keyword">let</span> userId=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> userName=<span class="hljs-string">&#x27;喳岈山&#x27;</span>;<br><span class="hljs-title function_">query</span>(sql,[userId,userName],<span class="hljs-function">(<span class="hljs-params">err,res</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发生了错误1**&#x27;</span>,err)<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;找到了1&#x27;</span>,res)<br>&#125;)<br>--调用<span class="hljs-number">2</span><br>--创建表   前端的坑，不建议使用sql语句创建表<br>sql=<span class="hljs-string">`CREATE TABLE user_list3(u_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,u_name VARCHAR(30) NOT NULL UNIQUE KEY,u_sex VARCHAR(20) NOT NULL DEFAULT &#x27;男&#x27;,u_createdate DATETIME)`</span><br><span class="hljs-title function_">query</span>(sql,<span class="hljs-literal">null</span>,<span class="hljs-function">(<span class="hljs-params">err,res</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发生了错误3*32*&#x27;</span>,err)<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;找到了%%%2·&#x27;</span>,res)<br>&#125;)<br>--向表中新增字段password<br><span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;ALTER TABLE user_list ADD COLUMN passWord VARCHAR(50) DEFAULT &#x27;123&#x27; NULL COMMENT &#x27;备注信息&#x27;&quot;</span>,<span class="hljs-literal">null</span>,<span class="hljs-function">(<span class="hljs-params">err,res</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发生了错误3*32*&#x27;</span>,err)<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;找到了！！！！·&#x27;</span>,res)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h2><h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 查看所有的数据库<br>show databases;<br><br>#创建一个数据库<br>create database py;<br><br>#查看数据库信息    <br>show create database h_test;<br><br>#修改数据库的编码，可使用上一条语句查看是否修改成功<br>alter database h_test default character set utf8mb4;  <br><br>#删库   删除数据库可要小心啊！千万不要删库跑路哦。此类需求一般极少，不过我们也要会呀，连库都不会删岂不是很没面子~~<br>drop database py;<br># 如果有再删除<br>DROP DATABASE IF EXISTS py;<br><br>#创建指定字符串的数据库<br>create database py default character set utf8mb4;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-表操作"><a href="#6-表操作" class="headerlink" title="6. 表操作"></a>6. 表操作</h2><p>表的操作之前，请确认已经选中了数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 选中py这个数据库<br>use py;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>创建数据表是我们经常遇到的语句了，官方给出的参考语法比较长。对于我们学习及工作常用的选项归纳如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> 表名 (<br>    列名<span class="hljs-number">1</span> 类型<span class="hljs-number">1</span>,<br>    ......<br>    列名n 类型n<br>);<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table book ( <br>    id int(11) not null COMMENT &#x27;id&#x27;,<br>    name varchar(20),<br>    author varchar(20),<br>    price double(5,2),<br>    category varchar(10)<br>);<br>#查看表<br>show tables;<br><br>#修改表名   将book表重命名为books<br>alter table book rename books<br><br>#添加字段<br>alter table books add press varchar(20);<br><br>#查看表的字段信息<br>desc books;<br><br>#删除字段  删除books表中的press字段。<br>alter table books drop press<br><br>#删除表  删除books表<br>drop table books<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/zhangguihao/md_img/raw/master/image-20211210162649804.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="7-记录操作"><a href="#7-记录操作" class="headerlink" title="7.记录操作 ** **"></a>7.记录操作 ** **</h2><h3 id="7-1-添加记录"><a href="#7-1-添加记录" class="headerlink" title="7.1 添加记录"></a>7.1 添加记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 添加记录 (指定字段添加对应的值，注意顺序。)<br>insert into book(id,name,author,price,category) values (1,&#x27;诛仙&#x27;,&#x27;萧鼎&#x27;,99,&#x27;仙侠&#x27;);<br><br>#添加记录（所有字段，添加的值要一一对应）<br>insert into book values (1,&#x27;诛仙&#x27;,&#x27;萧鼎&#x27;,99,&#x27;仙侠&#x27;);<br>#同时添加多条数据<br>insert into book values(2,&#x27;简爱&#x27;,&#x27;夏洛蒂·勃朗特&#x27;,45,&#x27;爱情&#x27;),(3,&#x27;盗墓笔记&#x27;,&#x27;南派三叔&#x27;,299,&#x27;冒险&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-2-查询记录"><a href="#7-2-查询记录" class="headerlink" title="7.2 查询记录"></a>7.2 查询记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询所有记录<br>select * from book;<br>#查询符合条件的记录<br>select * from book where category = &#x27;爱情&#x27;;#查询所有分类为爱情的书籍<br>#只查询某些字段<br>select id,name,price from book;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-3-修改记录"><a href="#7-3-修改记录" class="headerlink" title="7.3 修改记录"></a>7.3 修改记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#修改记录  如果没有where子句，会修改表中所有对应数据<br>update book set price = 239; #将所有书的价格修改为239元。<br>#修改指定条件的记录<br>update book set price = 29 where id = 1;#将id为1的书籍的价格修改为29元。<br>#一次修改多个字段的值。<br>update book set name = &quot;三体（系列）&quot;,category = &quot;科幻&quot; where id = 4; #将id等于4的书籍的名字修改为三体（系列），同时将分类修改为 科幻。<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-4-删除记录"><a href="#7-4-删除记录" class="headerlink" title="7.4 删除记录"></a>7.4 删除记录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#删除一条记录<br>delete from book where id = 4 #删除id为4的书籍<br>delete from book; #删除所有书籍<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-where子句"><a href="#8-where子句" class="headerlink" title="8.where子句"></a>8.where子句</h2><p>WHERE 子句用于过滤记录。WHERE 子句用于提取那些满足指定条件的记录。</p>
+<h3 id="8-1-单条件"><a href="#8-1-单条件" class="headerlink" title="8.1 单条件"></a>8.1 单条件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询id等于1的记录<br>select * from book where id = 1;<br>#查询price大于100的记录<br>select * from book where price &gt; 100;<br>#查询price小于100的记录<br>select * from book where price &lt; 100;<br>#查询price大于等于100的记录<br>select * from book where price &gt;= 100;<br>#查询price小于等于100的记录<br>select * from book where price &lt;= 100;<br><br># 空值判断  查询分类是空的记录<br>select * from book where category is null;<br><br>#模糊匹配  查询作者的名字中带‘三’的记录  %表示任意个字符<br>select * from book where author like &#x27;%三%&#x27;;<br>#查询作者的名字以‘三’开头的记录 <br>select * from book where author like &#x27;三%&#x27;;<br>#查询作者的名字以‘三’开头的记录 <br>select * from book where author like &#x27;三%&#x27;;<br>#查询书名以‘笔记’结尾的记录 <br>select * from book where name like &#x27;%笔记&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-2-多条件"><a href="#8-2-多条件" class="headerlink" title="8.2 多条件"></a>8.2 多条件</h3><p>AND &amp; OR 运算符用于基于一个以上的条件对记录进行过滤</p>
+<p>如果第一个条件和第二个条件都成立，则 使用AND 运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#id大于5并且成绩大于60<br>select * from student where id&gt;5 and grade&gt;60;<br><br>let sql=&quot;select * from book where name like &#x27;三%&#x27; and category = &#x27;科幻&#x27;&quot;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>如果第一个条件和第二个条件中只要有一个成立，则使用 OR 运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#and关键字多条件查询  or关键字的使用也是类似<br>select * from student where id&gt;5 or grade&gt;60;<br><br>select * from book where price &gt;100 and category = &#x27;四大名著&#x27; or category = &#x27;爱情&#x27;;<br><br>#查询  价格大于100，分类是 爱情或者冒险的书籍。 注意，and与or同时出现的，将视为整体的部分用小括号包裹。<br>select * from book where price &gt;100 and (category = &#x27;四大名著&#x27; or category = &#x27;爱情&#x27;);<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>IN 操作符允许您在 WHERE 子句中规定多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询 分类是 爱情，冒险，仙侠 中的一个的书籍<br>select * from  book where category in (&#x27;爱情&#x27;,&#x27;冒险&#x27;,&#x27;四大名著&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-3-聚合函数"><a href="#8-3-聚合函数" class="headerlink" title="8.3 聚合函数"></a>8.3 聚合函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询个数<br>select count(*) from book;          console.log(&#x27;找到了---&#x27;,res[0][&#x27;count(*)&#x27;])<br>#查询价格大于100的有几本<br>select count(*) from book where price &gt;100;<br>#求和   全买下来要花多少钱<br>select sum(price) from book;<br>#求最大值  价格最大值是多少<br>select max(price) from book;<br>#求最小值  价格最小值是多少<br>select min(price) from book;<br># 查询最贵的那本书  （子查询） <br>select * from book where price = (select max(price) from book);<br>#求平均值<br>select avg(price) from book;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-4-排序"><a href="#8-4-排序" class="headerlink" title="8.4 排序"></a>8.4 排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#按照价格从小到大排序(默认是从小到达排序)<br>select * from book order by price;<br>#按照价格从大到小排序<br>select * from book order by price desc;<br>#与where联合使用。 where要在order by的前面。  id大于3的值，按照价格排序。<br>select * from book where id &gt;3 order by price;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-5-分页"><a href="#8-5-分页" class="headerlink" title="8.5 分页"></a>8.5 分页</h3><p>使用limit可以限制 查询结果的数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询 前4本书籍<br>select * from book limit 4;<br>#查询第二页的书籍，每页显示4本。<br>select * from book limit 4,4;<br>#公式， 查询第n页，每页m本。 limit (n-1)*m, m      前面有几条数据了，每页m条<br><br>#查询最贵的三本书。<br>select * from book order by price desc limit 3;<br>#查询最贵的那本书<br>select * from book order by price desc limit 1;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-多表操作"><a href="#9-多表操作" class="headerlink" title="9. 多表操作"></a>9. 多表操作</h2><p>​	数据表有三种关联关系，多对一、多对多、一对一</p>
+<p>​	以学生表，老师表，班级表为例，学生与班级的关系就是多对一。 学生请了家教，一个学生对应一个老师，就是一对一。老师与班级之间是多对多的关系，一个班级有多个任课老师，每个任课老师带多个班级。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE IF EXISTS `classroom`;<br>CREATE TABLE `classroom` (<br>  `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;id&#x27;,<br>  `name` varchar(255) DEFAULT NULL COMMENT &#x27;教室名&#x27;,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>-- ----------------------------<br>-- Records of classroom<br>-- ----------------------------<br>INSERT INTO `classroom` VALUES (&#x27;1&#x27;, &#x27;鄱阳湖&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;2&#x27;, &#x27;淀山湖&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;3&#x27;, &#x27;老君山&#x27;);<br>INSERT INTO `classroom` VALUES (&#x27;4&#x27;, &#x27;桐柏山&#x27;);<br><br>-- ----------------------------<br>-- Table structure for student<br>-- ----------------------------<br>DROP TABLE IF EXISTS `student`;<br>CREATE TABLE `student` (<br>  `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;学生id&#x27;,<br>  `name` varchar(255) DEFAULT NULL COMMENT &#x27;学生姓名&#x27;,<br>  `gender` varchar(255) DEFAULT NULL COMMENT &#x27;性别&#x27;,<br>  `age` int DEFAULT NULL COMMENT &#x27;年龄&#x27;,<br>  `score` int DEFAULT NULL COMMENT &#x27;成绩&#x27;,<br>  `c_id` int DEFAULT NULL COMMENT &#x27;教室id&#x27;,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>-- ----------------------------<br>-- Records of student<br>-- ----------------------------<br>INSERT INTO `student` VALUES (&#x27;1&#x27;, &#x27;吴用&#x27;, &#x27;男&#x27;, &#x27;20&#x27;, &#x27;4&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;2&#x27;, &#x27;李逵&#x27;, &#x27;男&#x27;, &#x27;23&#x27;, &#x27;22&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;3&#x27;, &#x27;孙二娘&#x27;, &#x27;女&#x27;, &#x27;26&#x27;, &#x27;103&#x27;, &#x27;1&#x27;);<br>INSERT INTO `student` VALUES (&#x27;4&#x27;, &#x27;扈三娘&#x27;, &#x27;女&#x27;, &#x27;18&#x27;, &#x27;59&#x27;, &#x27;2&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在多的那一端添加一个字段，存储 一 那一端的id。</p>
+<p>在上面的例子中，学生是多的一端，在student表添加一个字段，c_id 存储 教室 classroom表的id。</p>
+<h3 id="9-1-内连接"><a href="#9-1-内连接" class="headerlink" title="9.1 内连接"></a>9.1 内连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询鄱阳湖的同学的信息。<br>SELECT<br>	s.id 学生编号,<br>	s. NAME 学生姓名,<br>	c. NAME AS 教室<br>FROM<br>#我们可以为表添加别名。<br>	student s<br>INNER JOIN classroom c ON c_id = c.id<br>WHERE<br>	c. NAME = &#x27;鄱阳湖&#x27;;<br>	<br>#该功能也可以使用where语句实现<br>SELECT<br>	s.id,<br>	s. NAME,<br>	c.`name` AS classname<br>FROM<br>	student s,<br>	classroom c<br>WHERE<br>	s.c_id = c.id<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-2-外连接"><a href="#9-2-外连接" class="headerlink" title="9.2 外连接"></a>9.2 外连接</h3><h4 id="9-2-1-左外连接"><a href="#9-2-1-左外连接" class="headerlink" title="9.2.1 左外连接"></a>9.2.1 左外连接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询所有同学的信息，包括所属的班级名。<br>SELECT<br>	s.id,<br>	s. NAME,<br>	c.`name` AS classname<br>FROM<br>	student s LEFT JOIN <br>	classroom c<br>ON  #on后面跟两种表关联的条件。<br>	s.c_id = c.id<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="9-2-2-右外连接"><a href="#9-2-2-右外连接" class="headerlink" title="9.2.2 右外连接"></a>9.2.2 右外连接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询所有教室的信息，包含它的学生信息。<br>SELECT<br>	s.id,<br>	s. NAME,<br>	c.`name` AS classname<br>FROM<br>	student s RIGHT JOIN <br>	classroom c<br>ON<br>	s.c_id = c.id<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/node/" class="category-chain-item">node</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>mysql</div>
+      <div>http://example.com/2022/05/26/04mysql数据库/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>smilinh-sheep</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/26/01node/" title="node">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">node</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/26/03promise/" title="promise">
+                        <span class="hidden-mobile">promise</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

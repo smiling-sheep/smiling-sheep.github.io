@@ -1,0 +1,1183 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="smilinh-sheep">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="为什么要学习： 面试要求 自己写demo 了解后端开发状态，工作配合，防止甩锅 node介绍官方：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时环境。 私人：一个“软件”，能运行js代码 说白了Node.js存在意义就是让JavaScript可以和其他的后端语言一样能够在服务器上运行,它的存在对于JavaScript有了质的飞跃,可以让前端语言JavaScri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node">
+<meta property="og:url" content="http://example.com/2022/05/26/01node/index.html">
+<meta property="og:site_name" content="lldBlog">
+<meta property="og:description" content="为什么要学习： 面试要求 自己写demo 了解后端开发状态，工作配合，防止甩锅 node介绍官方：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时环境。 私人：一个“软件”，能运行js代码 说白了Node.js存在意义就是让JavaScript可以和其他的后端语言一样能够在服务器上运行,它的存在对于JavaScript有了质的飞跃,可以让前端语言JavaScri">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-26T04:12:57.000Z">
+<meta property="article:modified_time" content="2023-11-03T02:50:52.874Z">
+<meta property="article:author" content="smilinh-sheep">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>node - lldBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    <meta name="referrer" content="no-referrer"/>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lldblog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="node"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-26 12:12" pubdate>
+          2022年5月26日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          32k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          264 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">node</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>为什么要学习：</p>
+<p>面试要求</p>
+<p>自己写demo</p>
+<p>了解后端开发状态，工作配合，防止甩锅</p>
+<h1 id="node介绍"><a href="#node介绍" class="headerlink" title="node介绍"></a>node介绍</h1><p>官方：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时环境。</p>
+<p>私人：一个“软件”，能运行js代码</p>
+<p>说白了Node.js存在意义就是让JavaScript可以和其他的后端语言一样能够在服务器上运行,它的存在对于JavaScript有了质的飞跃,可以让前端语言JavaScript在写完之后交给Node.js进行编译和解释</p>
+<p>现在已经有很多公司在使用node作为服务器语言了，国外的：linkedin&#x2F;paypal&#x2F;twitter  国内的： 知乎的主站推送、网易（部分后台）、阿里（部分后台）</p>
+<p>另外对于中小型项目的后台快速开发非常适合。</p>
+<h3 id="node和其他常用软件的区别"><a href="#node和其他常用软件的区别" class="headerlink" title="node和其他常用软件的区别"></a>node和其他常用软件的区别</h3><ul>
+<li><p>图标 -》 node没有图标</p>
+</li>
+<li><p>顺序：其他软件可以先打开软件，然后在选择文件</p>
+<p>​			node不可以，在运行的时候，你就要告诉他运行哪一个文件</p>
+</li>
+<li><p>可视化：其他软件有一个可视化区域   比如chrom的F12</p>
+<p>​			node只能在命令行里运行</p>
+</li>
+<li><p>解析引擎： js的解析引擎只能解析js的语法</p>
+</li>
+<li><p>前端js三大核心：</p>
+<ul>
+<li>DOM文档对象模型：因为你的js是被引入在html文件里面，所以我们可以操作DOM，如果不引入到html文件则不能操作DOM </li>
+<li>BOM浏览器对象模型，因为你的js文件是被运行在浏览器里面的，需要用到浏览器的内核中的解析引擎来解析js文件执行，所以我们js可以操作浏览器</li>
+<li>ECMAScript 语法：js的语法标准，前端js是被局限在浏览器里的，只能操作最外层的window，不能操作电脑中的文件</li>
+</ul>
+</li>
+<li><p>nodes :核心</p>
+<ul>
+<li>ECMAScript 语法：js的语法标准</li>
+<li>I&#x2F;O : 输入输出流，读写磁盘</li>
+<li>system ： 操作操作系统</li>
+</ul>
+</li>
+<li><p>书写代码：还是以.js为后缀的文件，写的还是js的语法</p>
+<p>如果你将来要把这个js文件引入在html页面里放在前端用，你就不能写I&#x2F;O 的API，不能写操作操作系用的API</p>
+<p>如果你将来要把这个js文件在node上运行，你就不能写操作DOM和BOM的操作，但可以写I&#x2F;O 和操作操作系用的API</p>
+</li>
+</ul>
+<h2 id="node的使用："><a href="#node的使用：" class="headerlink" title="node的使用："></a>node的使用：</h2><ul>
+<li><p>下载：直接在官网下载，下来稳定版本 下载安装包 .msi</p>
+</li>
+<li><p>安装：双击下载下来的安装包，一路下一步，傻瓜式安装</p>
+<p>注意：一个电脑上只能安装一个版本的node，安装第二个版本会把第一版本顶掉，不能回滚</p>
+<p>安装完毕没有图标</p>
+</li>
+<li><p>检测安装：</p>
+<ul>
+<li><p>打开命令行cmd   （MAC 终端）</p>
+</li>
+<li><p>输入指令 $ node –version       $符号不是指令，它代表后面的是指令</p>
+</li>
+<li><p>出现版本号就表示安装成功 10.4以上都可以用</p>
+</li>
+</ul>
+</li>
+<li><p>卸载</p>
+<ul>
+<li>打开我的电脑</li>
+<li>控制面板  卸载程序</li>
+<li>右键卸载</li>
+</ul>
+</li>
+</ul>
+<p>​					</p>
+<ul>
+<li><p>总结：node（2009年才有的node）</p>
+<p>利用node 一个工具，在命令行里执行我的js代码，在执行过程中没有了DOM和BOM，但是可以操作电脑了，之前js文件运行在浏览器里，被限制了，最大只能操作到window</p>
+<p>实际意义：</p>
+<p>可以操作电脑，就可以操作数据库（数据库也是我们电脑上的一个软件），创建服务被当作服务器使用，可以靠js语言来进行服务端开发，js写后端</p>
+<p>目前市场上的开发没有js做服务器的，因为js有致命的缺陷，他是一个脚本语言，js弱类型，服务器的语言必须要严谨，还有就是安全防护，js做的不是很好</p>
+</li>
+</ul>
+<h2 id="开始程序"><a href="#开始程序" class="headerlink" title="开始程序"></a>开始程序</h2><h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><p>node运行js文件：直接在命令行书写js代码，先打开命令行在命令行输入指令node  按enter键确定  </p>
+<p>进入输入状态，前面没有目录，可以看到下面面的提示 “ &gt;_ “  表示已经进入node的运行状态了，就可以输入js代码了（和以前网页中写js基本一致，等价于浏览器的控制台），只能输入js代码，其他代码会报错</p>
+<p>这里我们输入console.log( “helloWorld” )  确定 即可看到打印的helloWorld</p>
+<p>在node中，每一行代码执行完，都会显示一下返回值，这里没有返回值，所以有个undefined。</p>
+<ul>
+<li><p>缺点：没有代码提示，存不下来，只要一关闭cmd就没有了</p>
+</li>
+<li><p>结束Node的运行状态：连续按两次 ctrl+c  就可以退出，执行状态如下图，</p>
+<p>在想要结束node的时候，不要不退出直接关闭cmd，多次会对电脑造成伤害</p>
+</li>
+</ul>
+<h4 id="在命令行运行js文件："><a href="#在命令行运行js文件：" class="headerlink" title="在命令行运行js文件："></a>在命令行运行js文件：</h4><ul>
+<li>把js代码写在一个js文件里，打开命令行，切换目录到你要执行的js文件所在目录  书写执行 node js文件名称 回车</li>
+</ul>
+<p>即：<code>node 绝对路</code> 回车，相当于以node这个软件在执行你指定的js文件。   (不需要先进入node运行时环境)</p>
+<ul>
+<li>建议创建一个用于放js的文件夹，取名nodeTest</li>
+</ul>
+<p>然后在里面创建一个js文件， 取名 main.js，（注意文件的编码格式最好是utf-8，不然输出中文会乱码。）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;helloWorld&quot;</span>); <span class="hljs-comment">//输出一行文字</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(__dirname); <span class="hljs-comment">//输出文件夹名字</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(__filename); <span class="hljs-comment">//输出文件名</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>写好的js文件如何使用node 运行呢？</strong></p>
+<p>前面我们的命令行是从开始菜单打开的，node的执行是在用户管理员 文件夹下，</p>
+<p>如果我们要在某个自定义的文件夹执行node，那么我们可以在 自己的文件夹 按住shift并点击右键，菜单中点击“在此处打开命令行”，即可定位到该目录.</p>
+<p> 此时直接输入  node 需要执行的文件名   确定 就执行了，可以看到打印的三行数据  helloWorld以及文件夹名和文件名</p>
+<h3 id="node开发模式"><a href="#node开发模式" class="headerlink" title="node开发模式"></a>node开发模式</h3><p>如何书写代码，必须模块化开发，node的模块化标准叫做Common JS，其实就是导入导出文件的语法</p>
+<p>node为什么必须模块化</p>
+<ul>
+<li><p>前端</p>
+<p>当js代码引入html页面的使用的时候，一个页面引入多个js文件，这些js文件之间会有一个共同的window，将想在别的文件里面使用的内容挂载在window上</p>
+</li>
+<li><p>node</p>
+<p>js代码在命令行里面运行，每一次只能执行一个js文件 语法为：node 文件名  回车，多个js文件之间没有关联，也没有共同的顶级对象出现，只能使用模块化的方式，导入导出</p>
+</li>
+<li><p>什么是模块</p>
+<p>一个独立的js文件就是一个模块，里面存储一类方法，每一个js文件都不能访问其他文件里面的变量，当你在node环境下的时候，每一个js文件我们叫做一个模块作用域，就是一个独立的作用域，我们不能访问别人，别人也不能访问我的</p>
+</li>
+<li><p>node里的模块分类</p>
+<ul>
+<li><p>自定义模块</p>
+<p>我们自己书写的js文件</p>
+</li>
+<li><p>内置模块</p>
+<p>就是你安装node的时候自带的一些模块，node原生的模块</p>
+<p>（比如操作文件的，操作操作系统）</p>
+</li>
+<li><p>第三方模块</p>
+<p>其他人写的一些js文件，里面封装好一些功能，你需要的时候下载下来再使用</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="node怎么实现模块化"><a href="#node怎么实现模块化" class="headerlink" title="node怎么实现模块化"></a>node怎么实现模块化</h3><p>每一js文件都天生自带一个变量叫做module，是Node自带的模块儿化对象,可以在node运行运行的js文件里，打印module看一下</p>
+<p>该对象下默认有一个空对象 – exports ，我们将需要暴露的对象直接赋值给exports就向外暴露了接口，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">module</span>);<br><br><br><span class="hljs-comment">/* </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">Module &#123;</span><br><span class="hljs-comment">  id: &#x27;.&#x27;,</span><br><span class="hljs-comment">  //--------当前文件的路径</span><br><span class="hljs-comment">  path: &#x27;/Users/wei/Desktop/lianxi &#x27;,</span><br><span class="hljs-comment">  //-----我向外暴露的内容，我允许别人使用的我这个文件里的哪些内容   </span><br><span class="hljs-comment">  exports: &#123;&#125;,</span><br><span class="hljs-comment">  //---------哪些文件在引用我</span><br><span class="hljs-comment">  parent: null,</span><br><span class="hljs-comment">  //-----当前这个文件的文件名称（带有绝对路径）</span><br><span class="hljs-comment">  filename: &#x27;/Users/wei/Desktop/lianxi /a.js&#x27;,</span><br><span class="hljs-comment">  //-----我有没有被导入过</span><br><span class="hljs-comment">  loaded: false,</span><br><span class="hljs-comment">  //----我引用了哪些其他的文件</span><br><span class="hljs-comment">  children: [],</span><br><span class="hljs-comment">  //----你下载的第三方模块（node_modules指代）的存储路径</span><br><span class="hljs-comment">  paths: [</span><br><span class="hljs-comment">    &#x27;/Users/wei/Desktop/lianxi /node_modules&#x27;,</span><br><span class="hljs-comment">    &#x27;/Users/wei/Desktop/node_modules&#x27;,</span><br><span class="hljs-comment">    &#x27;/Users/wei/node_modules&#x27;,</span><br><span class="hljs-comment">    &#x27;/Users/node_modules&#x27;,</span><br><span class="hljs-comment">    &#x27;/node_modules&#x27;</span><br><span class="hljs-comment">  ]</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="1、编写模块并暴露接口"><a href="#1、编写模块并暴露接口" class="headerlink" title="1、编写模块并暴露接口"></a>1、编写模块并暴露接口</h5><p>在module01.js中写入下面的代码，编写了两个方法，并使用node自带的 module对象向外暴露接口。</p>
+<p>导出语法：</p>
+<p>1:module.exports 向这个对象里添加成员就可以了</p>
+<p>   需要暴露的方法以属性 附加到 module.exports对象上</p>
+<p>2:也可以直接把module.exports 替换掉</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn01</span>(<span class="hljs-params"></span>)&#123;  <span class="hljs-comment">//编写一个方法 fn01</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;module01-fn01&quot;</span>);<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn02</span>(<span class="hljs-params"></span>)&#123;  <span class="hljs-comment">//编写一个方法 fn02</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;module01-fn02&quot;</span>);<br>&#125;<br><span class="hljs-comment">//-----暴露接口1</span><br><span class="hljs-comment">//-----将fn01向外开放，别人引入该模块后，就可以使用fn01了</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>.<span class="hljs-property">fn01</span>=fn01;<br><span class="hljs-comment">//-----暴露接口2</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-string">&quot;fn01&quot;</span>:fn01,<br>    <span class="hljs-string">&quot;fn02&quot;</span>:fn02<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2、使用接口"><a href="#2、使用接口" class="headerlink" title="2、使用接口"></a>2、使用接口</h5><p>解释：(1)使用node自带方法 require引入模块，格式  require(“文件路径”)，【这里的  .&#x2F;  表示当前路径 】， </p>
+<p>作用：导入该文件（路径如果后缀为.js 可以省略不写）</p>
+<p>返回值：就是指定文件内部的module.exports</p>
+<p>在test.js中写入 如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> module01 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./module01.js&quot;</span>); <span class="hljs-comment">//使用 require引入模块，并申明一个变量来接收接口暴露的对象</span><br><br>module01.<span class="hljs-title function_">fn01</span>(); <span class="hljs-comment">//访问接口暴露的方法</span><br></code></pre></td></tr></table></figure>
+
+<p>我们申明了一个变量 module01来接收引入模块暴露的对象，这个对象就是我们上一步中给exports赋值的那个对象,关系如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">module01 == &#123;<br>  <span class="hljs-string">&quot;fn01&quot;</span>:fn01,<br>  <span class="hljs-string">&quot;fn02&quot;</span>:fn02<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>既然我们使用 module01接收到了这个对象，我们就可以调用 里面的方法或属性了。 使用 module01.fn01(),就可以执行 module01.js 中的 fn01方法。</p>
+<h5 id="3、运行看效果"><a href="#3、运行看效果" class="headerlink" title="3、运行看效果"></a>3、运行看效果</h5><p>使用node 运行test.js的时候，就可以看到fn01方法执行 打印的 “module01-fn01”；</p>
+<p>4 导入时可以按需导入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript">-----------------------------a.<span class="hljs-property">js</span><br><span class="hljs-keyword">const</span> a=<span class="hljs-number">120</span>;<br><span class="hljs-keyword">const</span> b=<span class="hljs-number">23</span>;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>=&#123;<br>    a,<br>    b,<br>    <span class="hljs-title function_">a_A</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;我是a文件里的a_A函数&#x27;</span>)<br>    &#125;,<br>    <span class="hljs-title function_">a_B</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;我是a文件里的a_B函数&#x27;</span>)<br>    &#125;,<br>&#125;<br>--------------------------b.<span class="hljs-property">js</span> <br><span class="hljs-keyword">var</span> newValue = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./a&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123;a_A&#125;=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./a&#x27;</span>);        <span class="hljs-comment">//-----以结构赋值的方式按需导入想要的数据</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;------b1b1b1&#x27;</span>,newValue.<span class="hljs-property">a</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;------b2b2b2&#x27;</span>,a_A)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="多个模块的引用"><a href="#多个模块的引用" class="headerlink" title="多个模块的引用"></a>多个模块的引用</h4><p>我们上一步只引入了module01.js ,这一步我们引入多个模块</p>
+<p>1、我们先将 module02.js 也写成接口，代码和module.js基本一致，只是 打印的 内容 改为了  “module02-fn01”</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn01</span>(<span class="hljs-params"></span>)&#123;  <span class="hljs-comment">//编写一个方法 fn01</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;module02-fn01&quot;</span>);<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn02</span>(<span class="hljs-params"></span>)&#123;  <span class="hljs-comment">//编写一个方法 fn02</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;module02-fn02&quot;</span>);<br>&#125;<br><br><span class="hljs-comment">//暴露接口</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-string">&quot;fn01&quot;</span>:fn01,<br>    <span class="hljs-string">&quot;fn02&quot;</span>:fn02<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2、我们在 test.js中引入模块 </p>
+<p>将原来的test.js代码修改成如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> module01 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./module01.js&quot;</span>); <span class="hljs-comment">//module01.js 的暴露对象 使用 变量 module01接收</span><br><span class="hljs-keyword">var</span> module02 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./module02.js&quot;</span>); <span class="hljs-comment">//module02.js 的暴露对象 使用 变量 module02接收</span><br><br>module01.<span class="hljs-title function_">fn01</span>(); <span class="hljs-comment">//访问module01.js的方法</span><br>module02.<span class="hljs-title function_">fn02</span>(); <span class="hljs-comment">//访问module02.js的方法</span><br></code></pre></td></tr></table></figure>
+
+<p>3、执行test.js</p>
+<p>即可看到两个模块的方法都被调用了，就算模块中使用了同样的方法，在使用的时候，由于定义了不同的变量来接收，也不会互相影响，而且我们要使用哪个模块就直接引用就可以，这就是模块儿化的优势。</p>
+<h2 id="fs文件操作模块"><a href="#fs文件操作模块" class="headerlink" title="fs文件操作模块"></a>fs文件操作模块</h2><h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件 **"></a>读取文件 **</h4><h5 id="异步读取"><a href="#异步读取" class="headerlink" title="异步读取 **"></a>异步读取 **</h5><p>node自带文件操作模块 fs，里面存放着操作文件相关的方法，使用时只需要直接引入即可</p>
+<p>首先准备一个需要被访问的文件a.txt文件</p>
+<p>编辑 a.txt。任意写入点文字  （注意 编码格式 修改为 utf-8，如果是默认格式，中文文字读取的时候会是乱码）</p>
+<p>编辑 我们的js文件，fs01.js，写入一下代码</p>
+<ul>
+<li><p>第一行代码我们直接引入了 node的自带模块  fs （文件操作模块）</p>
+</li>
+<li><p>调用了 fs模块下的读取文件方法  readFile()异步读取文件</p>
+<p>语法:fs.readFile(路径[,格式],回调函数)</p>
+</li>
+</ul>
+<p>内部传入的三个参数分别为  </p>
+<p>1、读取的文件路径 </p>
+<p> 2、编码格式 读取文件默认是buffer格式的文件，可以选填‘utf-8’ 表示读取的是utf8格式的内容</p>
+<p> 3、回调函数</p>
+<p>读取成功后执行的回调函数，回调函数中有两个参数  err 和 data ： </p>
+<p>err表示错误信息，当文件读取错误的时候会赋值错误提示</p>
+<p>data表示读取成功时的文件内容。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//导入node 内置模块  fs：文件系统操作模块</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fs);<span class="hljs-comment">//--查看一下所包含的方法</span><br><br>consoe.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;start&#x27;</span>);<span class="hljs-comment">//---查看异步读取</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;./a.txt&quot;</span>,<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err,data</span>)&#123;  <span class="hljs-comment">//读取文件</span><br>    <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">return</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;文件读取出错&#x27;</span>,err);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;文件读取ok&#x27;</span>,data);<br>&#125;);<br><br>consoe.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;end&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>一般情况下，如果读取出错我们需要抛出异常终止程序。所以需要将代码修改如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//node 内置模块可直接引入  fs：文件系统操作模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;./a.txt&quot;</span>,<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err,data</span>)&#123;  <span class="hljs-comment">//读取文件</span><br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err,data);<br>    <span class="hljs-comment">//读取的后续操作可写在这里</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h5 id="同步读取文件"><a href="#同步读取文件" class="headerlink" title="同步读取文件 **"></a>同步读取文件 **</h5><p>格式：fs.readFileSync(路径[,格式])          同步读取没有回调函数，不会吸收错误</p>
+<p>作用：同步读取文件</p>
+<p>返回值：就是读取到的内容，如果出错就终断执行了，直接控制台报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 读取文件</span><br><span class="hljs-keyword">const</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;start&#x27;</span>);<br><span class="hljs-keyword">var</span> res=fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;文件.text&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;同步读取文件成功后的返回值&#x27;</span>,res)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;end&#x27;</span>);<br><span class="hljs-comment">//----</span><br><span class="hljs-comment">//start</span><br><span class="hljs-comment">//同步读取文件成功后的返回值 你好啊布布妈妈，你要加油哦～</span><br><span class="hljs-comment">//end</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="读取图片的方式"><a href="#读取图片的方式" class="headerlink" title="读取图片的方式  **"></a>读取图片的方式  **</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-comment">//  binary 翻译为 二进制 ，以二进制格式读取图片不能uft8</span><br>fs.<span class="hljs-title function_">readFile</span>(图片路径,<span class="hljs-string">&#x27;binary&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>     <br>       <span class="hljs-keyword">if</span>(err)&#123;<br>           <span class="hljs-comment">//错误时设置响应状态码为404</span><br>           res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&#x27;Content-Type&#x27;</span>,<span class="hljs-string">&#x27;text/plain;charset=utf8&#x27;</span>)<br>           res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">404</span>)<br>           <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;读取出错&#x27;</span>);<br>       &#125;<br>       res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&#x27;Content-Type&#x27;</span>,<span class="hljs-string">&#x27;image/*;charset=utf8&#x27;</span>)<br>       res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>)<br>       <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">end</span>(data,<span class="hljs-string">&#x27;binary&#x27;</span>)<br>     <br>   &#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h4><h5 id="异步写入文件"><a href="#异步写入文件" class="headerlink" title="异步写入文件"></a>异步写入文件</h5><p>格式：fs.writeFile(路径,内容,回调函数)       </p>
+<p>​	路径：如果路径存在直接写入内容，如果路径不存在，node会自动创建一个文件再写入</p>
+<p>​	内容：你要写入文件中的内容</p>
+<p>​	回调函数：必须写，如果没有在要干的事也要写一个空的函数，不写报错</p>
+<p>​					只有一个参数，当出现写入错误的时候，会有错误提示 err</p>
+<p>注意：完全覆盖式的写入</p>
+<p>​          writeFile是将内容替换掉，如果想要追加写入，可以使用appendFile方法</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 读取文件</span><br><span class="hljs-keyword">const</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>); <span class="hljs-comment">//----引入模块</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;start&#x27;</span>);<br>fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&#x27;文件2.text&#x27;</span>,<span class="hljs-string">&#x27;加油牛牛，不怕困难&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err</span>)=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;err文件写入失败&#x27;</span>,err)<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;文件写入成功了&#x27;</span>)<br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;end&#x27;</span>);<br><br><span class="hljs-comment">//---打印</span><br><span class="hljs-comment">/* </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">start</span><br><span class="hljs-comment">end</span><br><span class="hljs-comment">err文件写入失败 null</span><br><span class="hljs-comment">文件写入成功了</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>将上一步读取的数据写入b.txt文件中</p>
+<p>将 fs01.js代码修改如下（中间添加写入文件的代码）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//node 内置模块可直接引入  fs：文件系统操作模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;./a.txt&quot;</span>,<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err,data</span>)&#123;  <span class="hljs-comment">//读取文件</span><br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>    <span class="hljs-comment">//读取的后续操作可写在这里</span><br>    fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&quot;./b.txt&quot;</span>,data,<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;  <span class="hljs-comment">//写入文件</span><br>        <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>    &#125;)<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="同步写入文件"><a href="#同步写入文件" class="headerlink" title="同步写入文件"></a>同步写入文件</h5><p>格式：fs.writeFileSync(路径，内容)；</p>
+<p>没有返回值，什么都没有，写入即可</p>
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><p>使用 unlink方法异步删除文件</p>
+<p>格式：fs.unlink(路径,(err)&#x3D;&gt;{})</p>
+<p>unlink方法有两个参数，1、要删除的路径，2、回调函数，如果出现错误，会有err提示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//node 内置模块可直接引入  fs：文件系统操作模块</span><br><br>fs.<span class="hljs-title function_">unlink</span>(<span class="hljs-string">&quot;./b.txt&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;  <span class="hljs-comment">//删除文件</span><br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h4><p>使用  mkdir  方法  ，</p>
+<p>格式：fs.mkdir(“文件夹名称”,function(err){})</p>
+<p>​          两个参数 1、文件夹名，2、回调函数，如果出现错误，会有err提示</p>
+<p>返回值：没有返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//node 内置模块可直接引入  fs：文件系统操作模块</span><br><br>fs.<span class="hljs-title function_">mkdir</span>(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;  <span class="hljs-comment">//创建 c 文件</span><br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="修改文件名-x2F-文件夹名"><a href="#修改文件名-x2F-文件夹名" class="headerlink" title="修改文件名&#x2F;文件夹名"></a>修改文件名&#x2F;文件夹名</h4><p>格式：fs.rename(“文件夹名称或文件名称（带后缀)”,’新的文件夹名称或文件名称（带后缀)’,function(err){})</p>
+<p>参数 1、需要修改的文件夹名称，或文件名称带后缀（当前目录下）</p>
+<p>​		2、新的文件夹名称，或文件名称带后缀</p>
+<p>​		3、回调函数，如果出现错误，会有err提示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>); <span class="hljs-comment">//node 内置模块可直接引入  fs：文件系统操作模块</span><br><br>fs.<span class="hljs-title function_">rename</span>(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;  <span class="hljs-comment">//将c 文件夹名字 改为  d</span><br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="路径模块"><a href="#路径模块" class="headerlink" title="路径模块 **"></a>路径模块 **</h2><p>path模块包含一系列处理和转换文件路径的工具集，通过 <code>require(&#39;path&#39;)</code> 可用来访问这个模块。</p>
+<h4 id="为什么要使用路径模块"><a href="#为什么要使用路径模块" class="headerlink" title="为什么要使用路径模块"></a>为什么要使用路径模块</h4><p>不同操作系统的路径分割符不同，window下是\ &#x2F; linux 是&#x2F;</p>
+<h4 id="path-extname-文件名"><a href="#path-extname-文件名" class="headerlink" title="path.extname(文件名)"></a>path.extname(文件名)</h4><p>获取路径中的扩展名，如果没有’.’，则返回空</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">var <span class="hljs-built_in">path</span>=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>// console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>)<br><br>console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>.extname(<span class="hljs-string">&#x27;a.js&#x27;</span>)) // .js<br></code></pre></td></tr></table></figure>
+
+<h4 id="path-isAbsolute-‘路径地址’"><a href="#path-isAbsolute-‘路径地址’" class="headerlink" title="path.isAbsolute(‘路径地址’)"></a>path.isAbsolute(‘路径地址’)</h4><p>作用：判断是不是绝对路径</p>
+<p>返回值：一个布尔值。true 表示绝对路径。false 表示非绝对路径</p>
+<ul>
+<li><p>路径表示方法</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">文件名     <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>        同级目录下的<span class="hljs-selector-tag">a</span>.js文件<br>./        ./<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>      同级目录下的<span class="hljs-selector-tag">a</span>.js文件<br>../       ../<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>     上级目录下的<span class="hljs-selector-tag">a</span>.js文件<br>/         /<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.js</span>       根目录下的<span class="hljs-selector-tag">a</span>.js文件<br></code></pre></td></tr></table></figure>
+
+<p>相对路径：和当前位置有关系的路经，叫做相对路径</p>
+<p>绝对路径：从根目录出发的路径叫做绝对路径</p>
+</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">var <span class="hljs-built_in">path</span>=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><br>console.<span class="hljs-built_in">log</span>( <span class="hljs-built_in">path</span>.isAbsolute(<span class="hljs-string">&#x27;/文件.text&#x27;</span>));  //<span class="hljs-comment">---true</span><br>console.<span class="hljs-built_in">log</span>( <span class="hljs-built_in">path</span>.isAbsolute(<span class="hljs-string">&#x27;./文件.text&#x27;</span>)); //<span class="hljs-comment">---false</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="path-join"><a href="#path-join" class="headerlink" title="path.join() **"></a>path.join() **</h4><p>作用：多个参数拼接成相对路径</p>
+<p><code>path.join</code>方法用于连接路径。该方法的主要用途在于，会正确使用<code>当前系统的路径分隔符</code>，<code>Unix系统是”/“</code>，<code>Windows系统是”\“</code>。</p>
+<p>格式：path.join(‘地址1’,’地址2’,’地址3’,…)</p>
+<p>反回值：拼接好的相对路径</p>
+<p>注意:按照第一个地址开始的路径进行拼接，没有根目录这回事，任何个一个地址，都是拼接在前一个地址的后面</p>
+<p>​		除非是..&#x2F; 会向前跳一级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-comment">// 导入path模块</span><br> <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br>  <span class="hljs-comment">// 路径拼接</span><br> <span class="hljs-keyword">let</span> finialPath = path.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;itcast&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c.css&#x27;</span>);<br>  <span class="hljs-comment">// 输出结果 itcast\a\b\c.css</span><br> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(finialPath);<br>---<br>  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;***&#x27;</span>,path.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;./y.js&#x27;</span>,<span class="hljs-string">&#x27;/a&#x27;</span>,<span class="hljs-string">&#x27;./b.js&#x27;</span>,<span class="hljs-string">&#x27;./7&#x27;</span>));<br><span class="hljs-comment">//y.js/a/b.js/7</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;***&#x27;</span>,path.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;./y.js&#x27;</span>,<span class="hljs-string">&#x27;/a&#x27;</span>,<span class="hljs-string">&#x27;./b.js&#x27;</span>,<span class="hljs-string">&#x27;../7&#x27;</span>));<br><span class="hljs-comment">//y.js/a/7</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="path-resolve"><a href="#path-resolve" class="headerlink" title="path.resolve()"></a>path.resolve()</h4><p>作用：多个参数拼接成绝对路径</p>
+<p>格式：path.resolve(‘地址1’,’地址2’,’地址3’,…)</p>
+<p>返回值：拼接好的绝对路径</p>
+<p>注意：每一个参数位置都是相对于当前文件所在的目录设置的；如果你写&#x2F;XXX 回直接回到根目录</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(path.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;./a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>));<br><span class="hljs-comment">// /Users/wei/Desktop/lianxi /a/b</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(path.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;./a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;../c&#x27;</span>));<br><span class="hljs-comment">//  /Users/wei/Desktop/lianxi /a/c</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(path.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;./a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;../c&#x27;</span>,<span class="hljs-string">&#x27;/f&#x27;</span>));<br><span class="hljs-comment">//</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="path-parse"><a href="#path-parse" class="headerlink" title="path.parse()"></a>path.parse()</h5><p>作用：解析一个路径，成为一个对象</p>
+<p>语法：path.parse()</p>
+<p>返回值：一个对象，里面包含了一个地址的所有信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;$$$$&#x27;</span>,path.<span class="hljs-title function_">parse</span>(<span class="hljs-string">&#x27;/Users/wei/Desktop/lianxi /a/c.js&#x27;</span>));<br><span class="hljs-comment">//---</span><br>&#123;<br>  <span class="hljs-comment">//--根目录</span><br>  <span class="hljs-attr">root</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>  <span class="hljs-comment">//-- 文件所在的文件夹的绝对路径</span><br>  <span class="hljs-attr">dir</span>: <span class="hljs-string">&#x27;/Users/wei/Desktop/lianxi /a&#x27;</span>,<br>  <span class="hljs-comment">//-- 完整文件名称  </span><br>  <span class="hljs-attr">base</span>: <span class="hljs-string">&#x27;c.js&#x27;</span>,<br>  <span class="hljs-comment">//-- 后缀名  </span><br>  <span class="hljs-attr">ext</span>: <span class="hljs-string">&#x27;.js&#x27;</span>,<br>  <span class="hljs-comment">//-- 文件名称  </span><br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;c&#x27;</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h4><p>获取当前文件所在的绝对路径</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(__dirname);   	直接获取不需要path.<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用相对路径还是绝对路径"><a href="#使用相对路径还是绝对路径" class="headerlink" title="使用相对路径还是绝对路径"></a>使用相对路径还是绝对路径</h4><p>大多数情况下使用绝对路径，因为相对路径有时候相对的是命令行工具的当前工作目录<br>在读取文件或者设置文件路径时都会选择绝对路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(__dirname);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;01.helloworld.js&#x27;</span>))<br><br>fs.<span class="hljs-title function_">readFile</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;01.helloworld.js&#x27;</span>), <span class="hljs-string">&#x27;utf8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, doc</span>) =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(doc)<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="url模块"><a href="#url模块" class="headerlink" title="url模块"></a>url模块</h2><p>内置操作url地址的模块，直接引入就可以使用  弃用</p>
+<p>格式：url.parse(‘url地址’[,是否解析query])</p>
+<p>​	第一个参数是：要解析的url地址</p>
+<p>​    第二个参数是：默认值是false，不解析query，true，会自动解析query</p>
+<p>返回值：返回一个对象，包含整个url地址的所有信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> url=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;url&#x27;</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(url)<br><br><span class="hljs-keyword">var</span> res=url.<span class="hljs-title function_">parse</span>(<span class="hljs-string">&#x27;https://www.baidu.com:8080/a/b/c?a=100&amp;b=200&amp;c=300#123&#x27;</span>,<span class="hljs-literal">true</span>)<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);   <span class="hljs-comment">//---第二个参数为true时，解析后的query，可以直接获取解析后的值</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;*****&#x27;</span>,res.<span class="hljs-property">query</span>.<span class="hljs-property">a</span>); <br><br><span class="hljs-comment">/* </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">  //传输协议</span><br><span class="hljs-comment">  protocol: &#x27;https:&#x27;,</span><br><span class="hljs-comment">  slashes: true,</span><br><span class="hljs-comment">  auth: null,</span><br><span class="hljs-comment">  //   域名带端口</span><br><span class="hljs-comment">  host: &#x27;www.baidu.com:8080&#x27;,</span><br><span class="hljs-comment">  //端口</span><br><span class="hljs-comment">  port: &#x27;8080&#x27;,</span><br><span class="hljs-comment">  // 域名</span><br><span class="hljs-comment">  hostname: &#x27;www.baidu.com&#x27;,</span><br><span class="hljs-comment">  //哈希</span><br><span class="hljs-comment">  hash: &#x27;#123&#x27;,</span><br><span class="hljs-comment">  //   查询字符串</span><br><span class="hljs-comment">  search: &#x27;?a=100&amp;b=200&amp;c=300&#x27;,</span><br><span class="hljs-comment">  //查询字符串里面的参数信息</span><br><span class="hljs-comment">  query: &#x27;a=100&amp;b=200&amp;c=300&#x27;,   //-----第二个参数为false时</span><br><span class="hljs-comment">  query: [Object: null prototype] &#123; a: &#x27;100&#x27;, b: &#x27;200&#x27;, c: &#x27;300&#x27; &#125;,  //---第二个参数为true时，</span><br><span class="hljs-comment">  /路径名称,不含请求参数的请求地址</span><br><span class="hljs-comment">  pathname: &#x27;/a/b/c&#x27;,</span><br><span class="hljs-comment">  //   路径带查询字符串</span><br><span class="hljs-comment">  path: &#x27;/a/b/c?a=100&amp;b=200&amp;c=300&#x27;,</span><br><span class="hljs-comment">  //   完整路径</span><br><span class="hljs-comment">  href: &#x27;https://www.baidu.com:8080/?a=100&amp;b=200&amp;c=300#123&#x27;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="网络基本概念"><a href="#网络基本概念" class="headerlink" title="网络基本概念"></a>网络基本概念</h2><p>网站组成分为两大部分：客户端 和 服务器端</p>
+<p>客户端：在浏览器运行的部分，就是用户看到并与之交互的界面程序，使用html css js构建</p>
+<p>服务器端：在服务器中运行的部分，负责存储数据和处理应用逻辑</p>
+<p>客户端和服务器端通过请求和响应获取数据及创建数据，请求可以理解为客户端向服务器端发送一个指令，告诉服务器我要获取数据，响应可以理解为服务器在接收到指令以后对客户端进行回应，将客户端请求的数据发给客户端，网站实际就是基于请求和响应的应用结构</p>
+<h4 id="什么是服务器"><a href="#什么是服务器" class="headerlink" title="什么是服务器"></a>什么是服务器</h4><p>早些年，电脑都是独立的，A电脑的文件就A电脑的，B电脑的文件就是B电脑的，但是如果A电脑想要给B电脑传输数据，那就需要拉一根线。</p>
+<p>然后假如这时候，加入了一个新的C电脑，这时候三台电脑要互相连接的话，需要接3根线</p>
+<p>但是如果有4台电脑的话，就需要每个电脑都接3根线，也就是需要接6根线</p>
+<p>那要是随着时间的推移，电脑数量越来越多，那需要的线材也越来越多，需要的接口也越来越多，这样的话就肯定不行的。这时候有人就想到了，让所有的电脑接到一台电脑上，然后让这台电脑转发一下数据不就行了么？那这台负责转发数据的电脑，就被我们成为服务器。</p>
+<h4 id="什么是IP地址"><a href="#什么是IP地址" class="headerlink" title="什么是IP地址"></a>什么是IP地址</h4><p>ip地址：是互联网设备的唯一标识</p>
+<p>那这里就有问题了，A电脑要给C电脑发送数据的话，就必须要知道对方是哪一台机器，不然数据就有可能被服务器送给B或者D，那为了准确送达数据，我们就需要给电脑加上门牌号和地址，就好像你快递寄送的时候也需要地址一样，数据上也需要打上地址。</p>
+<p>而我们说的IP地址，就是电脑里用于交互数据的地址，有了IP地址后，你的数据就不会被错误的发送到别人的电脑上，比如往192.168.1.123的电脑上发送一个表格，那这个数据就肯定会被送到192.168.1.123，而不是192.168.1.100上。</p>
+<h4 id="什么是公网IP什么是局域网IP"><a href="#什么是公网IP什么是局域网IP" class="headerlink" title="什么是公网IP什么是局域网IP"></a>什么是公网IP什么是局域网IP</h4><p>你要寄送快递的时候，需要填省，市，县，然后是小区，门牌号。</p>
+<p>其中局域网IP就类似我们的小区门牌号，如果你在小区里说我家是12号楼1单元101，大家都知道你是这个地方，但是你要去别的小区说你是12号楼1单元101，他们肯定不知道你说的是你的小区，而会认为是他们的小区。所以局域网IP就是用于某一群体内部交互数据的，他的地址只在这个群体内部生效，拿出这个群体就失效了。</p>
+<p>而如果是小区与小区之间交互数据的话，就必须要前缀小区的名字，先送到小区，再分给门牌号。这里举个例子吧，寄送到月亮湾小区的12号楼1单元101，那么需要先送到月亮湾，然后再分给12号楼1单元101。</p>
+<p>小区的名字是唯一的，全中国就这一个小区叫月亮湾，所以你说月亮湾，谁都能通过查询知道月亮湾在哪里，是哪个小区。那么这种你一说，大家都能知道位置和是什么的地址名称，就叫公网IP。</p>
+<p>也就是说公网IP相当于是可以直接访问的IP地址，相当于省市县这种全国唯一的地址，而局域网IP是在公网IP之下的门牌号。</p>
+<p>A公司中的a电脑如果给自己公司的b电脑传输数据，他只需要打上192.168.1.2直接就能送过去，因为他们都在一个公网IP下，所以他们的门牌号是认识的，只需要局域网IP就可以寄送数据，但是如果A公司的a电脑要给B公司的c电脑送数据，就需要先将数据送给本公司公网IP下的117.48.202.168，然后交给B公司公网IP下的202.108.22.5，然后再交给192.168.1.3，直接发送给192.168.1.3的话就会发送到自家公司的c电脑上而不是B公司的c电脑了。</p>
+<h4 id="网页浏览的原理"><a href="#网页浏览的原理" class="headerlink" title="网页浏览的原理"></a>网页浏览的原理</h4><p>大家日常上网的时候，打开的网页本质上就是你从对方服务器上获取的文件，比如说你现在正在看的知乎上的文章，就存储在知乎的服务器上，你通过知乎客户端的浏览器，获取到了这些数据，并下载到了你的手机缓存当中，然后你的手机再把他们显示到屏幕上。</p>
+<p>浏览网页的本质，就是下载文件，并将下载下来的网页文件变成你所能看到的图像。网页文件一般是.html结尾的，不相信的话你可以用电脑浏览器，随便打开一个网址，右键空白处，网页另存为，然后你就会发现你存储下来了一个.html结尾的网页文件，这时候你就算断网，双击这个网页文件你依旧可以用浏览器浏览，因为这个html文件被你保存到电脑上了。</p>
+<p>所以浏览网页的原理就是，在互联网上找到了对方的电脑，然后从对方的电脑里拷贝出来html网页文件到你的电脑上，并将其转化成了文字和图片显示到显示器或手机上。</p>
+<h4 id="域名与IP的关系"><a href="#域名与IP的关系" class="headerlink" title="域名与IP的关系"></a>域名与IP的关系</h4><p>既然你要浏览网页需要在整个互联网上找到对方的电脑，那你就需要输入对方的IP才可以访问，比如大家可以在浏览器里输入这个IP地址【14.215.177.39】你们可以看看打开的是不是百度的首页。是不是很有意思，你靠着IP地址可以访问百度，你输入<a href="https://link.zhihu.com/?target=http://www.baidu.com">http://www.baidu.com</a>也可以上百度，这是什么原理呢？</p>
+<p>在早期的时候，上网就是这么麻烦，你想要访问对方的网站，你必须要知道对方的IP，然后在你的浏览器里输入IP地址，然后就可以访问了，但是IP地址是4组数字，记IP地址的难度不亚于背一个陌生人的手机号，于是乎，我们用一串英文字母来代替IP地址，这就是网站域名，比如百度的网站域名就是<a href="https://link.zhihu.com/?target=http://www.baidu.com">http://www.baidu.com</a>，而百度的IP地址就是14.215.177.39，网站域名很好记，而且域名也可以自定义。</p>
+<p>但是这里就有一个问题了，你输入的是域名，你的电脑该怎么将他变成IP地址呢？就比如你输入的是<a href="https://link.zhihu.com/?target=http://www.baidu.com">http://www.baidu.com</a>，为什么你的电脑知道对方的IP是14.215.177.39呢？这个东西就是hosts文件，hosts文件就在你的C:\windows\system32\drivers\etc文件夹下，他相当于电脑的电话本，他记录着每一个域名对应的IP地址，当你输入域名而不是IP的时候，他就会在这个电话本里找到对应的域名，然后把他转化成IP地址。</p>
+<h4 id="DNS解析服务器"><a href="#DNS解析服务器" class="headerlink" title="DNS解析服务器"></a>DNS解析服务器</h4><p>但是这样也有问题，那就是Hosts文件是有限的，就和你不可能拥有这个世界上所有人的电话号码一样。既然我们自己不可能拥有全世界所有人的电话号码，但是我们可以将收集电话号码这个任务交给一个专门来干这个活的人，然后大家想要问电话的时候去他那查一下就可以了。</p>
+<p>这就是DNS服务器，DNS服务器有着相当全的域名和IP，当你输入一串网站的时候，这串网站并不会直接访问，而是先将这个网站发送给DNS服务器，DNS服务器帮你把这串网站变成了IP地址，然后返回给你的电脑，你再访问这个IP地址，这样就解决了IP难记，而域名不能直接访问的问题了。</p>
+<p>所以这样就可以解释文章开头那个故障了，你打不开网页，却可以上QQ，因为上QQ不需要涉及到DNS解析服务，直接访问的就是腾讯服务器的IP，但是你打开网页输入的是域名，而你的DNS服务器输入错误或者DNS服务器炸了，所以你电脑不知道这串域名对应的IP，你自然就没法访问这个网站，而如果你手动直接输入IP，你依旧是可以访问网站的。</p>
+<h4 id="什么是DNS劫持？"><a href="#什么是DNS劫持？" class="headerlink" title="什么是DNS劫持？"></a>什么是DNS劫持？</h4><p>那DNS服务器会告诉你A网站的IP是A，B网站的IP是B，那假如你输入的A网站域名，但是他给你B的IP，你是不是就访问到别的网站去了？</p>
+<p>既然DNS服务器可以这么玩，我是不是可以将用户引导到我的网站上？比如你要看个电影，然后你输入了爱奇艺的官网，然后我作为DNS服务器，我把优酷的IP返回给你，最后就是你虽然输入的爱奇艺官网，但是却得到了优酷的IP并访问了优酷的IP，进入了优酷的网站上。</p>
+<p>当然这里我只是举个例子，我举这个例子就是想告诉大家，DNS服务器想给你返回什么IP就给你返回什么，所以他可以在幕后操作一些东西。最简单的就是广告。比如A网站没有广告，你直接访问就是没有的，但是你的DNS服务器把A网站下载下来了，给这个网站加了个广告，然后重新上传到了一个IP上，并把这个IP告诉了你，那就是你虽然输入的A网站的域名，但是你访问的是一个包含了广告的复制版A网站，虽然两者功能一样，但是却完全不是一个服务器上的。</p>
+<p>这些就被我们成为DNS劫持，DNS劫持对于网络访问的影响和体验是非常严重的，除了DNS服务器，你的路由器同样可以这么干，所以在买路由器的时候也有人会关注这个路由器是否会进行DNS劫持。</p>
+<h4 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h4><p>服务器不光可以提供网站服务，还可以提供邮件服务，文件的上传下载服务，当有请求来的时候怎么区分请求的什么服务，为了区分不同的服务</p>
+<p>端口是计算机与外界通讯交流的出口，用来区分服务器电脑中提供的不同的服务。</p>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>统一资源定位符，又叫URL（Uniform Resource Locator），是专为标识Internet网上资源位置而设的一种编址方式，我们平时所说的网页地址指的即是URL。</p>
+<p>组成：传输协议:&#x2F;&#x2F;服务器IP或域名:端口&#x2F;资源所在位置标识</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">http</span>:<span class="hljs-comment">//www.itcast.cn/news/20181018/09152238514.html</span><br></code></pre></td></tr></table></figure>
+
+<p>http：超文本传输协议，提供了一种发布和接收html页面的方法     html </p>
+<p>通过url的地址或域名地址先找到要请求的服务器，请求是浏览器默认给我们加上80端口</p>
+<p>资源在服务器中的位置，服务器可以拿到请求资源的信息，具体返回什么是由服务器说的算的</p>
+<h4 id="node网站服务器端"><a href="#node网站服务器端" class="headerlink" title="node网站服务器端"></a>node网站服务器端</h4><p>能够提供网站访问服务的机器就是网站服务器，它能够接收客户端的<code>请求</code>，能够对请求做出<code>响应</code>。</p>
+<p>首先，它得是一台电脑，在这个电脑中要安装node运行环境，然后在node环境中使用node.js创建一个能够接受请求和响应请求的对象，满足以上条件，它就是一个node服务器</p>
+<p>客户端给服务端发送数据，叫请求，服务端接受到请求后返回相应的数据，叫响应。</p>
+<h4 id="开发过程中"><a href="#开发过程中" class="headerlink" title="开发过程中"></a>开发过程中</h4><p>在开发阶段，不需要买一台电脑，或者将代码部署到远程服务器，客户端和服务器端可以使用同一台电脑。</p>
+<p>在开发阶段开发人员的电脑即可以充当客户端又可以充当服务器，因为我们即安装了浏览器又按装了node开发环境</p>
+<p>既然是同一台电脑，如何通过网络的方式去访问</p>
+<p>每台电脑都有自己一个独特的域名和IP</p>
+<p>本机域名：localhost<br>本地IP   ：127.0.0.1</p>
+<p>当在浏览器输入localhost就代表通过网络的方式去找到这台服务器</p>
+<h2 id="http模块，创建后台服务器"><a href="#http模块，创建后台服务器" class="headerlink" title="http模块，创建后台服务器"></a>http模块，创建后台服务器</h2><ul>
+<li><p>导入模块</p>
+<p>node自带创建服务的模块 http，使用时只需要直接引入即可</p>
+<p>const http&#x3D;require(‘http’);</p>
+</li>
+<li><p>创建服务</p>
+</li>
+</ul>
+<p>格式：http.createServer(回调函数)</p>
+<p>作用：创建一个http服务，创建web服务器对象</p>
+<p>返回值：一个http服务，网站服务器对象</p>
+<p>nodejs和javascript一样，都是基于事件驱动的语言，当什么时候去做什么事情<br>给服务器对象添加请求事件,参数就是事件处理函数<br>当请求来的时候就会去执行事件处理函数，事件处理函数的两个参数，req代表请求对象，对象中存储了和请求相关的一些信息，比如说请求地址，请求的id等，res代表响应对象，我们要使用这个对象里的方法对客户发来的请求作出响应，比如使用res中的end方法结束请求，并对请求作出响应</p>
+<p>res.end(响应的内容)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> http=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> server=http.<span class="hljs-title function_">createServer</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;我被执行了&#x27;</span>)<br>&#125;)<br>server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;server running at port 8080&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>监听端口</li>
+</ul>
+<p>光有web服务还是不够的还要监听端口，才能向外界提供服务</p>
+<p>格式：服务.listen(端口号)</p>
+<p>监听某一个端口使用的方法</p>
+<p>当你监听端口完毕的时候，在cmd里面运行起来这段代码，你的cmd窗口就会因为这段代码变成一个服务器，此时当客户端请求 lcoalhost：端口 的时候，每一个请求都会触发一次createServer 的时候的涵数</p>
+<p>注意： </p>
+<p>监听端口 端口范围：0～65535，尽量不要使用1024以下的端口，因为一些电脑内置的软件，还有一些插件会占用1024以下， 还有一些特殊的端口号，也不要用，比如数据库的端口号mysqel 的端口号3306，webstorm(前端的开发工具)自己的服务器的 端口号63342，vscode自己服务的端口号是5500</p>
+<p>可以使用一些吉利数字一般没人用，比如6666，8888，8080</p>
+<p>creatServer里的函数就相当于一个事件处理函数，当前段发起一个请求的时候就触发了</p>
+<p>node服务器是一个空服务器，它什么都没有，它只能给你启动起一个服务来，你想看目录，就自己写，所有东西都自己写，它只是一个空目录</p>
+<hr>
+<p>http.createServer时候传递的函数，是会在前端的每一次请求都触发一次，这个函数接收两个参数，一个叫request,一个叫response</p>
+<p>request：表示本次请求的所有请求信息</p>
+<p>​	服务器解析完请求报文以后，组装的内容，你需要获取请求报文的什么内容，直接在request里面找</p>
+<p>responese：将来会组装成响应报文的东西，你需要向响应报文里添加什么，就往这个response里指定位置添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> http=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><br><span class="hljs-keyword">const</span> server=http.<span class="hljs-title function_">createServer</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    <span class="hljs-comment">//---------------------------req 请求对象</span><br>    <span class="hljs-comment">// req.url 表示本次请求的path</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;有一个请求进来了&#x27;</span>,req.<span class="hljs-property">url</span>)<br>  	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;accpet&#x27;</span>]);<span class="hljs-comment">//  req.headers 获取到请求报文里信息</span><br>    conosle.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">method</span>);<span class="hljs-comment">//获取客户端的请求方式</span><br>    <br>    <span class="hljs-comment">//--------------------------res 响应对象</span><br>    <span class="hljs-comment">// 响应内容包含中文的时候要设置一下响应头</span><br>    res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>,&#123;<span class="hljs-string">&#x27;content-type&#x27;</span>:<span class="hljs-string">`text/html;charset=utf8`</span>&#125;)<br>    <span class="hljs-comment">//res.setHeader(&#x27;Content-Type&#x27;,&#x27;text/html;charset=utf8&#x27;)</span><br>     <span class="hljs-comment">// res.end() 响应报文的响应体，就是返回给前端的内容</span><br>    <span class="hljs-comment">//前后端交互只能交互字符串</span><br>    res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;我是响应体 hello&#x27;</span>)<br>    <span class="hljs-comment">//实际是我们应该根据请求的不同，返回不同的东西</span><br><br>&#125;)<br><br>server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;server running at port 8080&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>注意：启动服务后，再修改了js文件以后，不会直接更新到页面，需要命令行按 ctrl+c 结束运行,  再重新运行 该js 后  ，再刷新 浏览器，才能看到效果。</p>
+<hr>
+<p>请求地址只是一个字符串的标识，看起来是一个路径，在浏览器请求地址和在服务器上文件的真是路径可以是不一样的</p>
+<h4 id="读取一个文件并传输给页面"><a href="#读取一个文件并传输给页面" class="headerlink" title="读取一个文件并传输给页面"></a>读取一个文件并传输给页面</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> http=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> server=http.<span class="hljs-title function_">createServer</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    <span class="hljs-comment">// req.url 表示本次请求的path</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;有一个请求进来了&#x27;</span>,req.<span class="hljs-property">url</span>)<br>    <span class="hljs-comment">// 响应内容包含中文的时候要设置一下响应头</span><br>    res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>,&#123;<span class="hljs-string">&#x27;content-type&#x27;</span>:<span class="hljs-string">`text/html;charset=utf8`</span>&#125;)<br>    <span class="hljs-comment">//res.setHeader(&#x27;Content-Type&#x27;,&#x27;text/html;charset=utf8&#x27;)</span><br>     <span class="hljs-comment">// res.end() 响应报文的响应体，就是返回给前端的内容</span><br>    <span class="hljs-comment">//前后端交互只能交互字符串</span><br>    <span class="hljs-comment">//实际是我们应该根据请求的不同，返回不同的东西</span><br>    <span class="hljs-comment">//读取文件</span><br>    fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./加油2.text&#x27;</span>,<span class="hljs-string">&quot;utf-8,(err,data)=&gt;&#123; </span><br><span class="hljs-string">        res.end(data)</span><br><span class="hljs-string">    &#125;)</span><br><span class="hljs-string"></span><br><span class="hljs-string">&#125;)</span><br><span class="hljs-string">server.listen(8080,()=&gt;&#123;</span><br><span class="hljs-string">    console.log(&#x27;server running at port 8080&#x27;);</span><br><span class="hljs-string">&#125;)</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h5><p>路由是指客户端请求地址与服务器程序代码的对应关系，简单说，就是请求什么就响应什么</p>
+<p>路由实际就是一堆判断代码，判读客户端的请求的地址是什么然后调用服务端对应的处理代码</p>
+<h5 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h5><p>服务器不需要处理，可以直接响应给客户端的资源就是静态资源，例如 css，js，image，html文件</p>
+<p>实际就是浏览器能直接运行的文件，无论谁每次请求得到的响应都是一样的</p>
+<p>在服务端创建一个放置静态资源的文件夹，当客户端请求某个静态资源时，直接响应给他</p>
+<p>动态资源</p>
+<p>相同的请求地址,不同的响应资源，这响应结果就是动态资源</p>
+<p><a target="_blank" rel="noopener" href="http://www.itals.cn/article?id=1">http://www.itals.cn/article?id=1</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.itals.cn/article?id=2">http://www.itals.cn/article?id=2</a></p>
+<p>案例：使用nodejs 部署一个服务器，能够根据请求返回指定的页面和指定的文件</p>
+<p>步骤：</p>
+<ul>
+<li><p>1:http模块创建服务</p>
+<p>1-1:导入http模块</p>
+<p>1-2:创建服务</p>
+<p>1-3:监听端口</p>
+</li>
+<li><p>2 根据请求返回对应的内容</p>
+<p>2-1 拿到req里面的url信息</p>
+<p>​		req.url 表示本次请求的path</p>
+<p>2-2 进行if条件判断</p>
+<p>2-3 读取指定文件返回给前端</p>
+</li>
+<li><p>3 读取到的文件返回给前端</p>
+<p>3-1 导入fs模块</p>
+<p>3-2 使用fs.readFile 方法读取到我服务器上的那个index.html文件</p>
+<p>3-3 把读取到的内容返回给前端</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 导入模块</span><br><span class="hljs-keyword">const</span> http=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">// 创建服务</span><br>http.<span class="hljs-title function_">createServer</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)&#123;<br>    <span class="hljs-comment">//拿到req里面的url信息</span><br>    <span class="hljs-keyword">const</span> &#123;url&#125;=req;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;*****&#x27;</span>,url)<br>  <br>    <span class="hljs-comment">// 进行if条件判断，约定好你要哪一个html文件，把名称写清楚</span><br>    <span class="hljs-keyword">if</span>(url.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;.html&#x27;</span>))&#123;<br>        <span class="hljs-comment">// 读取index。html文件 </span><br>        fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./html&#x27;</span>+url,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>            <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">return</span>   res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;&lt;h1&gt;404页面没有找到&lt;/h1&gt;&#x27;</span>)<br>            <span class="hljs-comment">// html页面设置响应头</span><br>            res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>,&#123;<span class="hljs-string">&#x27;content-type&#x27;</span>:<span class="hljs-string">`text/html;charset=utf8`</span>&#125;)<br>            <span class="hljs-comment">//res.setHeader(&#x27;Content-Type&#x27;,&#x27;text/html;charset=utf8&#x27;)</span><br>            res.<span class="hljs-title function_">end</span>(data)<br>        &#125;)<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(url.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;.js&#x27;</span>))&#123;<br>        fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./js&#x27;</span>+url,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>           <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">return</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);<br>           res.<span class="hljs-title function_">end</span>(data)<br>        &#125;)<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(url.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;.css&#x27;</span>))&#123;<br>        fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;./css&quot;</span>+url,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>            <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">return</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);<br>            res.<span class="hljs-title function_">end</span>(data)<br>        &#125;)<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>         <span class="hljs-comment">// html页面设置响应头</span><br>        res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&#x27;Content-Type&#x27;</span>,<span class="hljs-string">&#x27;text/html;charset=utf8&#x27;</span>)<br>        res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;&lt;h1&gt;404页面没有找到&lt;/h1&gt;&#x27;</span>)<br>    &#125;<br><br>&#125;).<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="http介绍"><a href="#http介绍" class="headerlink" title="http介绍"></a>http介绍</h2><h4 id="什么是http协议"><a href="#什么是http协议" class="headerlink" title="什么是http协议"></a>什么是http协议</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">http 传输协议<br><span class="hljs-bullet">      +</span> 前后端交互的方式(类似于发电报)<br><span class="hljs-bullet">      +</span> 前端以什么样的形式发送数据给后端<br><span class="hljs-bullet">      +</span> 后端以什么样的形式返回数据给前端<br></code></pre></td></tr></table></figure>
+
+<h4 id="常见协议类型以及特点"><a href="#常见协议类型以及特点" class="headerlink" title="常见协议类型以及特点"></a>常见协议类型以及特点</h4><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf">UDP<br>不保证顺序，不保证是否丢失数据，<br>UDP传输效率高 支持<span class="hljs-number">1</span>对多，多对<span class="hljs-number">1</span><br>张老师是个超级有趣的年轻小伙子 <span class="hljs-operator">=</span>&gt;  年轻小伙子超级有趣的。<br></code></pre></td></tr></table></figure>
+
+<h4 id="http协议基于TCP协议，面向连接"><a href="#http协议基于TCP协议，面向连接" class="headerlink" title="http协议基于TCP协议，面向连接"></a>http协议基于TCP协议，面向连接</h4><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs subunit">传输协议（每一次的传输都要经历4个步骤）<br>     1. 必须经历四个步骤<br>       1<span class="hljs-string">-1</span>. 建立连接<br>       1<span class="hljs-string">-2</span>. 发送请求(前端给后端)<br>       1<span class="hljs-string">-3</span>. 返回响应(后端给前端)<br>       1<span class="hljs-string">-4</span>. 断开连接<br>     2. 只能由前端发起<br>       + 不能由后端主动沟通前端<br>     3 一次只能说一个事<br>    		对于这个事情你可以尽可能的描述的详细，但是一次链接只能说一个事情<br>    	在发送请求的时候可以带很长的参数来描述这个事，但是一次只能一个事，想说另一件事得重新再发一个请求<br>     4. 前后端交互只能交互字符串（但是对字符串的格式没有要求，可以使用json字符串，buffer字符串）<br>       + 所有其他数据类型都不可以<br>       + 中文会转成 url 编码<br>       <br>       正常的字符串，一个字节应该是8位的0101011，beffer字符串是用8位来描述每一位，相当于描述一个字节是用了64位，实际它是将一个字节拆的更细，这样再一个字节可以存储更多的东西，buferr是大数据通讯的格式<br></code></pre></td></tr></table></figure>
+
+<h3 id="一个请求的四个步骤"><a href="#一个请求的四个步骤" class="headerlink" title="一个请求的四个步骤"></a>一个请求的四个步骤</h3><h4 id="1：建立连接"><a href="#1：建立连接" class="headerlink" title="1：建立连接"></a>1：建立连接</h4><p>​	基于TCP&#x2F;IP 协议的三次握手</p>
+<p>三次握手是浏览器和服务器的之间的，</p>
+<p>目的：为了保证通道的连接，确保前端和后端都可以正常的发送及接收信息</p>
+<p>三次握手和四次挥手</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">目的: 为了保证通道的连接<br>       你在火车上，吃着自热火锅唱着歌，旁边一男的一直盯着你，你当然很不爽啦，然后你就问他<br>       “你瞅啥”，结果对方毫不示弱，回复你：“瞅你咋地”，这个时候真男人绝对不要怂，直接怼他：“再瞅一个你试试”，对面继续盯着你。好了，言至于此，任何语言都是多余的，两人肯定要来一份真刀真枪的真男人对决。所以说TCP必须经过三次握手，才能达到可靠的传输效率。比如，我发送一次，你瞅啥，你不说瞅你咋地，那我也没办法啊，怒气值不够啊，那我只能继续吃着火锅唱着歌。但是如果对面给你回复了，瞅你咋地，这个时候你不回应，你怂了，那这个事情也就过去了，你们也干不起来。只有当你回复了一句 再瞅你试试 这个时候，我觉得必须通过一个男上加男来结束。少一次，你的信息，你的怒气值达不到，你的信息传达不过去。多一次，显得多余，干就完了呗。<br>       <br>两次握手只能保证单向连接是畅通的。<br>Step1       A -&gt; <span class="hljs-keyword">B </span>: 你好，<span class="hljs-keyword">B。</span><br><span class="hljs-keyword"></span>Step2       A &lt;- <span class="hljs-keyword">B </span>: 收到。你好，A。<br>这样的两次握手过程， A 向 <span class="hljs-keyword">B </span>打招呼得到了回应，即 A 向 <span class="hljs-keyword">B </span>发送数据，<span class="hljs-keyword">B </span>是可以收到的。<br>但是 <span class="hljs-keyword">B </span>向 A 打招呼，A 还没有回应，<span class="hljs-keyword">B </span>没有收到 A 的反馈，无法确保 A 可以收到 <span class="hljs-keyword">B </span>发送的数据。<br>只有经过第三次握手，才能确保双向都可以接收到对方的发送的 数据。<br>Step3       A -&gt; <span class="hljs-keyword">B </span>: 收到，<span class="hljs-keyword">B。</span><br><span class="hljs-keyword"></span>这样 <span class="hljs-keyword">B </span>才能确定 A 也可以收到 <span class="hljs-keyword">B </span>发送给 A 的数据。<br><br>为了保证断开连接<br>        <span class="hljs-number">1</span>. 前端给后端发一个消息: <span class="hljs-string">&quot;响应体收到, 我要准备断开连接了&quot;</span><br>        <span class="hljs-number">2</span>. 后端给前端发一个消息: <span class="hljs-string">&quot;好的, 我知道你收到响应体了&quot;</span><br>        <span class="hljs-number">3</span>. 后端在其给前端发一个消息: <span class="hljs-string">&quot;我已经准备断开连接了, 当我再次收到你的消息的时候, 我就断了, 不会再次回覆&quot;</span><br>        <span class="hljs-number">4</span>. 前端收到后端的第一个消息<br>        <span class="hljs-number">5</span>. 前端收到后端的第二个消息: <span class="hljs-string">&quot;好的, 我断开了, 别回了&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-发送请求"><a href="#2-发送请求" class="headerlink" title="2. 发送请求"></a>2. 发送请求</h4><p>前端发送请求给后端，必须以请求报文的形式发送。请求报文，一个特殊格式的字符串（由浏览器进行组装，我们只负责填充）</p>
+<p>什么是报文：在HTTP请求和响应的过程中传递的数据块就叫报文，包括要传送的数据和一些附加信息，并且要遵守规定好的格式。（其实就是对话说明及对话的内容）</p>
+<p>请求报文：请求行  请求头 请求空行 请求体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">2</span>:发送请求<br>       <span class="hljs-variable constant_">HTTP</span> 请求报文由<span class="hljs-number">3</span>部分组成(请求行+请求头+请求体)<br>      + 前端发送请求给后端, 必须以 请求报文 的形式发送<br>      + 一个特殊格式的字符串文件(由浏览器进行组装)<br>请求报文的组成<br>        =&gt; 请求行<br>          -&gt; <span class="hljs-variable constant_">GET</span> / <span class="hljs-attr">POST</span>: 请求方式(未完待续)   类似于说话的语气<br>          -&gt; ./login.<span class="hljs-property">php</span>: 请求地址           向什么位置发送请求<br>          -&gt; <span class="hljs-variable constant_">HTTP</span>/<span class="hljs-number">1.1</span>: 传输协议版本  目前用的基本都是<span class="hljs-number">1.1</span> ，<span class="hljs-number">1.0</span>版本已经不用了<br>        =&gt; 请求头（请求头都是键值对的形式）<br>          -&gt; 对本次请求的描述信息<br>          -&gt; <span class="hljs-title class_">Host</span>: 请求主机<br>          -&gt; <span class="hljs-title class_">Accept</span>: 期望接收的数据类型<br>          -&gt; <span class="hljs-title class_">UserAgent</span>: 请求终端 通过这个可以判断是移动端请求还是pc端请求，不同的客户端请求返回结果可能不一样<br>          -&gt; <span class="hljs-title class_">Content</span>-<span class="hljs-attr">type</span>: 请求体的数据格式<br>          —&gt; <span class="hljs-title class_">Referer</span> 来源，即表示这是请求是从哪个<span class="hljs-variable constant_">URL</span>进来的,比如想在网上购物,但是不知道选择哪家电商平台,你就去问度娘,说哪家电商的东西便宜啊,然后一堆东西弹出在你面前,第一给就是某宝,当你从这里进入某宝的时候,这个请求报文的<span class="hljs-title class_">Referer</span>就是[www.<span class="hljs-property">baidu</span>.<span class="hljs-property">com</span>]<br>          -&gt; <span class="hljs-title class_">User</span>-<span class="hljs-title class_">Agent</span> 作用：告诉服务器，客户端使用的操作系统、浏览器版本和名称<br>          -&gt; <span class="hljs-title class_">Cookie</span>: （未完待续）<br>        =&gt; 请求空行<br>        用来分隔请求体和请求头的，因为请求体也是键值对，所有要分隔一下<br>        =&gt; 请求体<br>          -&gt; 前端携带给后端的参数，有的有，有的没有<br>          -&gt; 它将一个页面表单中的组件值通过param1=val1&amp;parma=<span class="hljs-number">2</span>的键值对形式编码成一个格式化串,它承载多个请求参数的数据,不但报文头可以传递请求参数,<span class="hljs-variable constant_">URL</span>也可以通过/chapter15/user.<span class="hljs-property">html</span>? param1=value1&amp;param2=value2”的方式传递数值<br>          <br>          <br>          ----我们要做的事就是确定一下请求方式，请求地址，参数是什么，浏览器拿到内容后自动组装成一个请求报文发送给服务端----<br>          <br><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-接收响应"><a href="#3-接收响应" class="headerlink" title="3.接收响应"></a>3.接收响应</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs js">          <br><span class="hljs-number">3.</span> 接收响应<br>      + 每一个响应是由服务端接收到前端的请求以后, 给出的结果<br>      + 必须以响应报文的形式发送个前端<br>      + 响应报文<br>        <span class="hljs-number">1.</span> 状态行<br>          =&gt; <span class="hljs-number">200</span>: 响应状态码(未完待续)<br>          =&gt; <span class="hljs-attr">ok</span>: 对响应状态码的简单描述<br>          =&gt; <span class="hljs-variable constant_">HTTP</span>/<span class="hljs-number">1.1</span> 传输协议版本<br>        <span class="hljs-number">2.</span> 响应头<br>          =&gt; 对本次响应的描述信息<br>          有若干个属性,形式为<span class="hljs-attr">key</span>:val,服务端据此获取客户端信息<br>          =&gt; <span class="hljs-title class_">Date</span>: 服务器时间(世界标准时间)<br>          =&gt; <span class="hljs-title class_">Server</span>: 服务器信息<br>          =&gt; <span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span>: 响应体的数据格式<br>          =&gt; content-<span class="hljs-attr">length</span>:响应体长度（一个汉字占<span class="hljs-number">3</span>个长度的位置）<br>          ...<br>        <span class="hljs-number">3.</span> 响应体<br>          =&gt; 后端给前端的数据，即我们要的数据。<br>          <br> 响应状态码<br>      + 以一个数字表示本次请求的响应状态<br>        =&gt; 成功: 创建成功, 删除成功, ...<br>        =&gt; 失败: 客户端失败, 服务端失败, ...<br>        这个数字是<span class="hljs-number">100</span>～<span class="hljs-number">599</span>,分为五类<br>         <span class="hljs-number">100</span>～<span class="hljs-number">199</span>:表示链接继续<br>         <span class="hljs-number">200</span>～<span class="hljs-number">299</span>:表示各种意义上的成功<br>         <span class="hljs-number">300</span>～<span class="hljs-number">399</span>:表示重定向<br>         <span class="hljs-number">400</span>～<span class="hljs-number">499</span>:表示客户端错误<br>         <span class="hljs-number">500</span>～<span class="hljs-number">599</span>:表服务端错误<br>         <br>         网上有详细的<br><br>    常见状态码  ** 重点 ，面试常出<br>      + <span class="hljs-number">101</span> 表示连接继续<br>      <br>      + <span class="hljs-number">200</span> 请求成功 服务端如果没有返回状态码，默认就是<span class="hljs-number">200</span><br>      <br>      + <span class="hljs-number">302</span> 临时重定向<br>        =&gt; 本次请求临时使用 服务器 来决定浏览器跳转的页面<br>        百度用的很多，就是我们在百度上搜索一个网页，点击后先跳到百度的统计页面，再跳到我们所要去的页面，这样百度可以统计有多少用户是通过百度点击过去的，这样百度就可以向平台收费<br>        <br>      + <span class="hljs-number">301</span> 永久重定向<br>        =&gt; 终身只要访问这个地址, 就会给重新切换到新的地址<br>        访问 www.360buy.<span class="hljs-property">com</span>（这个是京东最初的域名） 就永久重定向到了京东 <br>        因为最初www.<span class="hljs-property">jd</span>.<span class="hljs-property">com</span>被人注册，京东花大价钱买的，历史记录在案的买的最贵的域名就是这个<br>        从这京东购买以后，就有了一个新的职业叫域名投资<br>        <br>      + <span class="hljs-number">304</span> 缓存<br>        =&gt; 当你访问过一遍这个页面以后，浏览器会自动缓存， 当你在其访问同一个地址的时候, 不会像服务器发送请求了, 而是从缓存里面获取<br>        在浏览器中打开调试工具后，在左上角的刷新按钮上，点鼠标右键，可以出现 清空缓存并硬性重新加载<br>      + <span class="hljs-number">400</span> 客户端请求有语法错误，比如说请求路径错了，或者请求参数不匹配  <br>      + <span class="hljs-number">403</span> 访问权限不够 这是客户端错误<br>      + <span class="hljs-number">404</span> 访问地址不存在，请求资源没有找到<br>      + <span class="hljs-number">500</span> 通用服务端错误，一般和客户端没有关系（一般不会给准确的服务端的错误信息，因为可以估测出服端的性能，服务端信息都是要保密，所以一般都是给一个通用的服务端错误信息）<br>      + <span class="hljs-number">501</span> 服务器过载或者维护，就是玩游戏，每周更新的时候给<span class="hljs-number">501</span>，过载超过服务器的承受<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-断开链接"><a href="#4-断开链接" class="headerlink" title="4:断开链接"></a>4:断开链接</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-number">4</span>:断开链接<br>基于TCP/<span class="hljs-built_in">IP</span>协议的四次挥手，是为了保证链接断开<br> 第一次：前端给后端发送一个消息：响应体收到我要准备断开链接了<br> 第二次：后端给前端发送一个消息：好的，我知道你收到响应体了<br> 第三次：后端再次给前端发送一个消息：我已经准备断开链接了，当我再次收到你的消息的时候，我就断了，不会再次回复。这个是伴随第二次一块发过去的，两个包一起发<br> 第四次：前端收到后端的第一个消息，什么也不做<br> 			前端收到后端的第二个消息，告诉后端：好的我断开了，别回了，当这个消息来到服务端以后，服务端就把门关上了，不再回复<br> 			<br> 			<br> 下一次再发送请求，就要从头跑一边，先建立连接，发请求，接响应，断开链接<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="在node-js中获取请求报文"><a href="#在node-js中获取请求报文" class="headerlink" title="在node.js中获取请求报文"></a>在node.js中获取请求报文</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//引入  http 模块 </span><br><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;http&quot;</span>);<br><span class="hljs-comment">//创建服务 里面可以传入一个回调函数。回调函数有两个参数，1、请求信息，2、响应信息</span><br>http.<span class="hljs-title function_">createServer</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">request,response</span>)&#123;<br>    req.<span class="hljs-property">headers</span>  <span class="hljs-comment">// 获取请求报文</span><br>    req.<span class="hljs-property">url</span>      <span class="hljs-comment">// 获取请求地址  根据不同的地址，访问不同的页面</span><br>    req.<span class="hljs-property">method</span>   <span class="hljs-comment">// 获取请求方法 </span><br><span class="hljs-comment">//需要添加端口监听  listen(自定义端口号，这里我们常规使用3000)，</span><br>&#125;).<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;服务器已启动！&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="在node-js中设置响应报文"><a href="#在node-js中设置响应报文" class="headerlink" title="在node.js中设置响应报文"></a>在node.js中设置响应报文</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//----------- 设置响应报文</span><br><br><span class="hljs-comment">// 在服务器端给客户端设置一些不同的状态码  默认值为200</span><br><br>res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">404</span>);<br>res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<span class="hljs-string">&#x27;Content-type&#x27;</span>:<span class="hljs-string">&#x27;text/plain;charset=utf-8&#x27;</span>&#125;)<br><br><span class="hljs-comment">//----内容类型  </span><br><span class="hljs-comment">//text/html 可以解析返回中的HTML标签</span><br><span class="hljs-comment">//charset=utf8 可以解析中文。</span><br>res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;text/html;charset=utf8‘&#125;);</span><br><span class="hljs-string">res.setHead( &#x27;</span><span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span><span class="hljs-string">&#x27;,&#x27;</span>text/html;charset=utf8‘)   推荐<br><span class="hljs-comment">//文件类型</span><br><span class="hljs-comment">/** </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">text/plain 纯文本 如果不设置内容类型 默认是纯文本</span><br><span class="hljs-comment">text/html  </span><br><span class="hljs-comment">text/css</span><br><span class="hljs-comment">application/javascript</span><br><span class="hljs-comment">image/jpeg</span><br><span class="hljs-comment">application/json</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br>                    <br>在浏览器中没有<span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span>页面也是可以正常显示，这是因为我们使用的是高级浏览器，在使用低版本的浏览器则会有问题，所以一定指定返回资源的类型              <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">accept</span>= <span class="hljs-symbol">&#x27;image</span>/*&#x27;反映缓慢<br> input[<span class="hljs-keyword">type</span>=<span class="hljs-symbol">&#x27;file</span>&#x27;]的<span class="hljs-keyword">accept</span>属性用来指定上传文件的MIME类型。<br> <br> 将其设为<span class="hljs-keyword">accept</span>= <span class="hljs-symbol">&#x27;image</span>/*&#x27;，顾名思义，过滤掉所有非图片文件，<br> <br> 但在实际操作中，发现有时会出现响应缓慢的问题，特别是在chrome与Safari，IE与firefox则没有此问题。<br> <br> 搜索过后发现: <span class="hljs-keyword">accept</span>= <span class="hljs-symbol">&#x27;image</span>/*&#x27;会对每一个文件都进行一次遍历，在webkit内核的浏览器内校验时间较长，是此种内核浏览器的bug。<br> <br> 解决方法:将 * 通配符 修改成指定的MIME类型<br> <br> 例如: &lt;input <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-keyword">accept</span>=<span class="hljs-string">&quot;image/gif,image/jpeg,image/jpg,image/png,image/svg&quot;</span>&gt;<br> <br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h4><p>请求方式，是指前端和后端的交互手段，最早是不分get请求和post请求的发送请求都是一样，后来为了语义化做了一些区分，但他们的本质都是一样的，都是以请求报文的形式发送的</p>
+<p>请求方式就是一种标识，就是用来告诉服务器端，当前这次请求要做的事件的类型</p>
+<pre><code class="hljs">常见的请求方式
+  HTTP/1.0
+    1. GET  : 偏向于获取的方式
+      + 大部分都是给后端一些参数, 用来获取一些列数据
+      
+    2. POST : 偏向于给服务器一些数据，添加数据
+    对于一些既不是添加数据也不是获取数据的操作就用post，比如说登陆操作，因为post操作相比较安全一些
+      + 大部分都是登录, 给服务器一些信息服务器将这些信息存起来,然后服务器再给客户端一个简单的结果
+      
+ 我们目前只用 GET 和 POST
+  
+      3:PUT 偏向于给服务器一些信息，但是是添加使用
+      大部分做注册，给服务器一些信息，你把这个信息存储起来
+      
+      4:HEAD 用来获取服务器响应头信息
+ http/1.1
+  5: DELETE 偏向于删除
+  大部分用于删除评论，删除微博
+  6: CONNECT
+      管道连接改变代理连接使用
+  7:PATCH
+      偏向于给服务器一些信息，偏向于修改一些信息，大部分用于完善用户资料
+    
+  8:OPTIONS:
+  用于获取服务器性能，但是需要服务端同意
+</code></pre>
+<h3 id="get和post请求方式的区别（重点，面试常出）"><a href="#get和post请求方式的区别（重点，面试常出）" class="headerlink" title="get和post请求方式的区别（重点，面试常出）"></a>get和post请求方式的区别（重点，面试常出）</h3><h5 id="get"><a href="#get" class="headerlink" title="get"></a>get</h5><p>1:语义：获取</p>
+<p>向服务器发送get请求，最常讲的方式就是在浏览器地址栏中输入网址的方式，在服务器可以获取客户端的请求方式的可以通过服务器对象里的method属性获取</p>
+<p>2:get携带参数的方式是queryString，查询字符串，get请求的请求参数是在地址栏中直接拼接，不在请求体里面</p>
+<p>3:get和post的大小不一样：get理论上携带参数无限，但是因为地址栏有限，所以get请求参数一般都是2KB大小（ie的是2kb，所以一般get请求也都是2kb了）</p>
+<p>4:get请求会被浏览器主动缓存</p>
+<p>5:get是明文发送，post是暗文发送，相对于post来言get请求不安全</p>
+<p>6:get请求只能发送url编码的数据（ASCII码），如果是中文会自动转码</p>
+<h5 id="post"><a href="#post" class="headerlink" title="post"></a>post</h5><p>1:语义：发送； 给</p>
+<p>向服务器发送post请求，可以通过form标签的method属性，method&#x3D;’post’</p>
+<p>2:post携带参数是requeryBody，在地址栏没有，在请求体里面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&#x27;post&#x27;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&#x27;htttp://localhost:端口号&#x27;</span>&gt;</span><br> <br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;submit&#x27;</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>开启服务器后点击提交按钮，服务器就会接到一个post请求，即是表单提交的请求，去还有一个get请求，是表单默认跳转发起的请求</p>
+<p>设置get请求和post请求，服务器可以根据请求方式的不同响应不同的内容</p>
+<p>3:post请求的请求参数，理论上大小也是无限，虽然post请求大小不受客户端限制，但是可能会被服务器端限制。</p>
+<p>4:post请求不会被浏览器主动缓存，除非手动设置</p>
+<p>5:post是暗文发送，Post请求相对于get请求比较安全。但是我们前端人员不聊安全，因为我们不配，前端的东西都是在明面上的，打开开发者工具就可以看到了</p>
+<p>6:post理论上可以发送任意格式的数据，但是要和请求头里的content-type配套，如果不配套后端没有办法正常接收</p>
+<p>&#x2F;&#x2F;———————————————————————————————–</p>
+<p>原生的node.js获取请求参数的方式，处理起来相对麻烦，后期有更简便的方式 （express node框架） 可以先不看</p>
+<h4 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h4><p>客户端向服务器端发送请求时，有时需要携带一些客户信息，客户信息需要通过请求参数的形式传递到服务器端，比如登录操作。</p>
+<h5 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h5><p>get请求的请求参数是在地址栏中传输</p>
+<p>url： <a target="_blank" rel="noopener" href="http://localhost:3000/?name=abc&age=123">http://localhost:3000/?name=abc&amp;age=123</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>)<br><span class="hljs-keyword">const</span> querystring = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;querystring&#x27;</span>) <span class="hljs-comment">// 引用querystring</span><br><br>http.<span class="hljs-title function_">createServer</span>(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;url:&#x27;</span>,req.<span class="hljs-property">url</span>) <span class="hljs-comment">// 输出我们前端返回的链接</span><br>  req.<span class="hljs-property">query</span> = querystring.<span class="hljs-title function_">parse</span>(req.<span class="hljs-property">url</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;?&#x27;</span>)[<span class="hljs-number">1</span>]) <span class="hljs-comment">// 设置query值，将req的url值进行分割整理</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">query</span>)<br>  res.<span class="hljs-title function_">end</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">query</span>)) <span class="hljs-comment">// 最后转换成字符串返回给前端</span><br>&#125;).<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;项目开启成功&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h5 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h5><p>post请求的请求参数是在请求报文（请求体）中，FormData</p>
+<p>post参数是通过事件的方式接收的：data事件 和 end事件</p>
+<p>post参数在理论上数据量可以是无限的，为了减轻压力，他不是一次就接收完的，比如100M的数据可以分10次接收完，当有请求参数传输的时候就会触发data事件，当请求参数传递完的时候就会触发end事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  post请求的数据 是添加到 请求体中   </span><br>http.<span class="hljs-title function_">createServer</span>(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//  解决跨域问题处理 </span><br>    res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>)<br>    <span class="hljs-comment">//  处理用户post 的请求 </span><br>    <span class="hljs-keyword">let</span> body = <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">// 变量body 用来接收存储用户传递的数据 因为post参数不是一次就传输完的，将每次触发data事件传入过来的参数与变量进行拼接，当传输完时触发end事件时输出这个变量</span><br><br>    <span class="hljs-comment">// 给req绑定on事件 监听data事件： 当有数据可读时触发。</span><br>    <span class="hljs-comment">//事件处理函数里参数就是传递过来的参数</span><br>    req.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">chunk</span>) =&gt;</span> &#123;<br>        body += chunk;<br>    &#125;)<br>    <span class="hljs-comment">//  监听end 事件：没有更多的数据可读时触发。</span><br>    req.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>, <span class="hljs-function">()=&gt;</span>&#123;<br>      	<span class="hljs-comment">//内置模块 querystring 可以处理这个格式的字符串，里面的parse方法可以将其转换为对象格式</span><br>        <span class="hljs-comment">//  user=张三&amp;pwd=123  ====&gt; user:张三, pwd:123</span><br>        body = querystring.<span class="hljs-title function_">parse</span>(body);  <br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body);  <br>      <br>      	<span class="hljs-comment">// 在服务器端给客户端设置一些不同的状态码</span><br>     		res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">404</span>);<br>      	res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<span class="hljs-string">&#x27;Content-type&#x27;</span>:<span class="hljs-string">&#x27;text/plain;charset=utf-8&#x27;</span>&#125;)<br>      <br>        <span class="hljs-comment">//  判断用户名或者密码是否正确 </span><br>        <span class="hljs-comment">//  如果是前后端交互， 通过 res.write() 或者是 res.end() 方法 返回数据</span><br>        <span class="hljs-comment">//  每次客户端的请求服务器都要给予响应，否则客户端会一直处于等待的状态</span><br>      <br>        res.<span class="hljs-title function_">write</span>(<span class="hljs-string">`欢迎<span class="hljs-subst">$&#123;body.user&#125;</span>`</span>)   <br>        res.<span class="hljs-title function_">end</span>();<br>    &#125;)<br>&#125;).<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;server running ...&#x27;</span>);    <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>&#x2F;&#x2F;&#x2F;————————————-  以下为超纲内，学完才能看的懂</p>
+<p>文件目录</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">returnPage<br>	css<br>		index<span class="hljs-selector-class">.css</span><br>		login<span class="hljs-selector-class">.css</span><br>  <span class="hljs-selector-tag">html</span><br>  	index<span class="hljs-selector-class">.html</span><br>  	login<span class="hljs-selector-class">.html</span><br>  js<br> 		index<span class="hljs-selector-class">.js</span><br> 		login<span class="hljs-selector-class">.js</span><br>  案例node<span class="hljs-selector-class">.js</span>  <br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">const</span> http=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> url=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;url&#x27;</span>);<br><span class="hljs-keyword">const</span> path=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><span class="hljs-keyword">const</span> mime=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mime&#x27;</span>);<br><span class="hljs-keyword">const</span> app=http.<span class="hljs-title function_">createServer</span>();<br>app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">req,res</span>)=&gt;</span>&#123;<br><br>  <span class="hljs-keyword">const</span> method=req.<span class="hljs-property">method</span>.<span class="hljs-title function_">toLowerCase</span>();<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(method);<span class="hljs-comment">//请求方式</span><br>  <span class="hljs-keyword">if</span>(method==<span class="hljs-string">&#x27;get&#x27;</span>)&#123;<br>      <span class="hljs-comment">//get请求</span><br><br>     <span class="hljs-comment">// url模块的parse方法可以解析请求的url,  获取请求的资源路径</span><br>      <span class="hljs-comment">//获取用户的请求路径，不带参数</span><br>        <span class="hljs-keyword">let</span> pathName=req.<span class="hljs-property">url</span>;<br>       <span class="hljs-comment">//当用户没有设置访问资源时默认访问首页</span><br>       pathName=pathName==<span class="hljs-string">&#x27;/&#x27;</span>?<span class="hljs-string">&#x27;/index.html&#x27;</span>:pathName;<br><br>        <br>        <span class="hljs-keyword">let</span> realPath; <span class="hljs-comment">//realPath变量：静态资源的服务器上的真实地址</span><br>        <span class="hljs-keyword">if</span>(pathName.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;html&#x27;</span>))&#123;<br>        <span class="hljs-comment">// __dirname 为当前文件的决定路径， 拼接字符串，拼接后为静态资源的服务器上的真实地址realPath变量</span><br>        <span class="hljs-comment">//使用path.join 进行多个参数的地址拼接 因为不同的操做系统使用的路径分隔符不一样/ \</span><br>          realPath=path.<span class="hljs-title function_">join</span>(__dirname,<span class="hljs-string">&#x27;returnPage&#x27;</span>,<span class="hljs-string">&#x27;html&#x27;</span>+pathName);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathName.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;css&#x27;</span>))&#123;<br>          realPath=path.<span class="hljs-title function_">join</span>(__dirname,<span class="hljs-string">&#x27;returnPage&#x27;</span>,<span class="hljs-string">&#x27;css&#x27;</span>+pathName);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathName.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;js&#x27;</span>))&#123;<br>          realPath=path.<span class="hljs-title function_">join</span>(__dirname,<span class="hljs-string">&#x27;returnPage&#x27;</span>,<span class="hljs-string">&#x27;js&#x27;</span>+pathName);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>          realPath=path.<span class="hljs-title function_">join</span>(__dirname,<span class="hljs-string">&#x27;returnPage&#x27;</span>,<span class="hljs-string">&#x27;imgs&#x27;</span>+pathName);<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;*****&#x27;</span>,realPath)<br>      <br>      <br>        fs.<span class="hljs-title function_">readFile</span>(realPath,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>          <span class="hljs-keyword">if</span>(err)&#123;<br>            res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">404</span>,&#123;<span class="hljs-string">&#x27;content-type&#x27;</span>:<span class="hljs-string">`text/html;charset=utf8`</span>&#125;)<br>            res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;文件没有找到&#x27;</span>)<br>            <span class="hljs-keyword">return</span>;<br>          &#125;<br>          <span class="hljs-comment">// mime.getType(realPath) 返回 获取文件的真实地址所对应的资源类型</span><br>          res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>,&#123;<span class="hljs-string">&#x27;content-type&#x27;</span>:<span class="hljs-string">`<span class="hljs-subst">$&#123;mime.getType(realPath)&#125;</span>`</span>&#125;)<br>          res.<span class="hljs-title function_">end</span>(data)<br>        &#125;)<br> <br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">//post 请求</span><br>  &#125;<br><br><br>&#125;)<br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="mime第三方模块"><a href="#mime第三方模块" class="headerlink" title="mime第三方模块"></a>mime第三方模块</h4><p>使用npm下载第三方模块</p>
+<p>这个mime模块下有一个getType方法</p>
+<p>mime.getType(路径)可以根据路径参数返回资源的类型</p>
+<h4 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  解决跨域问题处理 </span><br>res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/node/" class="category-chain-item">node</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>node</div>
+      <div>http://example.com/2022/05/26/01node/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>smilinh-sheep</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/26/7.%E7%BB%84%E4%BB%B6/" title="7组件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">7组件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/26/04mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" title="mysql">
+                        <span class="hidden-mobile">mysql</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
